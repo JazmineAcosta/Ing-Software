@@ -445,273 +445,274 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Home</h1>
+      <h1>Empleados</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-          <li class="breadcrumb-item active"></li>
+          <li class="breadcrumb-item active">Empleados</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
 
-    <section class="section">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Somos calidad en el mercado</h5>
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-body pt-3">
+              <div class="tab-content pt-2">
+                <div class="tab-pane fade profile-overview" id="profile-overview">
+                  <h5 class="card-title">Profile Details</h5>
+                </div>
 
-          <!-- Slides with controls -->
-          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="../librerias/assets/img/product-1.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
+                <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+                  <!-- Profile Edit Form -->
+                  <form class="row g-3 needs-validation" id="profileForm">
+                    <div class="mb-3 text-center">
+                      <label for="profileImage" class="col-md-12 col-form-label">Profile
+                        Image</label>
+                      <div class="col-md-12">
+                        <img id="profileImg" src="../librerias/assets/img/sin-perfil.png" alt="Profile" />
+                        <div class="pt-2">
+                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image" id="uploadBtn">
+                            <i class="bi bi-upload"></i> Cargar
+                          </a>
+                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image" id="removeBtn">
+                            <i class="bi bi-trash"></i> Remover
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 mt-5">
+                      <label for="validarCedula" class="form-label">Cédula</label>
+                      <input type="number" class="form-control" id="validarCedula" placeholder="1234567890" required />
+                    </div>
+
+
+                    <div class="col-md-6 mt-5">
+                      <label for="validarIdUsuario" class="form-label">ID de usuario</label>
+                      <input type="number" class="form-control" id="validarIdUsuario" placeholder="12345" required />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
+                      <input type="text" class="form-control" id="validarNomCompleto" required />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="validarDir" class="form-label">Dirección de
+                        recidencia</label>
+                      <input type="text" class="form-control" id="validarDir" required />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="validarEmail" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com"
+                        required />
+                      <div id="feedback-message" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="validarTelefono" class="form-label">Teléfono</label>
+                      <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789"
+                        required />
+                      <div id="feedback-message" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
+                      <input type="date" class="form-control" id="validarEmail" required />
+                      <div id="feedback-message" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="mb-3 d-flex justify-content-center">
+                      <button type="button" class="btn btn-primary mx-1" data-bs-placement="bottom"
+                        data-bs-toggle="tooltip" title="Consultar" onclick="consultarUsuario()">
+                        <i class="bi bi-person-check"> Consultar</i>
+                      </button>
+                      <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom"
+                        data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
+                        <i class="bi bi-person-add"> Crear</i>
+                      </button>
+                      <button type="button" class="btn btn-warning mx-1" data-bs-placement="bottom"
+                        data-bs-toggle="tooltip" title="Actualizar" onclick="actualizarUsuario()">
+                        <i class="bi bi-person-gear"> Actualizar</i>
+                      </button>
+                      <button type="button" class="btn btn-danger mx-1" data-bs-placement="bottom"
+                        data-bs-toggle="tooltip" title="Borrar" onclick="borrarUsuario()">
+                        <i class="bi bi-person-x"> Borrar</i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <div class="carousel-item">
-                <img src="../librerias/assets/img/product-2.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
-              </div>
-              <div class="carousel-item">
-                <img src="../librerias/assets/img/product-3.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
-              </div>
-              <div class="carousel-item">
-                <img src="../librerias/assets/img/product-4.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
-              </div>
-              <div class="carousel-item">
-                <img src="../librerias/assets/img/product-5.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
-              </div>
+              <!-- End Bordered Tabs -->
             </div>
           </div>
-
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-
         </div>
-        <!-- End Slides with controls -->
-      </div>
       </div>
     </section>
 
-
     <section class="section">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Productos</h5>
-
-          <!-- Tarjetas de productos -->
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-1.jpg" class="card-img-top" alt="Imagen 1">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">SM Compra Colombiana - Limón Tahití Malla TAEQ 1000 gr</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 2.216</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(gr a $2,22)</i><br>
-                    <span class="badge bg-dark">-35% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        3.390</del></i><br>
-                    <b>Referencia</b><br>
-                    22554 <br>
-                    <b>Tipo de Producto</b><br>
-                    Maya de limones 1kg <br>
-                    <b>Número de Piezas</b><br>
-                    1
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-2.jpg" class="card-img-top" alt="Imagen 2">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">SM Compra Colombiana - Aguacate Hass 1 und</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 1.072</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(gr a $2.38)</i><br>
-                    <span class="badge bg-dark">-20% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        1.340</del></i><br>
-                    <b>Referencia</b><br>
-                    SIN REF <br>
-                    <b>Tipo de Producto</b><br>
-                    Aguacate Hass Colombiano<br>
-                    <b>Número de Piezas</b><br>
-                    1
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-3.jpg" class="card-img-top" alt="Imagen 3">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">Diana - Arroz Blanco Arroba DIANA 12500 gr</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 49.585</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(gr a $4)</i><br>
-                    <span class="badge bg-dark">-6% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        52.750</del></i><br>
-                    <b>Referencia</b><br>
-                    SIN REF <br>
-                    <b>Tipo de Producto</b><br>
-                    Arroz blanco<br>
-                    <b>Número de Piezas</b><br>
-                    1
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-4.jpg" class=" card-img-top" alt="Imagen 4">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">Sello Rojo - Café Fuerte Tostado Y Molido X 600 gr</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 16.575</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(gr a $27,63)</i><br>
-                    <span class="badge bg-dark">-25% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        22.100</del></i><br>
-                    <b>Referencia</b><br>
-                    1023046 <br>
-                    <b>Tipo de Producto</b><br>
-                    Café <br>
-                    <b>Número de Piezas</b><br>
-                    1
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-5.jpg" class="card-img-top" alt="Imagen 3">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">Manuelita - Azucar Alta Pureza MANUELITA 2000 gr</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 6.329</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(gr a $4,34)</i><br>
-                    <span class="badge bg-dark">-27% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        8.670</del></i><br>
-                    <b>Referencia</b><br>
-                    75286 <br>
-                    <b>Tipo de Producto</b><br>
-                    Azúcar blanca refinada<br>
-                    <b>Número de Piezas</b><br>
-                    1
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-6.jpg" class="card-img-top" alt="Imagen 3">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">Colanta - Queso Tipo Cheddar COLANTA</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 11.388</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(gr a $75,92)</i><br>
-                    <span class="badge bg-dark">-25% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        14.235</del></i><br>
-                    <b>Referencia</b><br>
-                    52789 <br>
-                    <b>Tipo de Producto</b><br>
-                    lacteo sólido en conservación<br>
-                    <b>Número de Piezas</b><br>
-                    1
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-7.jpg" class="card-img-top" alt="Imagen 3">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">Hatsu - <br>Té HATSU 2400 ml</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 20.250</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(ml a $9,38)</i><br>
-                    <span class="badge bg-dark">-10% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        22.500</del></i><br>
-                    <b>Referencia</b><br>
-                    89823 <br>
-                    <b>Tipo de Producto</b><br>
-                    Té con saborizantes y edulcorantes <br>
-                    <b>Número de Piezas</b><br>
-                    12
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-8.jpg" class="card-img-top" alt="Imagen 3">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">Margarita - Papa Familiar Pollo MARGARITA 105 gr</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 4.634</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(gr a $44,13)</i><br>
-                    <span class="badge bg-dark">-35% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        7.130</del></i><br>
-                    <b>Referencia</b><br>
-                    SIN REF <br>
-                    <b>Tipo de Producto</b><br>
-                    Papa artificial sabor a Pollo <br>
-                    <b>Número de Piezas</b><br>
-                    1
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="../librerias/assets/img/product-9.jpg" class="card-img-top" alt="Imagen 3">
-                <div class="card-body">
-                  <h5 class="card-title mt-0">Alqueria - ALIM LCTEO CUCHAR M&M FOURP ALQUERIA 400 gr</h5>
-                  <h6 class="card-text">
-                    <p style="font-size: x-large;">$ 8.800</p>
-                  </h6>
-                  <p class="card-text">
-                    <i>(gr a $22)</i><br>
-                    <span class="badge bg-dark">-25% </span><i>&nbsp&nbsp&nbsp<del style="color: gray;"> $
-                        11.200</del></i><br>
-                    <b>Referencia</b><br>
-                    7553 <br>
-                    <b>Tipo de Producto</b><br>
-                    Bebidas Con Adiciones <br>
-                    <b>Número de Piezas</b><br>
-                    4
-                  </p>
-                </div>
-              </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-between align-items-center">
+                Registro de Empleados
+                <button type="button" class="btn btn-success ms-auto" data-bs-toggle="modal"
+                  data-bs-target="#addUserModal">
+                  <i class="bi bi-person-plus"> Añadir</i>
+                </button>
+              </h5>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">ID de usuario</th>
+                    <th scope="col">Nombres y apellidos</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Fecha de nacimiento</th>
+                    <th scope="col">Estado </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1025756358</td>
+                    <td>1</td>
+                    <td>Andrea Moreno Restrepo</td>
+                    <td>Calle 152 # 55 - 37</td>
+                    <td>amorenor@gmail.com</td>
+                    <td>3102561498</td>
+                    <td>11/06/1998</td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked1"
+                          checked onchange="updateSwitchState('flexSwitchCheckChecked1')" />
+                        <label class="form-check-label" for="flexSwitchCheckChecked1">
+                          Activo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                    <td>Bridie Kessler</td>
+                    <td>Administrador</td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked2"
+                          checked onchange="updateSwitchState('flexSwitchCheckChecked2')" />
+                        <label class="form-check-label" for="flexSwitchCheckChecked2">
+                          Activo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                    <td>Ashleigh Langosh</td>
+                    <td>Director de ventas</td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked3"
+                          checked onchange="updateSwitchState('flexSwitchCheckChecked3')" />
+                        <label class="form-check-label" for="flexSwitchCheckChecked3">
+                          Activo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                    <td>Angus Grady</td>
+                    <td>Comercial</td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked4"
+                          checked onchange="updateSwitchState('flexSwitchCheckChecked4')" />
+                        <label class="form-check-label" for="flexSwitchCheckChecked4">
+                          Activo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                    <td>Raheem Lehner</td>
+                    <td>Jefe de almacén</td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked5"
+                          checked onchange="updateSwitchState('flexSwitchCheckChecked5')" />
+                        <label class="form-check-label" for="flexSwitchCheckChecked5">
+                          Activo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                    <td>Bruse Jhonson</td>
+                    <td>Mozo de almacén</td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked6"
+                          checked onchange="updateSwitchState('flexSwitchCheckChecked6')" />
+                        <label class="form-check-label" for="flexSwitchCheckChecked6">
+                          Activo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                    </td>
+                    <td>William Smit</td>
+                    <td>Empleado</td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked7"
+                          checked onchange="updateSwitchState('flexSwitchCheckChecked7')" />
+                        <label class="form-check-label" for="flexSwitchCheckChecked7">
+                          Activo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
             </div>
           </div>
-
-
         </div>
       </div>
     </section>
@@ -732,8 +733,71 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Cargar imagen -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var profileImg = document.getElementById("profileImg");
+      var uploadBtn = document.getElementById("uploadBtn");
+      var removeBtn = document.getElementById("removeBtn");
+      var saveChangesBtn = document.getElementById("saveChangesBtn");
+      var profileForm = document.getElementById("profileForm");
+
+      // Set the default profile image URL
+      var defaultImageUrl =
+        "../librerias/assets/img/sin-perfil.png";
+
+      // Function to handle the "Remove" button click
+      removeBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Set the profile image source to the default image URL
+        profileImg.src = defaultImageUrl;
+      });
+
+      // Function to handle the "Upload" button click
+      uploadBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Simulate file input click to trigger file selection
+        var fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+        fileInput.style.display = "none";
+
+        // Append the file input to the body and trigger a click event
+        document.body.appendChild(fileInput);
+        fileInput.click();
+
+        // Remove the file input from the DOM after selection
+        fileInput.addEventListener("change", function () {
+          if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              // Set the profile image source to the selected image
+              profileImg.src = e.target.result;
+            };
+
+            reader.readAsDataURL(fileInput.files[0]);
+          }
+
+          document.body.removeChild(fileInput);
+        });
+      });
+
+      // Function to handle the "Save Changes" button click
+      saveChangesBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        // Add your logic here to save the changes (e.g., using AJAX to send data to the server)
+        alert("Changes saved successfully!");
+      });
+    });
+  </script>
+  <!-- Fin cargar imagen -->
 
   <!-- Vendor JS Files -->
   <script src="../librerias/assets/vendor/apexcharts/apexcharts.min.js"></script>

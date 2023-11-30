@@ -255,13 +255,14 @@ create table
 
 create table
     empleado (
-        id_empleado bigint not null auto_increment,
+        id_empleado bigint not null,
         id_usuario bigint not null,
         nom_ape_empleado varchar (100) not null,
         direc_empleado varchar (100),
         email_empleado varchar (100),
         tel_empleado varchar (20),
-        fecha_naci_empleado datetime,
+        fecha_naci_empleado datetime,        
+        estado_empleado varchar (1) not null,
         primary key (id_empleado),
         foreign key (id_usuario) references usuario (id_usuario)
     );
