@@ -1,3 +1,7 @@
+<?php
+include("../Ing-Software/controlador/conectar_bd.php");
+global $conexion;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +19,7 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../librerias/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -445,110 +447,99 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Empleados</h1>
+      <h1>Facturas</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-          <li class="breadcrumb-item active">Empleados</li>
+          <li class="breadcrumb-item active">Facturas</li>
         </ol>
       </nav>
-    </div>
-    <!-- End Page Title -->
+    </div><!-- End Page Title -->
 
-    <section class="section profile">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="card">
-            <div class="card-body pt-3">
-              <div class="tab-content pt-2">
-                <div class="tab-pane fade profile-overview" id="profile-overview">
-                  <h5 class="card-title">Detalles de perfil</h5>
-                </div>
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Registrar Factura</h5>
 
-                <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
-                  <!-- Profile Edit Form -->
-                  <form class="row g-3 needs-validation" id="profileForm">
-                    <div class="mb-3 text-center">
-                      <label for="profileImage" class="col-md-12 col-form-label">Profile
-                        Image</label>
-                      <div class="col-md-12">
-                        <img id="profileImg" src="../librerias/assets/img/sin-perfil.png" alt="Profile" />
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image" id="uploadBtn">
-                            <i class="bi bi-upload"></i> Cargar
-                          </a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image" id="removeBtn">
-                            <i class="bi bi-trash"></i> Remover
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+          <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+            <!-- Profile Edit Form -->
+            <form class="row g-3 needs-validation" id="profileForm">
 
-                    <div class="col-md-6 mt-5">
-                      <label for="validarCedula" class="form-label">Cédula</label>
-                      <input type="number" class="form-control" id="validarCedula" placeholder="1234567890" required />
-                    </div>
-
-
-                    <div class="col-md-6 mt-5">
-                      <label for="validarIdUsuario" class="form-label">ID de usuario</label>
-                      <input type="number" class="form-control" id="validarIdUsuario" placeholder="12345" required />
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
-                      <input type="text" class="form-control" id="validarNomCompleto" required />
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="validarDir" class="form-label">Dirección de
-                        recidencia</label>
-                      <input type="text" class="form-control" id="validarDir" required />
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="validarEmail" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com"
-                        required />
-                      <div id="feedback-message" class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="validarTelefono" class="form-label">Teléfono</label>
-                      <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789"
-                        required />
-                      <div id="feedback-message" class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
-                      <input type="date" class="form-control" id="validarEmail" required />
-                      <div id="feedback-message" class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="mb-3 d-flex justify-content-center">
-                      <button type="button" class="btn btn-primary mx-1" data-bs-placement="bottom"
-                        data-bs-toggle="tooltip" title="Consultar" onclick="consultarUsuario()">
-                        <i class="bi bi-person-check"> Consultar</i>
-                      </button>
-                      <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom"
-                        data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
-                        <i class="bi bi-person-add"> Crear</i>
-                      </button>
-                      <button type="button" class="btn btn-warning mx-1" data-bs-placement="bottom"
-                        data-bs-toggle="tooltip" title="Actualizar" onclick="actualizarUsuario()">
-                        <i class="bi bi-person-gear"> Actualizar</i>
-                      </button>
-                      <button type="button" class="btn btn-danger mx-1" data-bs-placement="bottom"
-                        data-bs-toggle="tooltip" title="Borrar" onclick="borrarUsuario()">
-                        <i class="bi bi-person-x"> Borrar</i>
-                      </button>
-                    </div>
-                  </form>
-                </div>
+              <div class="col-md-6">
+                <label for="idFactura" class="form-label">ID Factura</label>
+                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable" disabled="readonly" required />
               </div>
-              <!-- End Bordered Tabs -->
-            </div>
+
+              <div class="col-md-6">
+                <label for="validarFechFact" class="form-label">Fecha de creación de la factura</label>
+                <input type="datetime-local" class="form-control" id="validarFechFact" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" placeholder="12345" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="1">1 - Factura ordinaria</option>
+                  <option value="2">2 - Factura simplificada o ticket</option>
+                  <option value="3">3 - Factura proforma</option>
+                  <option value="4">4 - Factura rectificativa</option>
+                  <option value="5">5 - Factura recapitulativa</option>
+                  <option value="6">6 - Factura electrónica</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdCliente" class="form-label">Cliente de la factura</label>
+                <input type="text" class="form-control" placeholder="Ingrese el ID del cliente" id="validarIdCliente" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarTotal" class="form-label">Total</label>
+                <input type="text" class="form-control" id="validarTotal" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarDto" class="form-label">Descuento</label>
+                <input type="text" class="form-control" id="validarDto" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarIVA" class="form-label">IVA</label>
+                <input type="text" class="form-control" id="validarIVA" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSubtotal" class="form-label">Subtotal</label>
+                <input type="text" class="form-control" id="validarSubtotal" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSaldo" class="form-label">Saldo</label>
+                <input type="text" class="form-control" id="validarSaldo" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="mb-3 d-flex justify-content-center">
+                <button type="button" class="btn btn-primary mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Consultar" onclick="consultarUsuario()">
+                  <i class="bi bi-person-check"> Consultar</i>
+                </button>
+                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
+                  <i class="bi bi-person-add"> Crear</i>
+                </button>
+                <button type="button" class="btn btn-warning mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Actualizar" onclick="actualizarUsuario()">
+                  <i class="bi bi-person-gear"> Actualizar</i>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -562,16 +553,13 @@
               <h5 class="card-title d-flex justify-content-between align-items-center">
                 Registro de Empleados
                 <div class="ms-auto">
-                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Exportar a PDF">
+                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
                     <i class="bi bi-file-earmark-pdf"> PDF</i>
                   </button>
-                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Exportar a Excel">
+                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a Excel">
                     <i class="bi bi-file-earmark-excel"> Excel</i>
                   </button>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Imprimir">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Imprimir">
                     <i class="bi bi-printer"> Imprimir</i>
                   </button>
                 </div>
@@ -580,116 +568,40 @@
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th scope="col">Cédula</th>
-                    <th scope="col">ID de usuario</th>
-                    <th scope="col">Nombres y apellidos</th>
-                    <th scope="col">Dirección</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Fecha de nacimiento</th>
+                    <th scope="col">id_factura</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">ID_Tipo_Factura</th>
+                    <th scope="col">ID_Cliente</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Descuento</th>
+                    <th scope="col">IVA</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Saldo</th>
                     <th scope="col">Estado </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1025756358</td>
-                    <td>1</td>
-                    <td>Andrea Moreno Restrepo</td>
-                    <td>Calle 152 # 55 - 37</td>
-                    <td>amorenor@gmail.com</td>
-                    <td>3102561498</td>
-                    <td>11/06/1998</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1579842653</td>
-                    <td>2</td>
-                    <td>Felipe Molano Jiménez</td>
-                    <td>Carrera 19 # 75 - 23</td>
-                    <td>fmolanoj@gmail.com</td>
-                    <td>3102561498</td>
-                    <td>09/03/1987</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1002600489</td>
-                    <td>3</td>
-                    <td>Juan Sebatián Gómez Umaña</td>
-                    <td>Calle 35 # 28 - 06</td>
-                    <td>jsgomezu@gmail.com</td>
-                    <td>3044039621</td>
-                    <td>25/06/1999</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1359751023</td>
-                    <td>4</td>
-                    <td>Laura Posada Tobon</td>
-                    <td>Calle 75 # 26 - 63</td>
-                    <td>lposadat@gmail.com</td>
-                    <td>3059841685</td>
-                    <td>18/08/2001</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1000465894</td>
-                    <td>5</td>
-                    <td>Germán Garzón Pulgarín</td>
-                    <td>Carrera 7 # 147 - 23</td>
-                    <td>ggarzonp@gmail.com</td>
-                    <td>3004450951</td>
-                    <td>29/09/1994</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  </tr>
-                  <tr>
-                    <td>1002478546</td>
-                    <td>6</td>
-                    <td>Gustavo Hincapie Ruiz</td>
-                    <td>Carrera 10 # 2 - 42</td>
-                    <td>ghincapier@gmail.com</td>
-                    <td>3002164332</td>
-                    <td>05/05/1990</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1002458745</td>
-                    <td>7</td>
-                    <td>Santiago Montealegre Soto</td>
-                    <td>Carrera 19 # 106 - 26</td>
-                    <td>smontealegres@gmail.com</td>
-                    <td>3205693214</td>
-                    <td>15/01/1999</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
+                  <?php
+                  $sql = "SELECT * FROM `factura` WHERE 1";
+                  $result = mysqli_query($conexion, $sql);
+
+                  while ($mostar = mysqli_fetch_array($result)) {
+                  ?>
+                    <tr>
+                      <td><?php echo $mostar['id_factura'] ?></td>
+                      <td><?php echo $mostar['fecha_factura'] ?></td>
+                      <td><?php echo $mostar['id_tipofac'] ?></td>
+                      <td><?php echo $mostar['cliente_factura'] ?></td>
+                      <td><?php echo $mostar['total_factura'] ?></td>
+                      <td><?php echo $mostar['descuento_factura'] ?></td>
+                      <td><?php echo $mostar['iva_factura'] ?></td>
+                      <td><?php echo $mostar['subtotal_factura'] ?></td>
+                      <td><?php echo $mostar['saldo_factura'] ?></td>
+                      <td><?php echo $mostar['estado_factura'] ?></td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
                   <!-- Add more rows as needed -->
                 </tbody>
               </table>
@@ -716,71 +628,7 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-  </a>
-
-  <!-- Cargar imagen -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var profileImg = document.getElementById("profileImg");
-      var uploadBtn = document.getElementById("uploadBtn");
-      var removeBtn = document.getElementById("removeBtn");
-      var saveChangesBtn = document.getElementById("saveChangesBtn");
-      var profileForm = document.getElementById("profileForm");
-
-      // Set the default profile image URL
-      var defaultImageUrl =
-        "../librerias/assets/img/sin-perfil.png";
-
-      // Function to handle the "Remove" button click
-      removeBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        // Set the profile image source to the default image URL
-        profileImg.src = defaultImageUrl;
-      });
-
-      // Function to handle the "Upload" button click
-      uploadBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        // Simulate file input click to trigger file selection
-        var fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.accept = "image/*";
-        fileInput.style.display = "none";
-
-        // Append the file input to the body and trigger a click event
-        document.body.appendChild(fileInput);
-        fileInput.click();
-
-        // Remove the file input from the DOM after selection
-        fileInput.addEventListener("change", function () {
-          if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-              // Set the profile image source to the selected image
-              profileImg.src = e.target.result;
-            };
-
-            reader.readAsDataURL(fileInput.files[0]);
-          }
-
-          document.body.removeChild(fileInput);
-        });
-      });
-
-      // Function to handle the "Save Changes" button click
-      saveChangesBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        // Add your logic here to save the changes (e.g., using AJAX to send data to the server)
-        alert("Changes saved successfully!");
-      });
-    });
-  </script>
-  <!-- Fin cargar imagen -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../librerias/assets/vendor/apexcharts/apexcharts.min.js"></script>

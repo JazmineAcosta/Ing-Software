@@ -396,7 +396,7 @@
                   if (Object.prototype.hasOwnProperty.call(t, "data"))
                     return {
                       nodeName: "#text" === t.nodeName ? "#text" : "#comment",
-                      data: t.data,
+                      data: t.data
                     };
                   var e = { nodeName: t.nodeName };
                   return (
@@ -546,7 +546,7 @@
                             0 !== n && {
                               oldValue: a[0] - n,
                               newValue: a[1] - n,
-                              length: n,
+                              length: n
                             }
                           );
                         })(s, i, n, a);
@@ -623,7 +623,7 @@
                       if (
                         ![
                           s._const.addElement,
-                          s._const.addTextElement,
+                          s._const.addTextElement
                         ].includes(e[s._const.action])
                       ) {
                         var r = N(t, e[s._const.route]);
@@ -705,7 +705,7 @@
                                           e[s._const.to] +
                                           e[s._const.groupLength],
                                         newValue: t.newValue + t.length - i,
-                                        length: i,
+                                        length: i
                                       }),
                                       (t.length -= i));
                                 else if (
@@ -723,7 +723,7 @@
                                           e[s._const.to] +
                                           e[s._const.groupLength],
                                         newValue: t.newValue + t.length - i,
-                                        length: i,
+                                        length: i
                                       }),
                                       (t.length -= i));
                                 } else
@@ -746,7 +746,7 @@
                                       : (c.push({
                                           newValue: t.newValue + o - t.oldValue,
                                           oldValue: o,
-                                          length: t.length - o + t.oldValue - 1,
+                                          length: t.length - o + t.oldValue - 1
                                         }),
                                         (t.length = o - t.oldValue)));
                               }),
@@ -777,7 +777,7 @@
                                   c.push({
                                     newValue: t.newValue + t.length - e,
                                     oldValue: u + 1,
-                                    length: e,
+                                    length: e
                                   }),
                                     (t.length -= e);
                                 }
@@ -799,7 +799,7 @@
                                       : (c.push({
                                           newValue: t.newValue + o - t.oldValue,
                                           oldValue: o,
-                                          length: t.length - o + t.oldValue - 1,
+                                          length: t.length - o + t.oldValue - 1
                                         }),
                                         (t.length = o - t.oldValue)));
                               }),
@@ -829,7 +829,7 @@
                                   c.push({
                                     newValue: t.newValue + t.length - e,
                                     oldValue: p + 1,
-                                    length: e,
+                                    length: e
                                   }),
                                     (t.length -= e);
                                 }
@@ -846,7 +846,7 @@
                         s.postVirtualDiffApply({
                           node: h.node,
                           diff: h.diff,
-                          newNode: l,
+                          newNode: l
                         });
                     })(t, e, s);
                   }),
@@ -917,7 +917,7 @@
                   param: !0,
                   source: !0,
                   track: !0,
-                  wbr: !0,
+                  wbr: !0
                 },
                 S = function (t) {
                   var e = { nodeName: "", attributes: {} },
@@ -934,9 +934,9 @@
                       type: "comment",
                       node: {
                         nodeName: "#comment",
-                        data: -1 !== n ? t.slice(4, n) : "",
+                        data: -1 !== n ? t.slice(4, n) : ""
                       },
-                      voidElement: s,
+                      voidElement: s
                     };
                   }
                   for (var a = new RegExp(E), o = null, r = !1; !r; )
@@ -965,7 +965,7 @@
                     var o = t.indexOf("<");
                     i.push({
                       nodeName: "#text",
-                      data: -1 === o ? t : t.substring(0, o),
+                      data: -1 === o ? t : t.substring(0, o)
                     });
                   }
                   return (
@@ -994,7 +994,7 @@
                           var f = V(t.slice(c, t.indexOf("<", c)));
                           s.node.childNodes.push({
                             nodeName: "#text",
-                            data: f,
+                            data: f
                           }),
                             e.valueDiffing &&
                               "TEXTAREA" === s.node.nodeName &&
@@ -1144,7 +1144,7 @@
                             )
                             .setValue(this.options._const.oldValue, g(t))
                             .setValue(this.options._const.newValue, g(e))
-                            .setValue(this.options._const.route, s),
+                            .setValue(this.options._const.route, s)
                         ];
                       }
                       if (
@@ -1163,7 +1163,7 @@
                             )
                             .setValue(this.options._const.oldValue, g(t))
                             .setValue(this.options._const.newValue, g(e))
-                            .setValue(this.options._const.route, s),
+                            .setValue(this.options._const.route, s)
                         ];
                       if (
                         Object.prototype.hasOwnProperty.call(t, "data") &&
@@ -1178,7 +1178,7 @@
                                 )
                                 .setValue(this.options._const.route, s)
                                 .setValue(this.options._const.oldValue, t.data)
-                                .setValue(this.options._const.newValue, e.data),
+                                .setValue(this.options._const.newValue, e.data)
                             ]
                           : [
                               new x()
@@ -1188,7 +1188,7 @@
                                 )
                                 .setValue(this.options._const.route, s)
                                 .setValue(this.options._const.oldValue, t.data)
-                                .setValue(this.options._const.newValue, e.data),
+                                .setValue(this.options._const.newValue, e.data)
                             ];
                       for (
                         n = t.attributes
@@ -1405,7 +1405,7 @@
                                   .setValue(
                                     this.options._const.route,
                                     s.concat(l)
-                                  ),
+                                  )
                               ])),
                                 i.splice(h, 0, f),
                                 (o -= 1);
@@ -1421,7 +1421,7 @@
                                   .setValue(
                                     this.options._const.route,
                                     s.concat(l)
-                                  ),
+                                  )
                               ]);
                         l += 1;
                       }
@@ -1616,7 +1616,7 @@
                                       r.oldValue
                                     )
                                     .setValue(this.options._const.to, o)
-                                    .setValue(this.options._const.route, i),
+                                    .setValue(this.options._const.route, i)
                                 ];
                             }
                           }
@@ -1698,7 +1698,7 @@
                   document:
                     !("undefined" == typeof window || !window.document) &&
                     window.document,
-                  components: [],
+                  components: []
                 },
                 L = (function () {
                   function t(t) {
@@ -1743,7 +1743,7 @@
                           "nodeName",
                           "childNodes",
                           "checked",
-                          "selected",
+                          "selected"
                         ],
                         s = {};
                       t.compress
@@ -1784,7 +1784,7 @@
                     hiddenHeader: a,
                     sortable: o,
                     scrollY: r,
-                    type: l,
+                    type: l
                   },
                   { noColumnWidths: d, unhideHeader: c }
                 ) => ({
@@ -1795,7 +1795,7 @@
                         type: l,
                         format: n,
                         sortable: !0,
-                        searchable: !0,
+                        searchable: !0
                       };
                       if (u.hidden) return;
                       const p = {};
@@ -1831,8 +1831,8 @@
                           : [
                               {
                                 nodeName: "#text",
-                                data: t.text ?? String(t.data),
-                              },
+                                data: t.text ?? String(t.data)
+                              }
                             ];
                       return {
                         nodeName: "TH",
@@ -1844,16 +1844,16 @@
                                   {
                                     nodeName: "BUTTON",
                                     attributes: {
-                                      class: u.filter ? i.filter : i.sorter,
+                                      class: u.filter ? i.filter : i.sorter
                                     },
-                                    childNodes: m,
-                                  },
+                                    childNodes: m
+                                  }
                                 ]
                               : m
-                            : [{ nodeName: "#text", data: "" }],
+                            : [{ nodeName: "#text", data: "" }]
                       };
                     })
-                    .filter((t) => t),
+                    .filter((t) => t)
                 }),
                 P = (
                   t,
@@ -1872,7 +1872,7 @@
                     scrollY: u,
                     type: p,
                     rowRender: f,
-                    tabIndex: m,
+                    tabIndex: m
                   },
                   { noColumnWidths: g, unhideHeader: b, renderHeader: v }
                 ) => {
@@ -1892,7 +1892,7 @@
                                   type: p,
                                   format: c,
                                   sortable: !0,
-                                  searchable: !0,
+                                  searchable: !0
                                 };
                                 if (a.hidden) return;
                                 const o =
@@ -1903,9 +1903,9 @@
                                         childNodes: [
                                           {
                                             nodeName: "#text",
-                                            data: t.text ?? String(t.data),
-                                          },
-                                        ],
+                                            data: t.text ?? String(t.data)
+                                          }
+                                        ]
                                       };
                                 if (
                                   (l ||
@@ -1913,7 +1913,7 @@
                                     !n.widths[s] ||
                                     g ||
                                     (o.attributes = {
-                                      style: `width: ${n.widths[s]}%;`,
+                                      style: `width: ${n.widths[s]}%;`
                                     }),
                                   a.cellClass &&
                                     (o.attributes || (o.attributes = {}),
@@ -1936,7 +1936,7 @@
                                 }
                                 return o;
                               })
-                              .filter((t) => t),
+                              .filter((t) => t)
                           };
                           if ((e === a && (s.attributes.class = o.cursor), f)) {
                             const i = f(t, s, e);
@@ -1955,9 +1955,9 @@
                             }
                           }
                           return s;
-                        }),
-                      },
-                    ],
+                        })
+                      }
+                    ]
                   };
                   if (
                     ((w.attributes.class = w.attributes.class
@@ -1982,7 +1982,7 @@
                     if (d) {
                       const e = {
                         nodeName: "TFOOT",
-                        childNodes: [l ? structuredClone(t) : t],
+                        childNodes: [l ? structuredClone(t) : t]
                       };
                       (!u.length && !r) ||
                         b ||
@@ -2006,7 +2006,7 @@
                 },
                 set exports(t) {
                   R = t;
-                },
+                }
               }).exports = (function () {
                 var t = 1e3,
                   e = 6e4,
@@ -2040,7 +2040,7 @@
                       var e = ["th", "st", "nd", "rd"],
                         s = t % 100;
                       return "[" + t + (e[(s - 20) % 10] || e[s] || e[0]) + "]";
-                    },
+                    }
                   },
                   b = function (t, e, s) {
                     var i = String(t);
@@ -2083,7 +2083,7 @@
                           m: a,
                           s: n,
                           ms: i,
-                          Q: c,
+                          Q: c
                         }[t] ||
                         String(t || "")
                           .toLowerCase()
@@ -2092,7 +2092,7 @@
                     },
                     u: function (t) {
                       return void 0 === t;
-                    },
+                    }
                   },
                   w = "en",
                   _ = {};
@@ -2127,7 +2127,7 @@
                       locale: e.$L,
                       utc: e.$u,
                       x: e.$x,
-                      $offset: e.$offset,
+                      $offset: e.$offset
                     });
                   });
                 var M = (function () {
@@ -2369,7 +2369,7 @@
                             s: String(this.$s),
                             ss: D.s(this.$s, 2, "0"),
                             SSS: D.s(this.$ms, 3, "0"),
-                            Z: n,
+                            Z: n
                           };
                         return i.replace(m, function (t, e) {
                           return e || f[t] || n.replace(":", "");
@@ -2443,7 +2443,7 @@
                     ["$W", r],
                     ["$M", d],
                     ["$y", h],
-                    ["$D", u],
+                    ["$D", u]
                   ].forEach(function (t) {
                     O[t[1]] = function (e) {
                       return this.$g(e, t[0], t[1]);
@@ -2471,7 +2471,7 @@
                 },
                 set exports(t) {
                   I = t;
-                },
+                }
               }).exports = (function () {
                 var t = {
                     LTS: "h:mm:ss A",
@@ -2479,7 +2479,7 @@
                     L: "MM/DD/YYYY",
                     LL: "MMMM D, YYYY",
                     LLL: "MMMM D, YYYY h:mm A",
-                    LLLL: "dddd, MMMM D, YYYY h:mm A",
+                    LLLL: "dddd, MMMM D, YYYY h:mm A"
                   },
                   e =
                     /(\[[^[]*\])|([-_:/.,()\s]+)|(A|a|YYYY|YY?|MM?M?M?|Do|DD?|hh?|HH?|mm?|ss?|S{1,3}|z|ZZ?)/g,
@@ -2505,7 +2505,7 @@
                           s = 60 * e[1] + (+e[2] || 0);
                         return 0 === s ? 0 : "+" === e[0] ? -s : s;
                       })(t);
-                    },
+                    }
                   ],
                   d = function (t) {
                     var e = a[t];
@@ -2528,31 +2528,31 @@
                       n,
                       function (t) {
                         this.afternoon = c(t, !1);
-                      },
+                      }
                     ],
                     a: [
                       n,
                       function (t) {
                         this.afternoon = c(t, !0);
-                      },
+                      }
                     ],
                     S: [
                       /\d/,
                       function (t) {
                         this.milliseconds = 100 * +t;
-                      },
+                      }
                     ],
                     SS: [
                       s,
                       function (t) {
                         this.milliseconds = 10 * +t;
-                      },
+                      }
                     ],
                     SSS: [
                       /\d{3}/,
                       function (t) {
                         this.milliseconds = +t;
-                      },
+                      }
                     ],
                     s: [i, r("seconds")],
                     ss: [i, r("seconds")],
@@ -2572,7 +2572,7 @@
                         if (((this.day = s[0]), e))
                           for (var i = 1; i <= 31; i += 1)
                             e(i).replace(/\[|\]/g, "") === t && (this.day = i);
-                      },
+                      }
                     ],
                     M: [i, r("month")],
                     MM: [s, r("month")],
@@ -2589,7 +2589,7 @@
                             ).indexOf(t) + 1;
                         if (s < 1) throw new Error();
                         this.month = s % 12 || s;
-                      },
+                      }
                     ],
                     MMMM: [
                       n,
@@ -2597,18 +2597,18 @@
                         var e = d("months").indexOf(t) + 1;
                         if (e < 1) throw new Error();
                         this.month = e % 12 || e;
-                      },
+                      }
                     ],
                     Y: [/[+-]?\d+/, r("year")],
                     YY: [
                       s,
                       function (t) {
                         this.year = o(t);
-                      },
+                      }
                     ],
                     YYYY: [/\d{4}/, r("year")],
                     Z: l,
-                    ZZ: l,
+                    ZZ: l
                   };
                 function u(s) {
                   var i, n;
@@ -2868,7 +2868,7 @@
                                 : {
                                     data: e.childNodes,
                                     type: "html",
-                                    text: i(e),
+                                    text: i(e)
                                   }),
                             s
                           );
@@ -2878,7 +2878,7 @@
                             type: n,
                             format: a,
                             searchable: !0,
-                            sortable: !0,
+                            sortable: !0
                           });
                         const r = s[e];
                         return (
@@ -2899,7 +2899,7 @@
                             "html",
                             "date",
                             "boolean",
-                            "other",
+                            "other"
                           ].includes(t.dataset.type) &&
                             ((r.type = t.dataset.type),
                             "date" === r.type &&
@@ -2920,7 +2920,7 @@
                         type: n,
                         format: a,
                         sortable: !0,
-                        searchable: !0,
+                        searchable: !0
                       });
                   if (
                     (t.data
@@ -2946,7 +2946,7 @@
                                     case "number":
                                       s = {
                                         data: parseInt(t.innerText, 10),
-                                        text: t.innerText,
+                                        text: t.innerText
                                       };
                                       break;
                                     case "boolean": {
@@ -2954,14 +2954,14 @@
                                         "false",
                                         "0",
                                         "null",
-                                        "undefined",
+                                        "undefined"
                                       ].includes(
                                         t.innerText.toLowerCase().trim()
                                       );
                                       s = {
                                         data: e,
                                         order: e ? 1 : 0,
-                                        text: e ? "1" : "0",
+                                        text: e ? "1" : "0"
                                       };
                                       break;
                                     }
@@ -2971,7 +2971,7 @@
                                           M(t, { valueDiffing: !1 })
                                             .childNodes || [],
                                         text: t.innerText,
-                                        order: t.innerText,
+                                        order: t.innerText
                                       };
                                   }
                                   return s;
@@ -3067,7 +3067,7 @@
                             (i[o] = {
                               type: t.type || e,
                               sortable: !0,
-                              searchable: !0,
+                              searchable: !0
                             });
                           const r = i[o];
                           t.render && (r.render = t.render),
@@ -3105,7 +3105,7 @@
                             type: e,
                             format: "date" === e ? s : void 0,
                             sortable: !0,
-                            searchable: !0,
+                            searchable: !0
                           }
                       )),
                       [i, { filters: a, sort: n, widths: [] }]
@@ -3166,7 +3166,7 @@
                   const e = this.dt.data.headings.length;
                   if (
                     ((this.dt.data.headings = this.dt.data.headings.concat([
-                      B(t.heading),
+                      B(t.heading)
                     ])),
                     (this.dt.data.data = this.dt.data.data.map((e, s) =>
                       e.concat([q(t.data[s], t)])
@@ -3174,7 +3174,7 @@
                     (this.settings[e] = {
                       type: t.type || "string",
                       sortable: !0,
-                      searchable: !0,
+                      searchable: !0
                     }),
                     t.type || t.format || t.sortable || t.render || t.filter)
                   ) {
@@ -3254,8 +3254,7 @@
                       numeric: i.numeric || this.dt.options.numeric,
                       caseFirst: i.caseFirst || this.dt.options.caseFirst,
                       ignorePunctuation:
-                        i.ignorePunctuation ||
-                        this.dt.options.ignorePunctuation,
+                        i.ignorePunctuation || this.dt.options.ignorePunctuation
                     });
                   this.dt.data.data.sort((s, i) => {
                     let a = s[t].order || s[t].data,
@@ -3379,8 +3378,9 @@
                     perPage: "entradas por página",
                     pageTitle: "página {page}",
                     noRows: "Entradas no encontradas",
-                    noResults: "Ningún resultado coincide con su consulta de búsqueda",
-                    info: "Mostrando {start} a {end} de {rows} entradas",
+                    noResults:
+                      "Ningún resultado coincide con su consulta de búsqueda",
+                    info: "Mostrando {start} a {end} de {rows} entradas"
                   },
                   /*labels: {
                     placeholder: "Search...",
@@ -3443,8 +3443,8 @@
                     sorter: "datatable-sorter",
                     table: "datatable-table",
                     top: "datatable-top",
-                    wrapper: "datatable-wrapper",
-                  },
+                    wrapper: "datatable-wrapper"
+                  }
                 },
                 W = (t, e, s, i = {}) => ({
                   nodeName: "LI",
@@ -3454,7 +3454,7 @@
                         ? `${s.classes.paginationListItem} ${s.classes.active}`
                         : i.hidden
                         ? `${s.classes.paginationListItem} ${s.classes.hidden} ${s.classes.disabled}`
-                        : s.classes.paginationListItem,
+                        : s.classes.paginationListItem
                   },
                   childNodes: [
                     {
@@ -3465,11 +3465,11 @@
                         "aria-label": s.labels.pageTitle.replace(
                           "{page}",
                           String(t)
-                        ),
+                        )
                       },
-                      childNodes: [{ nodeName: "#text", data: e }],
-                    },
-                  ],
+                      childNodes: [{ nodeName: "#text", data: e }]
+                    }
+                  ]
                 }),
                 Q = (t, e, s, i, n) => {
                   let a = [];
@@ -3518,19 +3518,19 @@
                                 const t = {
                                   nodeName: "LI",
                                   attributes: {
-                                    class: `${a.paginationListItem} ${a.ellipsis} ${a.disabled}`,
+                                    class: `${a.paginationListItem} ${a.ellipsis} ${a.disabled}`
                                   },
                                   childNodes: [
                                     {
                                       nodeName: "BUTTON",
                                       attributes: {
-                                        class: a.paginationListItemLink,
+                                        class: a.paginationListItemLink
                                       },
                                       childNodes: [
-                                        { nodeName: "#text", data: o },
-                                      ],
-                                    },
-                                  ],
+                                        { nodeName: "#text", data: o }
+                                      ]
+                                    }
+                                  ]
                                 };
                                 u.push(t);
                               }
@@ -3550,7 +3550,7 @@
                   return {
                     nodeName: "UL",
                     attributes: { class: n.classes.paginationList },
-                    childNodes: o.length > 1 ? a : [],
+                    childNodes: o.length > 1 ? a : []
                   };
                 };
               const X = {
@@ -3572,7 +3572,7 @@
                   wrapper: "datatable-editor-wrapper",
                   editable: "datatable-editor-editable",
                   container: "datatable-editor-container",
-                  separator: "datatable-editor-separator",
+                  separator: "datatable-editor-separator"
                 },
                 labels: {
                   closeX: "x",
@@ -3582,7 +3582,7 @@
                   reallyRemove: "Are you sure?",
                   reallyCancel: "Do you really want to cancel?",
                   save: "Save",
-                  cancel: "Cancel",
+                  cancel: "Cancel"
                 },
                 cancelModal: (t) => confirm(t.options.labels.reallyCancel),
                 inline: !0,
@@ -3597,7 +3597,7 @@
                       if (!(t.event.target instanceof Element)) return;
                       const s = t.event.target.closest("td");
                       return t.editCell(s);
-                    },
+                    }
                   },
                   {
                     text: (t) => t.options.labels.editRow,
@@ -3605,7 +3605,7 @@
                       if (!(t.event.target instanceof Element)) return;
                       const s = t.event.target.closest("tr");
                       return t.editRow(s);
-                    },
+                    }
                   },
                   { separator: !0 },
                   {
@@ -3618,9 +3618,9 @@
                         const e = t.event.target.closest("tr");
                         t.removeRow(e);
                       }
-                    },
-                  },
-                ],
+                    }
+                  }
+                ]
               };
               class Z {
                 constructor(t, e = {}) {
@@ -3643,13 +3643,13 @@
                       })),
                     this.options.contextMenu &&
                       ((this.containerDOM = s("div", {
-                        id: this.options.classes.container,
+                        id: this.options.classes.container
                       })),
                       (this.wrapperDOM = s("div", {
-                        class: this.options.classes.wrapper,
+                        class: this.options.classes.wrapper
                       })),
                       (this.menuDOM = s("ul", {
-                        class: this.options.classes.menu,
+                        class: this.options.classes.menu
                       })),
                       this.options.menuItems &&
                         this.options.menuItems.length &&
@@ -3657,7 +3657,7 @@
                           const e = s("li", {
                             class: t.separator
                               ? this.options.classes.separator
-                              : this.options.classes.item,
+                              : this.options.classes.item
                           });
                           if (!t.separator) {
                             const i = s("a", {
@@ -3666,7 +3666,7 @@
                               html:
                                 "function" == typeof t.text
                                   ? t.text(this)
-                                  : t.text,
+                                  : t.text
                             });
                             e.appendChild(i),
                               t.action &&
@@ -3693,7 +3693,7 @@
                 bindEvents() {
                   (this.events = {
                     keydown: this.keydown.bind(this),
-                    click: this.click.bind(this),
+                    click: this.click.bind(this)
                   }),
                     this.dt.dom.addEventListener(
                       this.options.clickEvent,
@@ -3812,7 +3812,7 @@
                     cell: i,
                     rowIndex: s,
                     columnIndex: e,
-                    content: i.text || String(i.data),
+                    content: i.text || String(i.data)
                   }),
                     (this.editing = !0),
                     (this.editingCell = !0),
@@ -3849,11 +3849,11 @@
                       "</div>",
                       "</form>",
                       "</div>",
-                      "</div>",
+                      "</div>"
                     ].join(""),
                     o = s("div", {
                       class: this.options.classes.modal,
-                      html: a,
+                      html: a
                     });
                   (this.modalDOM = o), this.openModal();
                   const r = o.querySelector(
@@ -3887,7 +3887,7 @@
                     n = {
                       data: [{ nodeName: "#text", data: t }],
                       text: t,
-                      order: t,
+                      order: t
                     };
                   else if ("string" === s) n = { data: t };
                   else if ("date" === s) {
@@ -3936,11 +3936,11 @@
                       "</div>",
                       "</form>",
                       "</div>",
-                      "</div>",
+                      "</div>"
                     ].join(""),
                     i = s("div", {
                       class: this.options.classes.modal,
-                      html: e,
+                      html: e
                     }),
                     a = i.firstElementChild;
                   if (!a) return;
@@ -3968,8 +3968,8 @@
                             }' value='${n(
                               t.text || String(t.data) || ""
                             )}' type='text'>`,
-                            "</div>",
-                          ].join(""),
+                            "</div>"
+                          ].join("")
                         }),
                         o.lastElementChild
                       );
@@ -4021,7 +4021,7 @@
                         r = {
                           data: [{ nodeName: "#text", data: n }],
                           text: n,
-                          order: n,
+                          order: n
                         };
                       else if ("string" === i) r = { data: n };
                       else if ("date" === i) {
@@ -4065,7 +4065,7 @@
                   (this.rect = this.wrapperDOM.getBoundingClientRect()),
                     (this.limits = {
                       x: window.innerWidth + t - this.rect.width,
-                      y: window.innerHeight + e - this.rect.height,
+                      y: window.innerHeight + e - this.rect.height
                     });
                 }
                 dismissMenu(t) {
@@ -4136,9 +4136,9 @@
                         attributes: {
                           type: "text",
                           value: this.data.content,
-                          class: this.options.classes.input,
-                        },
-                      },
+                          class: this.options.classes.input
+                        }
+                      }
                     ];
                   } else
                     e.childNodes.forEach((s, i) => {
@@ -4151,9 +4151,9 @@
                             attributes: {
                               type: "text",
                               value: n(r.text || String(r.data) || ""),
-                              class: this.options.classes.input,
-                            },
-                          },
+                              class: this.options.classes.input
+                            }
+                          }
                         ];
                       }
                     });
@@ -4165,10 +4165,10 @@
                   button: "datatable-column-filter-button",
                   menu: "datatable-column-filter-menu",
                   container: "datatable-column-filter-container",
-                  wrapper: "datatable-column-filter-wrapper",
+                  wrapper: "datatable-column-filter-wrapper"
                 },
                 labels: { button: "Filter columns within the table" },
-                hiddenColumns: [],
+                hiddenColumns: []
               };
               class K {
                 constructor(t, e = {}) {
@@ -4182,7 +4182,7 @@
                   if (!t) {
                     t = s("button", {
                       class: this.options.classes.button,
-                      html: "▦",
+                      html: "▦"
                     });
                     const e = this.dt.wrapperDOM.querySelector(
                       `.${this.dt.options.classes.search}`
@@ -4192,10 +4192,10 @@
                   }
                   (this.buttonDOM = t),
                     (this.containerDOM = s("div", {
-                      id: this.options.classes.container,
+                      id: this.options.classes.container
                     })),
                     (this.wrapperDOM = s("div", {
-                      class: this.options.classes.wrapper,
+                      class: this.options.classes.wrapper
                     })),
                     (this.menuDOM = s("ul", {
                       class: this.options.classes.menu,
@@ -4212,7 +4212,7 @@
                                 t.text || t.data
                               }\n                        </label>\n                    </li>`;
                         })
-                        .join(""),
+                        .join("")
                     })),
                     this.wrapperDOM.appendChild(this.menuDOM),
                     this.containerDOM.appendChild(this.wrapperDOM),
@@ -4248,7 +4248,7 @@
                   (this.rect = this.wrapperDOM.getBoundingClientRect()),
                     (this.limits = {
                       x: window.innerWidth + t - this.rect.width,
-                      y: window.innerHeight + e - this.rect.height,
+                      y: window.innerHeight + e - this.rect.height
                     });
                 }
                 _click(t) {
@@ -4292,7 +4292,7 @@
                     ...e,
                     diffDomOptions: i,
                     labels: n,
-                    classes: a,
+                    classes: a
                   }),
                     (this._initialInnerHTML = this.options.destroyable
                       ? this.dom.innerHTML
@@ -4324,7 +4324,7 @@
                     this.options.diffDomOptions || {}
                   )),
                     (this._tableAttributes = {
-                      ...this._virtualDOM.attributes,
+                      ...this._virtualDOM.attributes
                     }),
                     (this.rows = new z(this)),
                     (this.columns = new U(this)),
@@ -4342,7 +4342,7 @@
                 }
                 _render() {
                   (this.wrapperDOM = s("div", {
-                    class: `${this.options.classes.wrapper} ${this.options.classes.loading}`,
+                    class: `${this.options.classes.wrapper} ${this.options.classes.loading}`
                   })),
                     (this.wrapperDOM.innerHTML = this.options.template(
                       this.options,
@@ -4377,8 +4377,8 @@
                     (this._virtualPagerDOM = {
                       nodeName: "UL",
                       attributes: {
-                        class: this.options.classes.paginationList,
-                      },
+                        class: this.options.classes.paginationList
+                      }
                     }),
                     (this._label = this.wrapperDOM.querySelector(
                       `.${this.options.classes.info}`
@@ -4498,7 +4498,7 @@
                         this.onFirstPage,
                         this.onLastPage,
                         this._currentPage,
-                        this.totalPages,
+                        this.totalPages
                       ],
                       t
                     );
@@ -4529,10 +4529,10 @@
                             this.columns._state,
                             this.options,
                             { unhideHeader: !0 }
-                          ),
-                        ],
-                      },
-                    ],
+                          )
+                        ]
+                      }
+                    ]
                   };
                   if (
                     ((e.attributes.class = e.attributes.class
@@ -4546,9 +4546,9 @@
                   const s = {
                       nodeName: "DIV",
                       attributes: {
-                        class: this.options.classes.headercontainer,
+                        class: this.options.classes.headercontainer
                       },
-                      childNodes: [e],
+                      childNodes: [e]
                     },
                     i = this._dd.diff(this._virtualHeaderDOM, s);
                   this._dd.apply(this.headerDOM, i),
@@ -4620,14 +4620,14 @@
                                   t.dataset.columns
                                     ? s.push({
                                         terms: [e],
-                                        columns: JSON.parse(t.dataset.columns),
+                                        columns: JSON.parse(t.dataset.columns)
                                       })
                                     : s.push({ terms: [e], columns: void 0 });
                                 })
                               : t.dataset.columns
                               ? s.push({
                                   terms: i,
-                                  columns: JSON.parse(t.dataset.columns),
+                                  columns: JSON.parse(t.dataset.columns)
                                 })
                               : s.push({ terms: i, columns: void 0 });
                           }),
@@ -4825,7 +4825,7 @@
                   const e = t
                     .map((t) => ({
                       columns: t.columns,
-                      terms: t.terms.map((t) => t.trim()).filter((t) => t),
+                      terms: t.terms.map((t) => t.trim()).filter((t) => t)
                     }))
                     .filter((t) => t.terms.length);
                   if (((this._searchQueries = e), !e.length))
@@ -5012,8 +5012,8 @@
                             this.columns._state,
                             this.options,
                             {}
-                          ),
-                        ],
+                          )
+                        ]
                       },
                       {
                         nodeName: "TBODY",
@@ -5025,15 +5025,15 @@
                                 nodeName: "TD",
                                 attributes: {
                                   class: this.options.classes.empty,
-                                  colspan: String(e),
+                                  colspan: String(e)
                                 },
-                                childNodes: [{ nodeName: "#text", data: t }],
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                    ],
+                                childNodes: [{ nodeName: "#text", data: t }]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   };
                   if (
                     ((s.attributes.class = s.attributes.class
@@ -5077,7 +5077,7 @@
                     lineDelimiter: "\n",
                     columnDelimiter: ",",
                     removeDoubleQuotes: !1,
-                    ...e,
+                    ...e
                   };
                   if (i.data.length) {
                     s = { data: [] };
@@ -5139,7 +5139,7 @@
                       skipColumn: [],
                       lineDelimiter: "\n",
                       columnDelimiter: ",",
-                      ...s,
+                      ...s
                     },
                     n = (t) =>
                       !i.skipColumn.includes(t) &&
@@ -5215,7 +5215,7 @@
                       skipColumn: [],
                       replacer: null,
                       space: 4,
-                      ...s,
+                      ...s
                     },
                     n = (t) =>
                       !i.skipColumn.includes(t) &&
@@ -5255,7 +5255,7 @@
                     const e = JSON.stringify(t, i.replacer, i.space);
                     if (i.download) {
                       const t = new Blob([e], {
-                          type: "data:application/json;charset=utf-8",
+                          type: "data:application/json;charset=utf-8"
                         }),
                         s = URL.createObjectURL(t),
                         n = document.createElement("a");
@@ -5279,7 +5279,7 @@
                       download: !0,
                       skipColumn: [],
                       tableName: "myTable",
-                      ...s,
+                      ...s
                     },
                     n = (t) =>
                       !i.skipColumn.includes(t) &&
@@ -5355,7 +5355,7 @@
                       skipColumn: [],
                       lineDelimiter: "\n",
                       columnDelimiter: ",",
-                      ...s,
+                      ...s
                     },
                     n = (t) =>
                       !i.skipColumn.includes(t) &&
@@ -5443,8 +5443,8 @@
               : {}
           );
         },
-        {},
-      ],
+        {}
+      ]
     },
     {},
     [1]
