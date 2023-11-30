@@ -561,10 +561,20 @@
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-between align-items-center">
                 Registro de Empleados
-                <button type="button" class="btn btn-success ms-auto" data-bs-toggle="modal"
-                  data-bs-target="#addUserModal">
-                  <i class="bi bi-person-plus"> Añadir</i>
-                </button>
+                <div class="ms-auto">
+                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Exportar a PDF">
+                    <i class="bi bi-file-earmark-pdf"> PDF</i>
+                  </button>
+                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Exportar a Excel">
+                    <i class="bi bi-file-earmark-excel"> Excel</i>
+                  </button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Imprimir">
+                    <i class="bi bi-printer"> Imprimir</i>
+                  </button>
+                </div>
               </h5>
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -590,122 +600,88 @@
                     <td>3102561498</td>
                     <td>11/06/1998</td>
                     <td>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked1"
-                          checked onchange="updateSwitchState('flexSwitchCheckChecked1')" />
-                        <label class="form-check-label" for="flexSwitchCheckChecked1">
-                          Activo
-                        </label>
-                      </div>
+                      <span class="badge bg-success">
+                        <i class="bi bi-check-circle me-1"></i> Habilitado
+                      </span>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
-                        <i class="bi bi-pencil-square"></i>
-                      </button>
-                    </td>
-                    <td>Bridie Kessler</td>
-                    <td>Administrador</td>
-                    <td>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked2"
-                          checked onchange="updateSwitchState('flexSwitchCheckChecked2')" />
-                        <label class="form-check-label" for="flexSwitchCheckChecked2">
-                          Activo
-                        </label>
-                      </div>
-                    </td>
+                  <td>1579842653</td>
+                  <td>2</td>
+                  <td>Felipe Molano Jiménez</td>
+                  <td>Carrera 19 # 75 - 23</td>
+                  <td>fmolanoj@gmail.com</td>
+                  <td>3102561498</td>
+                  <td>09/03/1987</td>
+                  <td>
+                    <span class="badge bg-success">
+                      <i class="bi bi-check-circle me-1"></i> Habilitado
+                    </span>
+                  </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
-                        <i class="bi bi-pencil-square"></i>
-                      </button>
-                    </td>
-                    <td>Ashleigh Langosh</td>
-                    <td>Director de ventas</td>
-                    <td>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked3"
-                          checked onchange="updateSwitchState('flexSwitchCheckChecked3')" />
-                        <label class="form-check-label" for="flexSwitchCheckChecked3">
-                          Activo
-                        </label>
-                      </div>
-                    </td>
+                  <td>1002600489</td>
+                  <td>3</td>
+                  <td>Juan Sebatián Gómez Umaña</td>
+                  <td>Calle 35 # 28 - 06</td>
+                  <td>jsgomezu@gmail.com</td>
+                  <td>3044039621</td>
+                  <td>25/06/1999</td>
+                  <td>
+                    <span class="badge bg-success">
+                      <i class="bi bi-check-circle me-1"></i> Habilitado
+                    </span>
+                  </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
-                        <i class="bi bi-pencil-square"></i>
-                      </button>
-                    </td>
-                    <td>Angus Grady</td>
-                    <td>Comercial</td>
-                    <td>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked4"
-                          checked onchange="updateSwitchState('flexSwitchCheckChecked4')" />
-                        <label class="form-check-label" for="flexSwitchCheckChecked4">
-                          Activo
-                        </label>
-                      </div>
-                    </td>
+                  <td>1359751023</td>
+                  <td>4</td>
+                  <td>Laura Posada Tobon</td>
+                  <td>Calle 75 # 26 - 63</td>
+                  <td>lposadat@gmail.com</td>
+                  <td>3059841685</td>
+                  <td>18/08/2001</td>
+                  <td>
+                    <span class="badge bg-success">
+                      <i class="bi bi-check-circle me-1"></i> Habilitado
+                    </span>
+                  </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
-                        <i class="bi bi-pencil-square"></i>
-                      </button>
-                    </td>
-                    <td>Raheem Lehner</td>
-                    <td>Jefe de almacén</td>
-                    <td>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked5"
-                          checked onchange="updateSwitchState('flexSwitchCheckChecked5')" />
-                        <label class="form-check-label" for="flexSwitchCheckChecked5">
-                          Activo
-                        </label>
-                      </div>
-                    </td>
+                  <td>1000465894</td>
+                  <td>5</td>
+                  <td>Germán Garzón Pulgarín</td>
+                  <td>Carrera 7 # 147 - 23</td>
+                  <td>ggarzonp@gmail.com</td>
+                  <td>3004450951</td>
+                  <td>29/09/1994</td>
+                  <td>
+                    <span class="badge bg-success">
+                      <i class="bi bi-check-circle me-1"></i> Habilitado
+                    </span>
+                  </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
-                        <i class="bi bi-pencil-square"></i>
-                      </button>
-                    </td>
-                    <td>Bruse Jhonson</td>
-                    <td>Mozo de almacén</td>
-                    <td>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked6"
-                          checked onchange="updateSwitchState('flexSwitchCheckChecked6')" />
-                        <label class="form-check-label" for="flexSwitchCheckChecked6">
-                          Activo
-                        </label>
-                      </div>
-                    </td>
+                  <td>1002478546</td>
+                  <td>6</td>
+                  <td>Gustavo Hincapie Ruiz</td>
+                  <td>Carrera 10 # 2 - 42</td>
+                  <td>ghincapier@gmail.com</td>
+                  <td>3002164332</td>
+                  <td>05/05/1990</td>
+                  <td>
+                    <span class="badge bg-success">
+                      <i class="bi bi-check-circle me-1"></i> Habilitado
+                    </span>
+                  </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
-                        <i class="bi bi-pencil-square"></i>
-                      </button>
-                    </td>
-                    <td>William Smit</td>
-                    <td>Empleado</td>
-                    <td>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked7"
-                          checked onchange="updateSwitchState('flexSwitchCheckChecked7')" />
-                        <label class="form-check-label" for="flexSwitchCheckChecked7">
-                          Activo
-                        </label>
-                      </div>
-                    </td>
+                  <td>1002458745</td>
+                  <td>7</td>
+                  <td>Santiago Montealegre Soto</td>
+                  <td>Carrera 19 # 106 - 26</td>
+                  <td>smontealegres@gmail.com</td>
+                  <td>3205693214</td>
+                  <td>15/01/1999</td>
+                  <td>
+                    <span class="badge bg-success">
+                      <i class="bi bi-check-circle me-1"></i> Habilitado
+                    </span>
+                  </td>
                   </tr>
                   <!-- Add more rows as needed -->
                 </tbody>
