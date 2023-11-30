@@ -211,7 +211,7 @@ create table
 create table
     medios_de_pago (
         id_med_pago int not null auto_increment,
-        id_descrip_med_pago varchar (45) not null,
+        descrip_med_pago varchar (45) not null,
         estado_med_pago varchar (1) not null,
         primary key (id_med_pago)
     );
@@ -261,7 +261,7 @@ create table
         direc_empleado varchar (100),
         email_empleado varchar (100),
         tel_empleado varchar (20),
-        fecha_naci_empleado datetime,        
+        fecha_naci_empleado date,        
         estado_empleado varchar (1) not null,
         primary key (id_empleado),
         foreign key (id_usuario) references usuario (id_usuario)
