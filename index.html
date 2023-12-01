@@ -23,7 +23,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconexionect" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
   <link href="librerias/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -40,11 +42,12 @@
   <!-- Asegúrate de tener jQuery incluido antes de este script -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
+  <!-- Visualizar la contraseña -->
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       // Manejar el clic en el ícono del ojo para mostrar/ocultar la contraseña
-      $("#basic").click(function() {
-        var passwordInput = $("#password");
+      $("#basic").click(function () {
+        var passwordInput = $("#yourPassword");
         var icon = $(this).find("i");
 
         if (passwordInput.attr("type") === "password") {
@@ -69,7 +72,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
               <div class="d-flex justify-content-center py-4">
-                <a href="index.php" class="logo d-flex align-items-center w-auto">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="librerias/assets/img/E-Billing.png" alt="" />
                   <span class="d-none d-lg-block">E-Billing</span>
                 </a>
@@ -86,17 +89,13 @@
                       Ingrese su Nombre de usuario y su contraseña
                     </p>
                   </div>
-                  <?php
-                  include("../Ing-Software/controlador/conectar_bd.php");
 
-                  ?>
-                  <form class="row g-3 needs-validation" action="" method="post">
-                    <div class="col-12">
-                      <label for="username" class="form-label">
-                        Nombre de usuario
-                      </label>
+                  <form class="row g-3 needs-validation" id="login-form" action="../Ing-Software/modelo/login.php"
+                    method="post" novalidate>
+                    <div class="col-12 align-items-center">
+                      <label for="yourUsername" class="form-label mb-1 mt-1">Nombre de Usuario</label>
                       <div class="input-group has-validation">
-                        <input type="text" name="username" class="form-control" id="usuario" required />
+                        <input type="text" name="username" class="form-control mb-2" id="yourUsername" required />
                         <div id="usernameError" class="invalid-feedback">
                           Este campo permite caracteres alfanuméricos
                         </div>
@@ -104,11 +103,10 @@
                     </div>
 
                     <div class="col-12">
-                      <label for="password" class="form-label">
-                        Password
-                      </label>
+                      <label for="yourPassword" class="form-label">Password</label>
                       <div class="col-12 input-group">
-                        <input type="password" name="password" class="form-control" id="password" require="" aria-label="" aria-describedby="basic">
+                        <input type="password" name="password" class="form-control" id="yourPassword" require
+                          aria-label="" aria-describedby="basic">
                         <span class="input-group-text" id="basic" type="button"><i class="bi bi-eye-slash"></i></span>
                       </div>
                       <div class="invalid-feedback">
@@ -125,69 +123,14 @@
                       </div>
                     </div>
 
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">
+                    <div id="error-message">
+                    </div>
+                    <div class="col-12 mt-3 text-center">
+                      <button class="btn btn-primary mb-5" type="submit">
                         Iniciar sesión
                       </button>
                     </div>
                   </form>
-
-                  <?php
-                  // Verificar si model.php está incluido
-                  if (file_exists("../Ing-Software/modelo/modelo.php")) {
-                    include("../Ing-Software/modelo/modelo.php");
-                    // Sección de manejo de errores
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                      // Recuperar los datos del formulario
-                      $usuario = $_POST["username"];
-                      $password = $_POST["password"];
-
-                      // Validar el usuario y contraseña
-                      $resultado = validarUsuario($usuario, $password);
-
-                      // Redireccionar según el resultado
-                      switch ($resultado) {
-                        case '1':
-                          header("Location: vista/home-r1.html");
-                          break;
-                        case '2':
-                          header("Location: vista/home-r2.html");
-                          break;
-                        case '3':
-                          header("Location: vista/home-r3.html");
-                          break;
-                        case '4':
-                          header("Location: vista/home-r4.html");
-                          break;
-                        case '5':
-                          header("Location: vista/home-r5.html");
-                          break;
-                        case '6':
-                          header("Location: vista/home-r6.html");
-                          break;
-                        case '7':
-                          header("Location: vista/home-r7.html");
-                          break;
-                        case 'password_no_coincide':
-                          $error_message = "La contraseña no coincide.";
-                          break;
-                        case 'usuario_no_encontrado':
-                          $error_message = "Usuario no encontrado.";
-                          break;
-                        default:
-                          $error_message = "Error desconocido.";
-                          break;
-                      }
-
-                      // Mostrar mensaje de error si existe
-                      if (isset($error_message)) {
-                        echo '<div class="alert alert-danger mt-3" role="alert">' . $error_message . '</div>';
-                      }
-                    }
-                  } else {
-                    echo '<div class="alert alert-danger mt-3" role="alert">Error: Archivo model.php no encontrado.</div>';
-                  }
-                  ?>
 
                 </div>
               </div>
@@ -203,6 +146,40 @@
     </div>
   </main>
   <!-- End #main -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginForm = document.getElementById("login-form");
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch("../Ing-Software/modelo/login.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+
+              // Mostrar mensaje de inicio de sesión en home.html
+              alert("¡Bienvenido! Has iniciado sesión.");
+              window.location.href = "../Ing-Software/vista/home-r1.html";
+
+            } else {
+              // Mostrar mensaje de error
+              alert(data.message);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+    });
+  </script>
+
 
   <!-- Agrega la referencia a Bootstrap JS y Popper.js si no están presentes -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

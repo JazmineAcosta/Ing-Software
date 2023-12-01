@@ -1,7 +1,8 @@
 <?php
-include("../Ing-Software/controlador/conectar_bd.php");
-global $conexion;
+include('../Ing-Software/controlador/conectar_bd.php');
+$factura = "SELECT * FROM factura";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -568,7 +569,7 @@ global $conexion;
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th scope="col">id_factura</th>
+                    <th scope="col">ID_Factura</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">ID_Tipo_Factura</th>
                     <th scope="col">ID_Cliente</th>
@@ -582,26 +583,20 @@ global $conexion;
                 </thead>
                 <tbody>
                   <?php
-                  $sql = "SELECT * FROM `factura` WHERE 1";
-                  $result = mysqli_query($conexion, $sql);
-
-                  while ($mostar = mysqli_fetch_array($result)) {
+                  $rest = mysqli_query($conexion, $factura);
                   ?>
-                    <tr>
-                      <td><?php echo $mostar['id_factura'] ?></td>
-                      <td><?php echo $mostar['fecha_factura'] ?></td>
-                      <td><?php echo $mostar['id_tipofac'] ?></td>
-                      <td><?php echo $mostar['cliente_factura'] ?></td>
-                      <td><?php echo $mostar['total_factura'] ?></td>
-                      <td><?php echo $mostar['descuento_factura'] ?></td>
-                      <td><?php echo $mostar['iva_factura'] ?></td>
-                      <td><?php echo $mostar['subtotal_factura'] ?></td>
-                      <td><?php echo $mostar['saldo_factura'] ?></td>
-                      <td><?php echo $mostar['estado_factura'] ?></td>
-                    </tr>
-                  <?php
-                  }
-                  ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
                   <!-- Add more rows as needed -->
                 </tbody>
               </table>
