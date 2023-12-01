@@ -1,8 +1,3 @@
-<?php
-include('../Ing-Software/controlador/conectar_bd.php');
-$factura = "SELECT * FROM factura";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +15,9 @@ $factura = "SELECT * FROM factura";
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../librerias/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -468,7 +465,8 @@ $factura = "SELECT * FROM factura";
 
               <div class="col-md-6">
                 <label for="idFactura" class="form-label">ID Factura</label>
-                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable" disabled="readonly" required />
+                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable"
+                  disabled="readonly" required />
               </div>
 
               <div class="col-md-6">
@@ -479,7 +477,8 @@ $factura = "SELECT * FROM factura";
 
               <div class="col-md-6">
                 <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" placeholder="12345" required>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente"
+                  placeholder="12345" required>
                   <option value="0">Elija una opción</option>
                   <option value="1">1 - Factura ordinaria</option>
                   <option value="2">2 - Factura simplificada o ticket</option>
@@ -492,7 +491,8 @@ $factura = "SELECT * FROM factura";
 
               <div class="col-md-6">
                 <label for="validarIdCliente" class="form-label">Cliente de la factura</label>
-                <input type="text" class="form-control" placeholder="Ingrese el ID del cliente" id="validarIdCliente" required />
+                <input type="text" class="form-control" placeholder="Ingrese el ID del cliente" id="validarIdCliente"
+                  required />
               </div>
 
               <div class="col-md-4">
@@ -525,18 +525,61 @@ $factura = "SELECT * FROM factura";
               </div>
               <div class="col-md-4">
                 <label for="validarEstado" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
+                <input type="text" class="form-control" id="validarEstado"
+                  placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="mb-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-primary mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Consultar" onclick="consultarUsuario()">
-                  <i class="bi bi-person-check"> Consultar</i>
-                </button>
-                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
+                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip"
+                  title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
                   <i class="bi bi-person-add"> Crear</i>
                 </button>
-                <button type="button" class="btn btn-warning mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Actualizar" onclick="actualizarUsuario()">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Registrar Factura</h5>
+
+          <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+            <!-- Profile Edit Form -->
+            <form class="row g-3 needs-validation" id="profileForm">
+
+              <h5 class="card-title d-flex justify-content-between align-items-center">
+                Registro de Empleados
+                <div class="ms-auto">
+                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Exportar a PDF">
+                    <i class="bi bi-file-earmark-pdf"> PDF</i>
+                  </button>
+                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Exportar a Excel">
+                    <i class="bi bi-file-earmark-excel"> Excel</i>
+                  </button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Imprimir">
+                    <i class="bi bi-printer"> Imprimir</i>
+                  </button>
+                </div>
+              </h5>
+              <div class="col-md-5">
+                <label for="idFactura" class="form-label">ID Factura</label>
+                <input type="number" class="form-control" id="idFactura"
+                  placeholder="Ingrese el id de la factura que desea consultar" required />
+              </div>
+              <div class="mb-3 d-flex mx-1">
+                <button type="button" class="btn btn-primary mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip"
+                  title="Consultar" onclick="consultarUsuario()">
+                  <i class="bi bi-person-check"> Consultar</i>
+                </button>
+                <button type="button" class="btn btn-warning mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip"
+                  title="Actualizar" onclick="actualizarUsuario()">
                   <i class="bi bi-person-gear"> Actualizar</i>
                 </button>
               </div>
@@ -554,13 +597,16 @@ $factura = "SELECT * FROM factura";
               <h5 class="card-title d-flex justify-content-between align-items-center">
                 Registro de Empleados
                 <div class="ms-auto">
-                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
+                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Exportar a PDF">
                     <i class="bi bi-file-earmark-pdf"> PDF</i>
                   </button>
-                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a Excel">
+                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Exportar a Excel">
                     <i class="bi bi-file-earmark-excel"> Excel</i>
                   </button>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Imprimir">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Imprimir">
                     <i class="bi bi-printer"> Imprimir</i>
                   </button>
                 </div>
@@ -582,9 +628,7 @@ $factura = "SELECT * FROM factura";
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                  $rest = mysqli_query($conexion, $factura);
-                  ?>
+
                   <tr>
                     <td></td>
                     <td></td>
@@ -623,7 +667,8 @@ $factura = "SELECT * FROM factura";
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../librerias/assets/vendor/apexcharts/apexcharts.min.js"></script>

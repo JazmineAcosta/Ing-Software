@@ -1,6 +1,7 @@
 <?php
 // Incluir el archivo de conexión a la base de datos
-include('../Ing-Software/controlador/conectar_bd.php');
+include('controlador/conectar_bd.php');
+conectar_bd();
 
 // Verificar si se han enviado datos del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -8,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Consulta SQL para obtener la contraseña almacenada en formato MD5
-    $sql = "SELECT * FROM usuario WHERE usuario = '$username'";
+    // Consulta SQL para obtener la contraseña
+    $sql = "SELECT * FROM usuario WHERE username = '$username'";
     $result = $conexion->query($sql);
 
     // Verificar si se encontraron resultados
@@ -17,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $result->fetch_assoc();
         $storedPassword = $row['password_usuario'];
 
-        // Verificar si la contraseña ingresada coincide con la almacenada (en formato MD5)
-        if (md5($password) === $storedPassword) {
+        // Verificar si la contraseña ingresada coincide con la almacenada
+        if ($password === $storedPassword) {
             // Usuario autenticado
             session_start();
             $_SESSION['username'] = $username;
