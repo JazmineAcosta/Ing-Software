@@ -1,3 +1,9 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +21,7 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../librerias/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -415,12 +419,13 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Facturación</h1>
+      <h1>Facturas</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-          <li class="breadcrumb-item active">Facturación</li>
-          <li class="breadcrumb-item active">Facturación</li>
+          <li class="breadcrumb-item active">Facturas</li>
+          <li class="breadcrumb-item active">Registrar Factura
+          </li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -431,13 +436,12 @@
           <h5 class="card-title">Registrar Factura</h5>
 
           <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
-            <!-- Factura regsitro Form -->
+            <!-- Profile Edit Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
               <div class="col-md-6">
                 <label for="idFactura" class="form-label">ID Factura</label>
-                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable"
-                  disabled="readonly" required />
+                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable" disabled="readonly" required />
               </div>
 
               <div class="col-md-6">
@@ -448,8 +452,7 @@
 
               <div class="col-md-6">
                 <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente"
-                  placeholder="12345" required>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" placeholder="12345" required>
                   <option value="0">Elija una opción</option>
                   <option value="1">1 - Factura ordinaria</option>
                   <option value="2">2 - Factura simplificada o ticket</option>
@@ -462,8 +465,7 @@
 
               <div class="col-md-6">
                 <label for="validarIdCliente" class="form-label">Cliente de la factura</label>
-                <input type="text" class="form-control" placeholder="Ingrese el ID del cliente" id="validarIdCliente"
-                  required />
+                <input type="text" class="form-control" placeholder="Ingrese el ID del cliente" id="validarIdCliente" required />
               </div>
 
               <div class="col-md-4">
@@ -496,14 +498,12 @@
               </div>
               <div class="col-md-4">
                 <label for="validarEstado" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="validarEstado"
-                  placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
+                <input type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="mb-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip"
-                  title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
+                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
                   <i class="bi bi-file-earmark-plus"> Crear</i>
                 </button>
               </div>
@@ -525,18 +525,15 @@
               <div class="input-group mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label">ID Factura</label>
                 <div class="input-group-append">
-                  <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato"
-                    aria-describedby="basic-addon2">
+                  <input type="text" class="form-control" id="idFacturaCons" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
                 </div>
                 <div class="input-group-append">
-                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal"
-                    data-bs-target="#consultarModal">
+                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal" data-bs-target="#consultarModal" onclick="consultarFactura()">
                     <i class="bi bi-search"></i> Consultar
                   </button>
                 </div>
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal"
-                    data-bs-target="#actualizarModal">
+                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#actualizarModal">
                     <i class="bi bi-file-arrow-up"></i> Actualizar
                   </button>
                 </div>
@@ -548,8 +545,7 @@
     </section>
 
     <!-- Consultar Modal -->
-    <div class="modal fade" id="consultarModal" tabindex="-1" role="dialog" aria-labelledby="consultarModalLabel"
-      aria-hidden="true">
+    <div class="modal fade" id="consultarModal" tabindex="-1" role="dialog" aria-labelledby="consultarModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -559,21 +555,19 @@
           <div class="modal-body">
             <form class="row g-3 needs-validation" id="consultarForm">
               <div class="col-md-6">
-                <label for="idFactura" class="form-label">ID Factura</label>
-                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable"
-                  disabled="readonly" required />
+                <label for="idFacturaModal" class="form-label">ID Factura</label>
+                <input type="number" class="form-control" id="idFacturaModal" placeholder=" Valor autoincrementable" disabled="readonly" required />
               </div>
 
               <div class="col-md-6">
-                <label for="validarFechFact" class="form-label">Fecha de la factura</label>
-                <input type="datetime-local" class="form-control" id="validarFechFact" disabled="readonly" required />
+                <label for="validarFechFactModal" class="form-label">Fecha de la factura</label>
+                <input type="datetime-local" class="form-control" id="validarFechFactModal" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-6">
                 <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente"
-                  disabled="disabled" required>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoClienteModal" disabled="disabled" required>
                   <option value="0">Elija una opción</option>
                   <option value="1">1 - Factura ordinaria</option>
                   <option value="2">2 - Factura simplificada o ticket</option>
@@ -585,42 +579,41 @@
               </div>
 
               <div class="col-md-6">
-                <label for="validarIdCliente" class="form-label">Cliente de la factura</label>
-                <input type="text" class="form-control" disabled="readonly" id="validarIdCliente" required />
+                <label for="validarIdClienteModal" class="form-label">Cliente de la factura</label>
+                <input type="text" class="form-control" disabled="readonly" id="validarIdClienteModal" required />
               </div>
 
               <div class="col-md-4">
-                <label for="validarTotal" class="form-label">Total</label>
-                <input type="text" class="form-control" id="validarTotal" disabled="readonly" required />
+                <label for="validarTotalModal" class="form-label">Total</label>
+                <input type="text" class="form-control" id="validarTotalModal" disabled="readonly" required />
               </div>
 
               <div class="col-md-4">
-                <label for="validarDto" class="form-label">Descuento</label>
-                <input type="text" class="form-control" id="validarDto" disabled="readonly" required />
+                <label for="validarDtoModal" class="form-label">Descuento</label>
+                <input type="text" class="form-control" id="validarDtoModal" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
-                <label for="validarIVA" class="form-label">IVA</label>
-                <input type="text" class="form-control" id="validarIVA" disabled="readonly" required />
+                <label for="validarIVAModal" class="form-label">IVA</label>
+                <input type="text" class="form-control" id="validarIVAModal" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
-                <label for="validarSubtotal" class="form-label">Subtotal</label>
-                <input type="text" class="form-control" id="validarSubtotal" disabled="readonly" required />
+                <label for="validarSubtotalModal" class="form-label">Subtotal</label>
+                <input type="text" class="form-control" id="validarSubtotalModal" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
-                <label for="validarSaldo" class="form-label">Saldo</label>
-                <input type="text" class="form-control" id="validarSaldo" disabled="readonly" required />
+                <label for="validarSaldoModal" class="form-label">Saldo</label>
+                <input type="text" class="form-control" id="validarSaldoModal" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
               <div class="col-md-4">
-                <label for="validarEstado" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="validarEstado" placeholder="" maxlength="1"
-                  disabled="readonly" required />
+                <label for="validarEstadoModal" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstadoModal" placeholder="" maxlength="1" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
             </form>
@@ -633,8 +626,7 @@
     </div>
 
     <!-- Actualizar Modal -->
-    <div class="modal fade" id="actualizarModal" tabindex="-1" role="dialog" aria-labelledby="actualizarModalLabel"
-      aria-hidden="true">
+    <div class="modal fade" id="actualizarModal" tabindex="-1" role="dialog" aria-labelledby="actualizarModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -645,8 +637,7 @@
             <form class="row g-3 needs-validation" id="consultarForm">
               <div class="col-md-6">
                 <label for="idFactura" class="form-label">ID Factura</label>
-                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable"
-                  disabled="readonly" required />
+                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable" disabled="readonly" required />
               </div>
 
               <div class="col-md-6">
@@ -657,8 +648,7 @@
 
               <div class="col-md-6">
                 <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente"
-                  disabled="readonly" required>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" disabled="readonly" required>
                   <option value="0">Elija una opción</option>
                   <option value="1">1 - Factura ordinaria</option>
                   <option value="2">2 - Factura simplificada o ticket</option>
@@ -720,11 +710,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      function consultarInformacion() {
+      function consultarFactura() {
         // Lógica para consultar la información y llenar el modal de consulta
-        // ...
+        // Obtener el valor del campo idFactura
+        var idFactura = document.getElementById('idFacturaCons').value;
+        //Crear FormData
+        var formData = new FormData();
+        formData.append('idFacturaCons', idFactura);
+        // Realizar la solicitud fetch
+        fetch('../modelo/consultafacturas.php', {
+            method: 'POST',
+            body: formData,
+          })
+          .then(response => response.json())
+          .then(data => {
+            // Procesar la respuesta del servidor si es necesario
+            // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+            // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+
+            document.getElementById('idFacturaModal').value = data["idFactura"];
+            document.getElementById('validarFechFactModal').value = data["fechaFactura"];
+            document.getElementById('validarIdTipoClienteModal').value = data["idTipoFac"];
+            document.getElementById('validarIdClienteModal').value = data["clienteFactura"];
+            document.getElementById('validarTotalModal').value = data["totalFactura"];
+            document.getElementById('validarDtoModal').value = data["descuentoFactura"];
+            document.getElementById('validarIVAModal').value = data["ivaFactura"];
+            document.getElementById('validarSubtotalModal').value = data["subtotalFactura"];
+            document.getElementById('validarSaldoModal').value = data["saldoFactura"];
+            document.getElementById('validarEstadoModal').value = data["estadoFactura"];
+
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+
         // Abre el modal de consulta
-        $('#consultarModal').modal('show');
+        //$('#consultarModal').modal('show');
+
       }
 
       function actualizarInformacion() {
@@ -742,6 +764,14 @@
       }
     </script>
 
+
+    <?php
+    require_once '../modelo/controlador/conectar_bd.php';
+    $conn = conectar_bd();
+    $stmt = $conn->prepare("select * from factura;");
+    $stmt->execute();
+    $facturas = $stmt->get_result();
+    ?>
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -750,16 +780,13 @@
               <h5 class="card-title d-flex justify-content-between align-items-center">
                 Registro de Facturas
                 <div class="ms-auto">
-                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Exportar a PDF">
+                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
                     <i class="bi bi-file-earmark-pdf"> PDF</i>
                   </button>
-                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Exportar a Excel">
+                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a Excel">
                     <i class="bi bi-file-earmark-excel"> Excel</i>
                   </button>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Imprimir">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Imprimir">
                     <i class="bi bi-printer"> Imprimir</i>
                   </button>
                 </div>
@@ -781,19 +808,20 @@
                   </tr>
                 </thead>
                 <tbody>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                  <?php while ($factura = $facturas->fetch_assoc()) { ?>
+                    <tr>
+                      <td><?php echo $factura["id_factura"] ?></td>
+                      <td><?php echo $factura["fecha_factura"] ?></td>
+                      <td><?php echo $factura["id_tipofac"] ?></td>
+                      <td><?php echo $factura["cliente_factura"] ?></td>
+                      <td><?php echo $factura["total_factura"] ?></td>
+                      <td><?php echo $factura["descuento_factura"] ?>
+                      <td><?php echo $factura["iva_factura"] ?></td>
+                      <td><?php echo $factura["subtotal_factura"] ?></td>
+                      <td><?php echo $factura["saldo_factura"] ?></td>
+                      <td><?php echo $factura["estado_factura"] ?></td>
+                    </tr>
+                  <?php } ?>
                   <!-- Add more rows as needed -->
                 </tbody>
               </table>
@@ -818,12 +846,14 @@
 
         // Por ejemplo, utilizando Fetch
         fetch('/ruta-del-servidor', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ fecha: fechaFormateada }),
-        })
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              fecha: fechaFormateada
+            }),
+          })
           .then(response => response.json())
           .then(data => {
             // Procesar la respuesta del servidor si es necesario
@@ -866,8 +896,7 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../librerias/assets/vendor/apexcharts/apexcharts.min.js"></script>

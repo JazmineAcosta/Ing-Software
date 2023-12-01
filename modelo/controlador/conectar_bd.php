@@ -26,5 +26,6 @@ if (!function_exists('conectar_bd')) {
       echo 'No se pudo conectar a la base de datos : ' .
         mysqli_connect_error();
     }
+    return $conexion;
   }
 }
