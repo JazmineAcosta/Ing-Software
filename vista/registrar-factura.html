@@ -558,19 +558,218 @@
                     aria-describedby="basic-addon2">
                 </div>
                 <div class="input-group-append">
-                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Consultar" onclick="consultarInformacion()">
-                    <i class="bi bi-search"> Consultar</i>
+                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal"
+                    data-bs-target="#consultarModal">
+                    <i class="bi bi-search"></i> Consultar
                   </button>
                 </div>
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Actualizar" onclick="actualizarInformacion()">
-                    <i class="bi bi-file-arrow-up"> Consultar</i>
+                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#actualizarModal">
+                    <i class="bi bi-file-arrow-up"></i> Actualizar
                   </button>
                 </div>
               </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Consultar Modal -->
+    <div class="modal fade" id="consultarModal" tabindex="-1" role="dialog" aria-labelledby="consultarModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultarModalLabel">Consulta de Factura</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="consultarForm">
+              <div class="col-md-6">
+                <label for="idFactura" class="form-label">ID Factura</label>
+                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable"
+                  disabled="readonly" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarFechFact" class="form-label">Fecha de la factura</label>
+                <input type="datetime-local" class="form-control" id="validarFechFact" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente"
+                  disabled="disabled" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="1">1 - Factura ordinaria</option>
+                  <option value="2">2 - Factura simplificada o ticket</option>
+                  <option value="3">3 - Factura proforma</option>
+                  <option value="4">4 - Factura rectificativa</option>
+                  <option value="5">5 - Factura recapitulativa</option>
+                  <option value="6">6 - Factura electrónica</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdCliente" class="form-label">Cliente de la factura</label>
+                <input type="text" class="form-control" disabled="readonly" id="validarIdCliente" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarTotal" class="form-label">Total</label>
+                <input type="text" class="form-control" id="validarTotal" disabled="readonly" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarDto" class="form-label">Descuento</label>
+                <input type="text" class="form-control" id="validarDto" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarIVA" class="form-label">IVA</label>
+                <input type="text" class="form-control" id="validarIVA" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSubtotal" class="form-label">Subtotal</label>
+                <input type="text" class="form-control" id="validarSubtotal" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSaldo" class="form-label">Saldo</label>
+                <input type="text" class="form-control" id="validarSaldo" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstado" placeholder="" maxlength="1"
+                  disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actualizar Modal -->
+    <div class="modal fade" id="actualizarModal" tabindex="-1" role="dialog" aria-labelledby="actualizarModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="actualizarModalLabel">Actualización de Factura</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="consultarForm">
+              <div class="col-md-6">
+                <label for="idFactura" class="form-label">ID Factura</label>
+                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable"
+                  disabled="readonly" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarFechFact" class="form-label">Fecha de la factura</label>
+                <input type="datetime-local" class="form-control" id="validarFechFact" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente"
+                  disabled="readonly" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="1">1 - Factura ordinaria</option>
+                  <option value="2">2 - Factura simplificada o ticket</option>
+                  <option value="3">3 - Factura proforma</option>
+                  <option value="4">4 - Factura rectificativa</option>
+                  <option value="5">5 - Factura recapitulativa</option>
+                  <option value="6">6 - Factura electrónica</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdCliente" class="form-label">Cliente de la factura</label>
+                <input type="text" class="form-control" disabled="readonly" id="validarIdCliente" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarTotal" class="form-label">Total</label>
+                <input type="text" class="form-control" id="validarTotal" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarDto" class="form-label">Descuento</label>
+                <input type="text" class="form-control" id="validarDto" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarIVA" class="form-label">IVA</label>
+                <input type="text" class="form-control" id="validarIVA" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSubtotal" class="form-label">Subtotal</label>
+                <input type="text" class="form-control" id="validarSubtotal" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSaldo" class="form-label">Saldo</label>
+                <input type="text" class="form-control" id="validarSaldo" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstado" maxlength="1" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="guardarActualizacion()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function consultarInformacion() {
+        // Lógica para consultar la información y llenar el modal de consulta
+        // ...
+        // Abre el modal de consulta
+        $('#consultarModal').modal('show');
+      }
+
+      function actualizarInformacion() {
+        // Lógica para cargar la información y llenar el modal de actualización
+        // ...
+        // Abre el modal de actualización
+        $('#actualizarModal').modal('show');
+      }
+
+      function guardarActualizacion() {
+        // Lógica para guardar la actualización
+        // ...
+        // Cierra el modal de actualización
+        $('#actualizarModal').modal('hide');
+      }
+    </script>
 
     <section class="section">
       <div class="row">
@@ -633,6 +832,52 @@
         </div>
       </div>
     </section>
+
+    <!-- fechas igual al servidor  -->
+    <script>
+      function consultarInformacion() {
+        // Obtener el valor del campo de fecha
+        const fechaInput = document.getElementById('validarFechFact').value;
+
+        // Formatear la fecha al formato deseado (dd/mm/aaaa --:--)
+        const fechaFormateada = formatearFechaParaBaseDatos(fechaInput);
+
+        // Lógica para enviar la información al servidor
+        // Puedes utilizar AJAX o Fetch para enviar la información al servidor
+
+        // Por ejemplo, utilizando Fetch
+        fetch('/ruta-del-servidor', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ fecha: fechaFormateada }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Procesar la respuesta del servidor si es necesario
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+
+        // Abre el modal de consulta
+        $('#consultarModal').modal('show');
+      }
+
+      function formatearFechaParaBaseDatos(fechaInput) {
+        const fecha = new Date(fechaInput);
+        const dia = ('0' + fecha.getDate()).slice(-2);
+        const mes = ('0' + (fecha.getMonth() + 1)).slice(-2);
+        const anio = fecha.getFullYear();
+        const horas = ('0' + fecha.getHours()).slice(-2);
+        const minutos = ('0' + fecha.getMinutes()).slice(-2);
+
+        return `${dia}/${mes}/${anio} ${horas}:${minutos}`;
+      }
+    </script>
+
 
   </main><!-- End #main -->
 
