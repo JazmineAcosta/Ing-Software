@@ -533,7 +533,7 @@
               <div class="mb-3 d-flex justify-content-center">
                 <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip"
                   title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
-                  <i class="bi bi-person-add"> Crear</i>
+                  <i class="bi bi-file-earmark-plus"> Crear</i>
                 </button>
               </div>
             </form>
@@ -545,48 +545,31 @@
     <section class="section">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Registrar Factura</h5>
+          <h5 class="card-title">Consulta y actualización de factura</h5>
 
           <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
             <!-- Profile Edit Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
-              <h5 class="card-title d-flex justify-content-between align-items-center">
-                Registro de Empleados
-                <div class="ms-auto">
-                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Exportar a PDF">
-                    <i class="bi bi-file-earmark-pdf"> PDF</i>
-                  </button>
-                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Exportar a Excel">
-                    <i class="bi bi-file-earmark-excel"> Excel</i>
-                  </button>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Imprimir">
-                    <i class="bi bi-printer"> Imprimir</i>
+              <div class="input-group mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">ID Factura</label>
+                <div class="input-group-append">
+                  <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato"
+                    aria-describedby="basic-addon2">
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Consultar" onclick="consultarInformacion()">
+                    <i class="bi bi-search"> Consultar</i>
                   </button>
                 </div>
-              </h5>
-              <div class="col-md-5">
-                <label for="idFactura" class="form-label">ID Factura</label>
-                <input type="number" class="form-control" id="idFactura"
-                  placeholder="Ingrese el id de la factura que desea consultar" required />
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Actualizar" onclick="actualizarInformacion()">
+                    <i class="bi bi-file-arrow-up"> Consultar</i>
+                  </button>
+                </div>
               </div>
-              <div class="mb-3 d-flex mx-1">
-                <button type="button" class="btn btn-primary mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip"
-                  title="Consultar" onclick="consultarUsuario()">
-                  <i class="bi bi-person-check"> Consultar</i>
-                </button>
-                <button type="button" class="btn btn-warning mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip"
-                  title="Actualizar" onclick="actualizarUsuario()">
-                  <i class="bi bi-person-gear"> Actualizar</i>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="section">
