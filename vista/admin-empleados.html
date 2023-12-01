@@ -419,6 +419,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
+          <li class="breadcrumb-item active">Nómina</li>
           <li class="breadcrumb-item active">Empleados</li>
         </ol>
       </nav>
@@ -497,22 +498,11 @@
                     </div>
 
                     <div class="mb-3 d-flex justify-content-center">
-                      <button type="button" class="btn btn-primary mx-1" data-bs-placement="bottom"
-                        data-bs-toggle="tooltip" title="Consultar" onclick="consultarUsuario()">
-                        <i class="bi bi-person-check"> Consultar</i>
-                      </button>
                       <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom"
                         data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
                         <i class="bi bi-person-add"> Crear</i>
                       </button>
-                      <button type="button" class="btn btn-warning mx-1" data-bs-placement="bottom"
-                        data-bs-toggle="tooltip" title="Actualizar" onclick="actualizarUsuario()">
-                        <i class="bi bi-person-gear"> Actualizar</i>
-                      </button>
-                      <button type="button" class="btn btn-danger mx-1" data-bs-placement="bottom"
-                        data-bs-toggle="tooltip" title="Borrar" onclick="borrarUsuario()">
-                        <i class="bi bi-person-x"> Borrar</i>
-                      </button>
+
                     </div>
                   </form>
                 </div>
@@ -523,6 +513,209 @@
         </div>
       </div>
     </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Consulta y actualización de empleados</h5>
+
+          <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+            <!-- Profile Edit Form -->
+            <form class="row g-3 needs-validation" id="profileForm">
+
+              <div class="input-group mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Cédula empleado</label>
+                <div class="input-group-append">
+                  <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato"
+                    aria-describedby="basic-addon2">
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal"
+                    data-bs-target="#consultarModal">
+                    <i class="bi bi-person-check"></i> Consultar
+                  </button>
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#actualizarModal">
+                    <i class="bi bi-person-gear"></i> Actualizar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultar Modal -->
+    <div class="modal fade" id="consultarModal" tabindex="-1" role="dialog" aria-labelledby="consultarModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultarModalLabel">Consulta de Factura</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="profileForm">
+              <div class="mb-3 text-center">
+                <label for="profileImage" class="col-md-12 col-form-label">Profile
+                  Image</label>
+                <div class="col-md-12">
+                  <img id="profileImg" src="../librerias/assets/img/sin-perfil.png" alt="Profile" />
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-5">
+                <label for="validarCedula" class="form-label">Cédula</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarCedula" required />
+              </div>
+
+
+              <div class="col-md-6 mt-5">
+                <label for="validarIdUsuario" class="form-label">ID de usuario</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarIdUsuario" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarNomCompleto" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarDir" class="form-label">Dirección de
+                  recidencia</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarDir" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarEmail" class="form-label">Email</label>
+                <input disabled="readonly" type="email" class="form-control" id="validarEmail" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarTelefono" class="form-label">Teléfono</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
+                <input disabled="readonly" type="date" class="form-control" id="validarEmail" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actualizar Modal -->
+    <div class="modal fade" id="actualizarModal" tabindex="-1" role="dialog" aria-labelledby="actualizarModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="actualizarModalLabel">Actualización de Factura</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="profileForm">
+              <div class="mb-3 text-center">
+                <label for="profileImage" class="col-md-12 col-form-label">Profile
+                  Image</label>
+                <div class="col-md-12">
+                  <img id="profileImg" src="../librerias/assets/img/sin-perfil.png" alt="Profile" />
+                  <div class="pt-2">
+                    <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image" id="uploadBtn">
+                      <i class="bi bi-upload"></i> Cargar
+                    </a>
+                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image" id="removeBtn">
+                      <i class="bi bi-trash"></i> Remover
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-5">
+                <label for="validarCedula" class="form-label">Cédula</label>
+                <input type="number" class="form-control" id="validarCedula" placeholder="1234567890" required />
+              </div>
+
+
+              <div class="col-md-6 mt-5">
+                <label for="validarIdUsuario" class="form-label">ID de usuario</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarIdUsuario" placeholder="12345"
+                  required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
+                <input type="text" class="form-control" id="validarNomCompleto" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarDir" class="form-label">Dirección de
+                  recidencia</label>
+                <input type="text" class="form-control" id="validarDir" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="validarEmail" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarTelefono" class="form-label">Teléfono</label>
+                <input type="number" class="form-control" id="validarTelefono" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="validarEmail" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="guardarActualizacion()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function consultarInformacion() {
+        // Lógica para consultar la información y llenar el modal de consulta
+        // ...
+        // Abre el modal de consulta
+        $('#consultarModal').modal('show');
+      }
+
+      function actualizarInformacion() {
+        // Lógica para cargar la información y llenar el modal de actualización
+        // ...
+        // Abre el modal de actualización
+        $('#actualizarModal').modal('show');
+      }
+
+      function guardarActualizacion() {
+        // Lógica para guardar la actualización
+        // ...
+        // Cierra el modal de actualización
+        $('#actualizarModal').modal('hide');
+      }
+    </script>
 
     <section class="section">
       <div class="row">

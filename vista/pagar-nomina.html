@@ -419,7 +419,8 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-                    <li class="breadcrumb-item active"></li>
+                    <li class="breadcrumb-item active">Nómina</li>
+                    <li class="breadcrumb-item active">Pago de nómina</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -427,49 +428,342 @@
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Somos calidad en el mercado</h5>
+                    <h5 class="card-title">Pago de nómina</h5>
 
-                    <!-- Slides with controls -->
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="../librerias/assets/img/product-1.jpg"
-                                    class="d-block mx-auto w-25 img-triangular" alt="..." />
+                    <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+                        <!-- Factura regsitro Form -->
+                        <form class="row g-3 needs-validation" id="profileForm">
+
+                            <div class="col-md-4">
+                                <label for="idFactura" class="form-label">Cédula empleado</label>
+                                <input type="number" class="form-control" id="idFactura" placeholder="1023456789"
+                                    required />
                             </div>
-                            <div class="carousel-item">
-                                <img src="../librerias/assets/img/product-2.jpg"
-                                    class="d-block mx-auto w-25 img-triangular" alt="..." />
+
+                            <div class="col-md-5">
+                                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
+                                <input type="text" class="form-control" id="validarNomCompleto" required />
                             </div>
-                            <div class="carousel-item">
-                                <img src="../librerias/assets/img/product-3.jpg"
-                                    class="d-block mx-auto w-25 img-triangular" alt="..." />
+
+                            <div class="col-md-3">
+                                <label for="validarFechFact" class="form-label">Fecha de pago</label>
+                                <input type="datetime-local" class="form-control" id="validarFechFact" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
-                            <div class="carousel-item">
-                                <img src="../librerias/assets/img/product-4.jpg"
-                                    class="d-block mx-auto w-25 img-triangular" alt="..." />
+
+                            <div class="col-md-3">
+                                <label for="validarDiasLiquidados" class="form-label">Días liquidados</label>
+                                <select type="select" class="form-select" aria-label="default select example"
+                                    id="validarDiasLiquidados" required>
+                                    <option value="0">Elija una opción</option>
+                                    <option value="1">1 - Mensual</option>
+                                    <option value="2">2 - Quincenal</option>
+                                </select>
                             </div>
-                            <div class="carousel-item">
-                                <img src="../librerias/assets/img/product-5.jpg"
-                                    class="d-block mx-auto w-25 img-triangular" alt="..." />
+
+                            <div class="col-md-3">
+                                <label for="validarSalarioBase" class="form-label">Salario base</label>
+                                <input type="text" class="form-control" id="validarSalarioBase" required />
                             </div>
+
+                            <div class="col-md-3">
+                                <label for="validarSalarioBaseMensual" class="form-label">Salario base mensual</label>
+                                <input type="text" class="form-control" id="validarSalarioBaseMensual" required />
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="validarSubTranporte" class="form-label">Subsidio de transporte</label>
+                                <input type="text" class="form-control" id="validarSubTranporte" required />
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="validaPermisos" class="form-label">Vacaciones</label>
+                                <input type="text" class="form-control" id="validaPermisos" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="validarDiasLaborados" class="form-label">Dias laborados</label>
+                                <input type="text" class="form-control" id="validarDiasLaborados" required />
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="validarDiasFestivosLaborados" class="form-label">Dias Festivos
+                                    Laborados</label>
+                                <input type="text" class="form-control" id="validarDiasFestivosLaborados" required />
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="validarHoraExtra" class="form-label">Horas extra</label>
+                                <input type="text" class="form-control" id="validarHoraExtra" required />
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="validarHoraExtraNocturna" class="form-label">Horas extra nocturna</label>
+                                <input type="text" class="form-control" id="validarHoraExtraNocturna" required />
+                            </div>
+
+                            <div class="mb-3 d-flex justify-content-center">
+                                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom"
+                                    data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
+                                    <i class="bi bi-cash-coin"> Pagar</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Consulta de nóminas</h5>
+
+                    <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+                        <!-- Profile Edit Form -->
+                        <form class="row g-3 needs-validation" id="profileForm">
+
+                            <div class="input-group mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Cédula Empleado y fecha de
+                                    pago</label>
+                                <div class="input-group-append">
+                                    <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato"
+                                        aria-describedby="basic-addon2">
+                                </div>
+                                <div class="input-group-append">
+                                    <input type="datetime-local" class="form-control" id="validarFechFact" required />
+                                </div>
+                                <div class="input-group-append">
+                                    <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#consultarModal">
+                                        <i class="bi bi-search"></i> Consultar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consultar Modal -->
+        <div class="modal fade" id="consultarModal" tabindex="-1" role="dialog" aria-labelledby="consultarModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="consultarModalLabel">Consulta de Factura</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Factura regsitro Form -->
+                        <form class="row g-3 needs-validation" id="profileForm">
+
+                            <div class="col-md-6">
+                                <label for="idFactura" class="form-label">Cédula empleado</label>
+                                <input disabled="readonly" type="number" class="form-control" id="idFactura"
+                                    placeholder="1023456789" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarFechFact" class="form-label">Fecha de pago</label>
+                                <input disabled="readonly" type="datetime-local" class="form-control"
+                                    id="validarFechFact" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarNomCompleto"
+                                    required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarDiasLiquidados" class="form-label">Días liquidados</label>
+                                <select disabled="readonly" type="select" class="form-select"
+                                    aria-label="default select example" id="validarDiasLiquidados" required>
+                                    <option value="0">Elija una opción</option>
+                                    <option value="1">1 - Mensual</option>
+                                    <option value="2">2 - Quincenal</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarSalarioBase" class="form-label">Salario base</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarSalarioBase"
+                                    required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarSalarioBaseMensual" class="form-label">Salario base mensual</label>
+                                <input disabled="readonly" type="text" class="form-control"
+                                    id="validarSalarioBaseMensual" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarSubTranporte" class="form-label">Subsidio de transporte</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarSubTranporte"
+                                    required />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validaPermisos" class="form-label">Vacaciones</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validaPermisos"
+                                    required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarDiasLaborados" class="form-label">Dias laborados</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarDiasLaborados"
+                                    required />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarDiasFestivosLaborados" class="form-label">Dias Festivos
+                                </label>
+                                <input disabled="readonly" type="text" class="form-control"
+                                    id="validarDiasFestivosLaborados" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarHoraExtra" class="form-label">Horas extra</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarHoraExtra"
+                                    required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarHoraExtraNocturna" class="form-label">Horas extra nocturna</label>
+                                <input disabled="readonly" type="text" class="form-control"
+                                    id="validarHoraExtraNocturna" required />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function consultarInformacion() {
+                // Lógica para consultar la información y llenar el modal de consulta
+                // ...
+                // Abre el modal de consulta
+                $('#consultarModal').modal('show');
+            }
+        </script>
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title d-flex justify-content-between align-items-center">
+                                Registro de nóminas
+                                <div class="ms-auto">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="Exportar a PDF">
+                                        <i class="bi bi-file-earmark-pdf"> PDF</i>
+                                    </button>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="Exportar a Excel">
+                                        <i class="bi bi-file-earmark-excel"> Excel</i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="Imprimir">
+                                        <i class="bi bi-printer"> Imprimir</i>
+                                    </button>
+                                </div>
+                            </h5>
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#nómina</th>
+                                        <th scope="col">CC Empleado</th>
+                                        <th scope="col">Nombres y apellidos</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Salario base</th>
+                                        <th scope="col">Días liquidados</th>
+                                        <th scope="col">Salario</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1025756358</td>
+                                        <td>Andrea Moreno Restrepo</td>
+                                        <td>2023-11-30</td>
+                                        <td>$ 5'000.000</td>
+                                        <td>$ 5'000.000</td>
+                                        <td>$ 0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>1579842653</td>
+                                        <td>Felipe Molano Jiménez</td>
+                                        <td>2023-11-30</td>
+                                        <td>$ 4'500.000</td>
+                                        <td>$ 4'500.000</td>
+                                        <td>$ 0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>1579842653</td>
+                                        <td>Juan Sebatián Gómez Umaña</td>
+                                        <td>2023-11-30</td>
+                                        <td>$ 3'000.000</td>
+                                        <td>$ 3'000.000</td>
+                                        <td>$ 0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>1359751023</td>
+                                        <td>Laura Posada Tobon</td>
+                                        <td>2023-11-30</td>
+                                        <td>$ 2'000.000</td>
+                                        <td>$ 2'000.000</td>
+                                        <td>$ 500.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>1000465894</td>
+                                        <td>Germán Garzón Pulgarín</td>
+                                        <td>2023-11-15</td>
+                                        <td>$ 3'000.000</td>
+                                        <td>$ 1'500.000</td>
+                                        <td>$ 0</td>
+                                    </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>1002478546</td>
+                                        <td>Gustavo Hincapie Ruiz</td>
+                                        <td>2023-11-15</td>
+                                        <td>$ 1'800.000</td>
+                                        <td>$ 900.000</td>
+                                        <td>$ 500.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>1002458745</td>
+                                        <td>Santiago Montealegre Soto</td>
+                                        <td>2023-11-15</td>
+                                        <td>$ 1'800.000</td>
+                                        <td>$ 900.000</td>
+                                        <td>$ 500.000</td>
+                                    </tr>
+                                    <!-- Add more rows as needed -->
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
                         </div>
                     </div>
-
-
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-
                 </div>
-                <!-- End Slides with controls -->
-            </div>
             </div>
         </section>
 
