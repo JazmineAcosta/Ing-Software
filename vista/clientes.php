@@ -402,7 +402,7 @@ $conn = conectar_bd();
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Facturación</h1>
+      <h1>Clientes</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
@@ -422,8 +422,8 @@ $conn = conectar_bd();
             <form class="row g-3 needs-validation" id="profileForm">
 
               <div class="col-md-3">
-                <label for="validarIdCliente" class="form-label">ID Cliente</label>
-                <input type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
+                <label for="inputText" class="form-label">ID Cliente</label>
+                <input type="number" class="form-control" id="idClienteCons" placeholder="CC del Cliente" required />
               </div>
 
               <div class="col-md-3">
@@ -546,7 +546,7 @@ $conn = conectar_bd();
               <div class="input-group mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label">ID Cliente</label>
                 <div class="input-group-append">
-                  <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
+                  <input type="text" class="form-control" id="idClienteCons" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
                 </div>
                 <div class="input-group-append">
                   <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal" data-bs-target="#consultarModal">
@@ -570,7 +570,7 @@ $conn = conectar_bd();
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="consultarModalLabel">Consulta de Factura</h5>
+            <h5 class="modal-title" id="consultarModalLabel">Consulta de Cliente</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -578,18 +578,18 @@ $conn = conectar_bd();
             <form class="row g-3 needs-validation" id="profileForm">
 
               <div class="col-md-4">
-                <label for="validarIdCliente" class="form-label">ID Cliente</label>
-                <input disabled="readonly" type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
+                <label for="idClienteModal" class="form-label">ID Cliente</label>
+                <input disabled="readonly" type="number" class="form-control" id="idClienteModal" required />
               </div>
 
               <div class="col-md-4">
                 <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
-                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
+                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" required />
               </div>
 
               <div class="col-md-4">
                 <label for="validarNitCliente" class="form-label">NIT Cliente</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
+                <input disabled="readonly" type="text" class="form-control" id="validarNitCliente" required />
               </div>
 
               <div class="col-md-12">
@@ -633,13 +633,13 @@ $conn = conectar_bd();
 
               <div class="col-md-6">
                 <label for="validarEmail" class="form-label">Email</label>
-                <input disabled="readonly" type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
+                <input disabled="readonly" type="email" class="form-control" id="validarEmail" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
                 <label for="validarTelefono" class="form-label">Teléfono</label>
-                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
+                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
@@ -669,7 +669,7 @@ $conn = conectar_bd();
 
               <div class="col-md-4">
                 <label for="validarEstado" class="form-label">Estado</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
+                <input disabled="readonly" type="text" class="form-control" id="validarEstado" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
             </form>
@@ -699,8 +699,8 @@ $conn = conectar_bd();
               </div>
 
               <div class="col-md-4">
-                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
-                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
+                <label for="idClienteAct" class="form-label">ID Empresa</label>
+                <input disabled="readonly" type="number" class="form-control" id="idClienteAct" placeholder="12345" required />
               </div>
 
               <div class="col-md-4">
@@ -800,27 +800,209 @@ $conn = conectar_bd();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      function consultarInformacion() {
+      function crearFactura() {
+        // Obtener los datos del formulario (reemplaza con la lógica para obtener los valores del formulario)
+        var fechaFactura = document.getElementById('validarFechFact').value;
+        var idTipoFac = document.getElementById('validarIdTipoCliente').value;
+        var clienteFactura = document.getElementById('validarIdCliente').value;
+        var totalFactura = document.getElementById('validarTotal').value;
+        var descuentoFactura = document.getElementById('validarDto').value;
+        var ivaFactura = document.getElementById('validarIVA').value;
+        var subtotalFactura = document.getElementById('validarSubtotal').value;
+        var saldoFactura = document.getElementById('validarSaldo').value;
+        var estadoFactura = document.getElementById('validarEstado').value;
+
+
+        // Crear un objeto FormData y agregar los datos del formulario
+        var formData = new FormData();
+        formData.append('fechaFactura', fechaFactura);
+        formData.append('idTipoFac', idTipoFac);
+        formData.append('clienteFactura', clienteFactura);
+        formData.append('totalFactura', totalFactura);
+        formData.append('descuentoFactura', descuentoFactura);
+        formData.append('ivaFactura', ivaFactura);
+        formData.append('subtotalFactura', subtotalFactura);
+        formData.append('saldoFactura', saldoFactura);
+        formData.append('estadoFactura', estadoFactura);
+        //console.log(fechaFactura);
+        //console.log(formatearFechaParaBaseDatos(fechaFactura));
+
+        // Realizar la solicitud 
+        fetch('../modelo/crearfactura.php', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+            // Procesar la respuesta del servidor si es necesario
+            if (!data.hasOwnProperty('error')) {
+              console.log(data);
+              alert(data["success"]);
+              window.location.reload();
+            } else {
+              alert(data["error"]);
+            }
+            // Cerrar el modal o realizar otras acciones según tus necesidades
+            // Aquí asumo que estás utilizando Bootstrap para los modales
+            $('#crearFacturaModal').modal('hide');
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+
+      function consultarFactura() {
         // Lógica para consultar la información y llenar el modal de consulta
-        // ...
+        // Obtener el valor del campo idFactura
+        var idFactura = document.getElementById('idClienteCons').value;
+
+        if (idFactura != "" || idFactura >= 1) {
+          //Crear FormData 
+          var formData = new FormData();
+          formData.append('idClienteCons', idFactura);
+          // Realizar la solicitud fetch
+          fetch('../modelo/consultafacturas.php', {
+              method: 'POST',
+              body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+              // Procesar la respuesta del servidor si es necesario
+              // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+              // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+              if (!data.hasOwnProperty('error')) {
+                document.getElementById('idFacturaModal').value = data["idFactura"];
+                document.getElementById('validarFechFactModal').value = data["fechaFactura"];
+                document.getElementById('validarIdTipoClienteModal').value = data["idTipoFac"];
+                document.getElementById('validarIdClienteModal').value = data["clienteFactura"];
+                document.getElementById('validarTotalModal').value = data["totalFactura"];
+                document.getElementById('validarDtoModal').value = data["descuentoFactura"];
+                document.getElementById('validarIVAModal').value = data["ivaFactura"];
+                document.getElementById('validarSubtotalModal').value = data["subtotalFactura"];
+                document.getElementById('validarSaldoModal').value = data["saldoFactura"];
+                document.getElementById('validarEstadoModal').value = data["estadoFactura"];
+              }
+
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+
+        }
         // Abre el modal de consulta
-        $('#consultarModal').modal('show');
+        //$('#consultarModal').modal('show');
+
+      }
+
+      function cerrarModalConsulta() {
+
+        document.getElementById('idFacturaModal').value = "";
+        document.getElementById('validarFechFactModal').value = "";
+        document.getElementById('validarIdTipoClienteModal').value = "";
+        document.getElementById('validarIdClienteModal').value = "";
+        document.getElementById('validarTotalModal').value = "";
+        document.getElementById('validarDtoModal').value = "";
+        document.getElementById('validarIVAModal').value = "";
+        document.getElementById('validarSubtotalModal').value = "";
+        document.getElementById('validarSaldoModal').value = "";
+        document.getElementById('validarEstadoModal').value = "";
+
       }
 
       function actualizarInformacion() {
-        // Lógica para cargar la información y llenar el modal de actualización
-        // ...
+        // Lógica para cargar la información y llenar el modal de actualización        
+        // Obtener el valor del campo idFactura
+        var idFactura = document.getElementById('idClienteCons').value;
+
+        if (idFactura != "" || idFactura >= 1) {
+          //Crear FormData 
+          var formData = new FormData();
+          formData.append('idClienteCons', idFactura);
+          // Realizar la solicitud fetch
+          fetch('../modelo/consultafacturas.php', {
+              method: 'POST',
+              body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+              // Procesar la respuesta del servidor si es necesario
+              // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+              // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+              if (!data.hasOwnProperty('error')) {
+                document.getElementById('idFacturaAct').value = data["idFactura"];
+                document.getElementById('validarFechFactAct').value = data["fechaFactura"];
+                document.getElementById('validarIdTipoClienteAct').value = data["idTipoFac"];
+                document.getElementById('validarIdClienteAct').value = data["clienteFactura"];
+                document.getElementById('validarTotalAct').value = data["totalFactura"];
+                document.getElementById('validarDtoAct').value = data["descuentoFactura"];
+                document.getElementById('validarIVAAct').value = data["ivaFactura"];
+                document.getElementById('validarSubtotalAct').value = data["subtotalFactura"];
+                document.getElementById('validarSaldoAct').value = data["saldoFactura"];
+                document.getElementById('validarEstadoAct').value = data["estadoFactura"];
+              }
+
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+
+        }
         // Abre el modal de actualización
-        $('#actualizarModal').modal('show');
+        //$('#actualizarModal').modal('show');
       }
 
       function guardarActualizacion() {
-        // Lógica para guardar la actualización
-        // ...
-        // Cierra el modal de actualización
-        $('#actualizarModal').modal('hide');
+        // Obtener el formulario
+        // Obtener los valores de los campos del formulario
+        var idFactura = document.getElementById('idFacturaAct').value;
+        var nuevaFecha = document.getElementById('validarFechFactAct').value;
+        var nuevoIdTipoFac = document.getElementById('validarIdTipoClienteAct').value;
+        var nuevoClienteFactura = document.getElementById('validarIdClienteAct').value;
+        var nuevoTotalFactura = document.getElementById('validarTotalAct').value;
+        var nuevoDescuentoFactura = document.getElementById('validarDtoAct').value;
+        var nuevoIvaFactura = document.getElementById('validarIVAAct').value;
+        var nuevoSubtotalFactura = document.getElementById('validarSubtotalAct').value;
+        var nuevoSaldoFactura = document.getElementById('validarSaldoAct').value;
+        var nuevoEstadoFactura = document.getElementById('validarEstadoAct').value;
+
+
+        // Crear un objeto FormData con los datos del formulario
+        // Crear FormData 
+        var formData = new FormData();
+        formData.append('idFacturaAct', idFactura);
+        formData.append('FechaAct', nuevaFecha);
+        formData.append('IdTipoFacAct', nuevoIdTipoFac);
+        formData.append('ClienteFacturaAct', nuevoClienteFactura);
+        formData.append('TotalFacturaAct', nuevoTotalFactura);
+        formData.append('DescuentoFacturaAct', nuevoDescuentoFactura);
+        formData.append('IvaFacturaAct', nuevoIvaFactura);
+        formData.append('SubtotalFacturaAct', nuevoSubtotalFactura);
+        formData.append('SaldoFacturaAct', nuevoSaldoFactura);
+        formData.append('EstadoFacturaAct', nuevoEstadoFactura);
+
+        // Realizar la solicitud fetch
+        fetch('../modelo/Updatefactura.php', {
+            method: 'POST',
+            body: formData,
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (!data.hasOwnProperty('error')) {
+              console.log(data);
+              alert(data["success"]);
+              window.location.reload();
+            } else {
+              alert(data["error"]);
+            }
+
+            // Cerrar el modal después de la actualización            
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
       }
     </script>
+
     <?php
     $stmt = $conn->prepare("select * from cliente;");
     $stmt->execute();
@@ -850,26 +1032,26 @@ $conn = conectar_bd();
                 <thead>
                   <tr>
                     <th scope="col">ID Cliente</th>
-                    <th scope="col">ID Empresa</th>
                     <th scope="col">Razon Social</th>
                     <th scope="col">Tipo Cliente</th>
                     <th scope="col">Nombres y Apellidos</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Cupo Credito</th>
                     <th scope="col">Saldo</th>
+                    <th scope="col">Estado</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php while ($cliente = $clientes->fetch_assoc()) { ?>
                     <tr>
                       <td><?php echo $cliente['id_cliente'] ?></td>
-                      <td><?php echo $cliente['id_empresa'] ?></td>
                       <td><?php echo $cliente['rsocial_cliente'] ?></td>
                       <td><?php echo $cliente['id_tipo_cliente'] ?></td>
                       <td><?php echo $cliente['nombre_cliente'] . " " . $cliente['apellido_cliente'] ?></td>
                       <td><?php echo $cliente['correo_cliente'] ?></td>
                       <td><?php echo $cliente['cupocredito_cliente'] ?></td>
                       <td><?php echo $cliente['saldo_cliente'] ?></td>
+                      <td><?php echo $cliente['estado_cliente'] ?></td>
                     </tr>
                   <?php } ?>
                   <!-- Add more rows as needed -->

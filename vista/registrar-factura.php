@@ -401,11 +401,11 @@ ini_set('display_errors', 'on');
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Facturas</h1>
+      <h1>Facturación</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-          <li class="breadcrumb-item active">Facturas</li>
+          <li class="breadcrumb-item active">Facturación</li>
           <li class="breadcrumb-item active">Registrar Factura
           </li>
         </ol>
