@@ -313,7 +313,7 @@ ini_set('display_errors', 'on');
             </a>
           </li>
           <li>
-            <a href="clientes.html">
+            <a href="clientes.php">
               <i class="bi bi-circle"></i>
               <span>Clientes</span>
             </a>
