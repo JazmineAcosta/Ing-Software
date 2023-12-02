@@ -1,6 +1,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
+require_once '../modelo/controlador/conectar_bd.php';
+$conn = conectar_bd();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -475,13 +477,18 @@ ini_set('display_errors', 'on');
                 <input type="number" class="form-control" id="validarCodPostal" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
-
+              <?php
+              $id_stmtt = $conn->prepare("select id_ciudad, nombre_ciudad from ciudad;");
+              $id_stmtt->execute();
+              $ciudades = $id_stmtt->get_result();
+              ?>
               <div class="col-md-4">
                 <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
                 <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
                   <option value="0">Seleccione una opción</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
+                  <?php while ($ciudad = $ciudades->fetch_object()) { ?>
+                  <option value=<?php echo $ciudad->id_ciudad ?> > <?php echo $ciudad->id_ciudad . " - " . $ciudad->nombre_ciudad ?></option>
+                  <?php } ?>
                 </select>
               </div>
 
@@ -831,8 +838,6 @@ ini_set('display_errors', 'on');
       }
     </script>
     <?php
-    require_once '../modelo/controlador/conectar_bd.php';
-    $conn = conectar_bd();
     $stmt = $conn->prepare("select * from cliente;");
     $stmt->execute();
     $clientes = $stmt->get_result();
