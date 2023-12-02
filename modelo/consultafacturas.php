@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $conexion->query($sql);
 
     //Verificar resultado
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
         // Guardar los campos en un array asociativo
@@ -37,5 +37,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo $jsonFactura;
     } else {
         echo json_encode(array('error' => 'No se encontraron resultados'));
-    }   
+    }
 }

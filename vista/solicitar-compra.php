@@ -1,9 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'on');
-require_once '../modelo/controlador/conectar_bd.php';
-$conn = conectar_bd();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,12 +30,12 @@ $conn = conectar_bd();
   <link href="../librerias/assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    * Template Name: NiceAdmin
+    * Updated: Sep 18 2023 with Bootstrap v5.3.2
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
 
 <body>
@@ -131,7 +125,7 @@ $conn = conectar_bd();
             <li class="notification-item">
               <i class="bi bi-info-circle text-primary"></i>
               <div>
-                <h4>Nueva solicitud de comprra</h4>
+                <h4>Nueva solicitud de compra</h4>
                 <p>Se ha generado una nueva solicitud de compra</p>
                 <p>30 min.</p>
               </div>
@@ -251,7 +245,7 @@ $conn = conectar_bd();
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="../index.php">
+              <a class="dropdown-item d-flex align-items-center" href="../index.html">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Cerrar sesión</span>
               </a>
@@ -337,7 +331,7 @@ $conn = conectar_bd();
           </li>
           <li>
             <a href="solicitar-compra.php">
-              <i class="bi bi-card-checklist"></i>
+              <i class="bi bi-circle"></i>
               <span>Solicitud de compra</span>
             </a>
           </li>
@@ -354,7 +348,7 @@ $conn = conectar_bd();
         <ul id="almacen-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="productos.php">
-              <i class="bi bi-card-checklist"></i>
+              <i class="bi bi-circle"></i>
               <span>Productos</span>
             </a>
           </li>
@@ -419,12 +413,13 @@ $conn = conectar_bd();
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Proveedor</h1>
+      <h1>Compras</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-          <li class="breadcrumb-item active">Proveedor</li>
-          <li class="breadcrumb-item active">Admin Proveedor</li>
+          <li class="breadcrumb-item active">Compras</li>
+          <li class="breadcrumb-item active">Registrar Compra
+          </li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -432,62 +427,57 @@ $conn = conectar_bd();
     <section class="section">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Registrar proveedor</h5>
+          <h5 class="card-title">Solicitud de Compra</h5>
 
           <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
-            <!-- Factura regsitro Form -->
+            <!-- Profile Edit Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
-              <div class="col-md-4">
-                <label for="validarIdProveedor" class="form-label">ID Proveedor</label>
-                <input type="number" class="form-control" id="validarIdProveedor" placeholder="Valor autoincrementable" disabled="readonly" required />
+              <div class="col-md-6">
+                <label for="idSolCompra" class="form-label">ID Solicitud de Compra</label>
+                <input type="number" class="form-control" id="idSolCompra" placeholder=" Valor autoincrementable" disabled="readonly" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdEmpleado" class="form-label">Id del Solicitante</label>
+                <input type="text" class="form-control" placeholder="Ingrese el ID del Empleado" id="validarIdEmpleado" required />
               </div>
 
               <div class="col-md-4">
-                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
-                <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
-              </div>
-
-              <div class="col-md-4">
-                <label for="validarNitProveedor" class="form-label">NIT Proveedor</label>
-                <input type="text" class="form-control" id="validarNitProveedor" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" required />
-              </div>
-
-              <div class="col-md-4">
-                <label for="validarNom" class="form-label">Nombre Proveedor</label>
-                <input type="text" class="form-control" id="validarNom" required />
-              </div>
-
-              <?php
-              $id_stmtt = $conn->prepare("select nombre_ciudad from ciudad;");
-              $id_stmtt->execute();
-              $ciudades = $id_stmtt->get_result();
-              ?>
-              <div class="col-md-4">
-                <label for="validarIdCiudad" class="form-label"> Ciudad </label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
-                  <option value="0">Seleccione una opción</option>
-                  <?php while ($ciudad = $ciudades->fetch_object()) { ?>
-                    <option value=<?php echo $ciudad->nombre_ciudad ?>>
-                      <?php echo $ciudad->nombre_ciudad ?></option>
-                  <?php } ?>
-                </select>
-              </div>
-
-              <div class="col-md-4">
-                <label for="validarDir" class="form-label">Dirección proveedor</label>
-                <input type="text" class="form-control" id="validarDir" required />
-              </div>
-
-              <div class="col-md-4">
-                <label for="validarTelefono" class="form-label">Teléfono</label>
-                <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
+                <label for="validarIdProducto" class="form-label">Id Producto</label>
+                <input type="text" class="form-control" id="validarIdProducto" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
+              <div class="col-md-4">
+                <label for="validarCantProductos" class="form-label">Cant. Productos</label>
+                <input type="text" class="form-control" id="validarIVA" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarValTotal" class="form-label">Valor Total</label>
+                <input type="text" class="form-control" id="validarSubtotal" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarFechCompra" class="form-label">Fecha de creación de la compra</label>
+                <input type="datetime-local" class="form-control" id="validarFechFact" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" placeholder="12345" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="E">E - En Espera</option>
+                </select>
+              </div>
+
               <div class="mb-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearProveedor()">
-                  <i class="bi bi-person-add"> Crear</i>
+                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearFactura()">
+                  <i class="bi bi-file-earmark-plus"> Crear</i>
                 </button>
               </div>
             </form>
@@ -499,25 +489,25 @@ $conn = conectar_bd();
     <section class="section">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Consulta y actualización del proveedor</h5>
+          <h5 class="card-title">Consulta y actualización de la solicitud de la compra</h5>
 
           <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
             <!-- Profile Edit Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
               <div class="input-group mb-3">
-                <label for="inputText" class="col-sm-2 col-form-label">ID Cliente</label>
+                <label for="inputText" class="col-sm-2 col-form-label">ID Solicitud de la Compra</label>
                 <div class="input-group-append">
-                  <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
+                  <input type="text" class="form-control" id="idcompra" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
                 </div>
                 <div class="input-group-append">
-                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal" data-bs-target="#consultarModal">
-                    <i class="bi bi-person-check"></i> Consultar
+                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal" data-bs-target="#consultarModal" onclick="consultarFactura()">
+                    <i class="bi bi-search"></i> Consultar
                   </button>
                 </div>
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#actualizarModal">
-                    <i class="bi bi-person-gear"></i> Actualizar
+                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#actualizarModal" onclick="actualizarInformacion()">
+                    <i class="bi bi-file-arrow-up"></i> Actualizar
                   </button>
                 </div>
               </div>
@@ -532,58 +522,52 @@ $conn = conectar_bd();
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="consultarModalLabel">Consulta de Proveedor</h5>
+            <h5 class="modal-title" id="consultarModalLabel">Consulta de la solicitud de la Compra</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <!-- Factura regsitro Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
-              <div class="col-md-7">
-                <label for="validarIdProveedor" class="form-label">ID Proveedor</label>
-                <input type="number" class="form-control" id="validarIdProveedor" placeholder="Valor autoincrementable" disabled="readonly" required />
-              </div>
-
-              <div class="col-md-5">
-                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
-                <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" disabled="readonly" required />
+              <div class="col-md-6">
+                <label for="idSolCompra" class="form-label">ID Solicitud de Compra</label>
+                <input type="number" class="form-control" id="idSolCompra" placeholder=" Valor autoincrementable" disabled="readonly" required />
               </div>
 
               <div class="col-md-6">
-                <label for="validarNitProveedor" class="form-label">NIT Proveedor</label>
-                <input type="text" class="form-control" id="validarNitProveedor" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" disabled="readonly" required />
+                <label for="validarIdEmpleado" class="form-label">Id del Solicitante</label>
+                <input type="text" class="form-control" placeholder="Ingrese el ID del Empleado" id="validarIdEmpleado" disabled="readonly" required />
               </div>
 
-              <div class="col-md-6">
-                <label for="validarNom" class="form-label">Nombre Proveedor</label>
-                <input type="text" class="form-control" id="validarNom" disabled="readonly" required />
-              </div>
-
-              <?php
-              $id_stmtt = $conn->prepare("select nombre_ciudad from ciudad;");
-              $id_stmtt->execute();
-              $ciudades = $id_stmtt->get_result();
-              ?>
-              <div class="col-md-12">
-                <label for="validarIdCiudad" class="form-label"> Ciudad </label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" disabled="readonly" required>
-                  <option value="0">Seleccione una opción</option>
-                  <?php while ($ciudad = $ciudades->fetch_object()) { ?>
-                    <option value=<?php echo $ciudad->nombre_ciudad ?>>
-                      <?php echo $ciudad->nombre_ciudad ?></option>
-                  <?php } ?>
-                </select>
-              </div>
-
-              <div class="col-md-6">
-                <label for="validarDir" class="form-label">Dirección proveedor</label>
-                <input type="text" class="form-control" id="validarDir" disabled="readonly" required />
-              </div>
-
-              <div class="col-md-6">
-                <label for="validarTelefono" class="form-label">Teléfono</label>
-                <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" disabled="readonly" required />
+              <div class="col-md-4">
+                <label for="validarIdProducto" class="form-label">Id Producto</label>
+                <input type="text" class="form-control" id="validarIdProducto" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarCantProductos" class="form-label">Cant. Productos</label>
+                <input type="text" class="form-control" id="validarCantProductos" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarValTotal" class="form-label">Valor Total</label>
+                <input type="text" class="form-control" id="validarSubtotal" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-8">
+                <label for="validarFechCompra" class="form-label">Fecha de creación de la compra</label>
+                <input type="datetime-local" class="form-control" id="validarFechFact" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" placeholder="12345" disabled="readonly" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="E">E - En Espera</option>
+                </select>
               </div>
 
             </form>
@@ -600,73 +584,71 @@ $conn = conectar_bd();
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="actualizarModalLabel">Actualización de Proveedor</h5>
+            <h5 class="modal-title" id="actualizarModalLabel">Actualización de la Solicitud de la Compra
+            </h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <!-- Factura registro Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
-              <div class="col-md-7">
-                <label for="validarIdProveedor" class="form-label">ID Proveedor</label>
-                <input type="number" class="form-control" id="validarIdProveedor" placeholder="Valor autoincrementable" disabled="readonly" required />
-              </div>
-
-              <div class="col-md-5">
-                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
-                <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" disabled="readonly" required />
+              <div class="col-md-6">
+                <label for="idSolCompra" class="form-label">ID Solicitud de Compra</label>
+                <input type="number" class="form-control" id="idSolCompra" placeholder=" Valor autoincrementable" disabled="readonly" required />
               </div>
 
               <div class="col-md-6">
-                <label for="validarNitProveedor" class="form-label">NIT Proveedor</label>
-                <input type="text" class="form-control" id="validarNitProveedor" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" disabled="readonly" required />
+                <label for="validarIdEmpleado" class="form-label">Id del Solicitante</label>
+                <input type="text" class="form-control" placeholder="Ingrese el ID del Empleado" id="validarIdEmpleado" disabled="readonly" required />
               </div>
 
-              <div class="col-md-6">
-                <label for="validarNom" class="form-label">Nombre Proveedor</label>
-                <input type="text" class="form-control" id="validarNom" required />
-              </div>
-
-              <?php
-              $id_stmtt = $conn->prepare("select nombre_ciudad from ciudad;");
-              $id_stmtt->execute();
-              $ciudades = $id_stmtt->get_result();
-              ?>
-              <div class="col-md-12">
-                <label for="validarIdCiudad" class="form-label"> Ciudad </label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" disabled="readonly" required>
-                  <option value="0">Seleccione una opción</option>
-                  <?php while ($ciudad = $ciudades->fetch_object()) { ?>
-                    <option value=<?php echo $ciudad->nombre_ciudad ?>>
-                      <?php echo $ciudad->nombre_ciudad ?></option>
-                  <?php } ?>
-                </select>
-              </div>
-
-              <div class="col-md-6">
-                <label for="validarDir" class="form-label">Dirección proveedor</label>
-                <input type="text" class="form-control" id="validarDir" disabled="readonly" required />
-              </div>
-
-              <div class="col-md-6">
-                <label for="validarTelefono" class="form-label">Teléfono</label>
-                <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" disabled="readonly" required />
+              <div class="col-md-4">
+                <label for="validarIdProducto" class="form-label">Id Producto</label>
+                <input type="text" class="form-control" id="validarIdProducto" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-            </form>
+              <div class="col-md-4">
+                <label for="validarCantProductos" class="form-label">Cant. Productos</label>
+                <input type="text" class="form-control" id="validarCantProductos" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
 
+              <div class="col-md-4">
+                <label for="validarValTotal" class="form-label">Valor Total</label>
+                <input type="text" class="form-control" id="validarSubtotal" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-8">
+                <label for="validarFechCompra" class="form-label">Fecha de creación de la compra</label>
+                <input type="datetime-local" class="form-control" id="validarFechFact" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" placeholder="12345" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="E">E - En Espera</option>
+                  <option value="A">A - Aprobado</option>
+                  <option value="D">D - Denegado</option>
+                </select>
+              </div>
+
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="guardarActualizacion()">Guardar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="guardarActualizacion()">Guardar</button>
           </div>
         </div>
       </div>
     </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      function crearProveedor() {
+      function crearFactura() {
         // Obtener los datos del formulario (reemplaza con la lógica para obtener los valores del formulario)
         var fechaFactura = document.getElementById('validarFechFact').value;
         var idTipoFac = document.getElementById('validarIdTipoCliente').value;
@@ -869,12 +851,26 @@ $conn = conectar_bd();
       }
     </script>
 
+
     <?php
     require_once '../modelo/controlador/conectar_bd.php';
     $conn = conectar_bd();
-    $stmt = $conn->prepare("select * from proveedor;");
+    $stmt = $conn->prepare(
+      "SELECT 
+        s.id_solicitud, 
+        e.nom_ape_empleado AS solicitante, 
+        pr.des_producto AS producto, 
+        s.cntd_producto, 
+        s.val_total_compra, 
+        s.fecha_solicitud, 
+        s.estado_solicitud 
+      FROM 
+        solicitud_compra s 
+      JOIN empleado e ON s.id_empleado_solicita = e.id_empleado 
+      JOIN producto pr ON s.id_producto = pr.id_producto;"
+    );
     $stmt->execute();
-    $proveedores = $stmt->get_result();
+    $compras = $stmt->get_result();
     ?>
     <section class="section">
       <div class="row">
@@ -882,7 +878,7 @@ $conn = conectar_bd();
           <div class="card">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-between align-items-center">
-                Registro de proveedores
+                Registro de Facturas
                 <div class="ms-auto">
                   <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
                     <i class="bi bi-file-earmark-pdf"> PDF</i>
@@ -899,25 +895,25 @@ $conn = conectar_bd();
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th scope="col">ID Proveedor</th>
-                    <th scope="col">ID Empresa</th>
-                    <th scope="col">NIT Proveedor</th>
-                    <th scope="col">Nombre Proveedor</th>
-                    <th scope="col">Ciudad Proveedor</th>
-                    <th scope="col">Dirección Proveedor</th>
-                    <th scope="col">Telefono Proveedor</th>
+                    <th scope="col">ID_Solicitud</th>
+                    <th scope="col">Solicitante</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Total Compra</th>
+                    <th scope="col">Fecha de Solicitud</th>
+                    <th scope="col">Estado </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php while ($proveedor = $proveedores->fetch_assoc()) { ?>
+                  <?php while ($compra = $compras->fetch_assoc()) { ?>
                     <tr>
-                      <td><?php echo $proveedor['id_proveedor'] ?></td>
-                      <td><?php echo $proveedor['id_empresa'] ?></td>
-                      <td><?php echo $proveedor['NIT_Proveedor'] ?></td>
-                      <td><?php echo $proveedor['Nom_Proveedor'] ?></td>
-                      <td><?php echo $proveedor['Ciudad_Proveedor'] ?></td>
-                      <td><?php echo $proveedor['Dir_Proveedor'] ?></td>
-                      <td><?php echo $proveedor['Tel_Proveedor'] ?></td>
+                      <td><?php echo $compra["id_solicitud"] ?></td>
+                      <td><?php echo $compra["solicitante"] ?></td>
+                      <td><?php echo $compra["producto"] ?></td>
+                      <td><?php echo $compra["cntd_producto"] ?></td>
+                      <td><?php echo $compra["val_total_compra"] ?></td>
+                      <td><?php echo $compra["fecha_solicitud"] ?></td>
+                      <td><?php echo $compra["estado_solicitud"] ?></td>
                     </tr>
                   <?php } ?>
                   <!-- Add more rows as needed -->
@@ -929,6 +925,55 @@ $conn = conectar_bd();
         </div>
       </div>
     </section>
+
+    <!-- fechas igual al servidor  -->
+    <script>
+      function consultarInformacion() {
+        // Obtener el valor del campo de fecha
+        const fechaInput = document.getElementById('validarFechFact').value;
+
+        // Formatear la fecha al formato deseado (dd/mm/aaaa --:--)
+        const fechaFormateada = formatearFechaParaBaseDatos(fechaInput);
+
+        // Lógica para enviar la información al servidor
+        // Puedes utilizar AJAX o Fetch para enviar la información al servidor
+
+        // Por ejemplo, utilizando Fetch
+        fetch('/ruta-del-servidor', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              fecha: fechaFormateada
+            }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            // Procesar la respuesta del servidor si es necesario
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+
+        // Abre el modal de consulta
+        $('#consultarModal').modal('show');
+      }
+
+      function formatearFechaParaBaseDatos(fechaInput) {
+        const fecha = new Date(fechaInput);
+        const dia = ('0' + fecha.getDate()).slice(-2);
+        const mes = ('0' + (fecha.getMonth() + 1)).slice(-2);
+        const anio = fecha.getFullYear();
+        const horas = ('0' + fecha.getHours()).slice(-2);
+        const minutos = ('0' + fecha.getMinutes()).slice(-2);
+
+        return `${dia}/${mes}/${anio} ${horas}:${minutos}`;
+      }
+    </script>
+
+
 
   </main><!-- End #main -->
 

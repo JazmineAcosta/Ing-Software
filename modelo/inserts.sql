@@ -3246,11 +3246,180 @@ VALUES
 --
 -- Volcado de datos para la tabla `proveedor`
 --
+INSERT INTO
+    `proveedor` (
+        `id_proveedor`,
+        `NIT_Proveedor`,
+        `NIT_Proveedor`,
+        `Nom_Proveedor`,
+        `Ciudad_Proveedor`,
+        `Dir_Proveedor`,
+        `Tel_Proveedor`
+    )
+VALUES
+    (
+        NULL,
+        '765790341-8',
+        1,
+        'Agrícola Hoja Redonda S.A.S',
+        'Boyacá',
+        'Cra. 19H# 50 - 52 Sur.',
+        '3232461614'
+    ),
+    (
+        NULL,
+        '152914006-5',
+        77,
+        'Campesino Fresco ltda',
+        'Bogotá D.C.',
+        'Cra. 86 # 8 - 86',
+        '3079473772'
+    ),
+    (
+        NULL,
+        '337431873-5',
+        52,
+        'Fruitex Farms S.C.',
+        'Huila',
+        'Cll. 83B# 79 - 58',
+        '3561797020'
+    ),
+    (
+        NULL,
+        '355814526-7',
+        38,
+        'AgroVida S.A.',
+        'Tolima',
+        'Dg. 28 # 41 - 48',
+        '3803349391'
+    ),
+    (
+        NULL,
+        '586716998-4',
+        35,
+        'EcoCampo S.A.S',
+        'Nariño',
+        'Cra. 6Bis. # 49 - 67',
+        '3476218466'
+    ),
+    (
+        NULL,
+        '264408859-7',
+        99,
+        'CampoDirecto',
+        'La Vega',
+        'Dg. 1Bis. # 7 - 44',
+        '3279221471'
+    );
 
-INSERT INTO `proveedor` (`id_proveedor`, `NIT_Proveedor`, `NIT_Proveedor`, `Nom_Proveedor`, `Ciudad_Proveedor`, `Dir_Proveedor`, `Tel_Proveedor`) VALUES
-(NULL, '765790341-8', 1, 'Agrícola Hoja Redonda S.A.S', 'Boyacá', 'Cra. 19H# 50 - 52 Sur.', '3232461614'),
-(NULL, '152914006-5', 77, 'Campesino Fresco ltda', 'Bogotá D.C.', 'Cra. 86 # 8 - 86', '3079473772'),
-(NULL, '337431873-5', 52, 'Fruitex Farms S.C.', 'Huila', 'Cll. 83B# 79 - 58', '3561797020'),
-(NULL, '355814526-7', 38,  'AgroVida S.A.', 'Tolima', 'Dg. 28 # 41 - 48', '3803349391'),
-(NULL, '586716998-4', 35, 'EcoCampo S.A.S', 'Nariño', 'Cra. 6Bis. # 49 - 67', '3476218466'),
-(NULL, '264408859-7', 99, 'CampoDirecto', 'La Vega', 'Dg. 1Bis. # 7 - 44', '3279221471');
+--
+-- Volcado de datos para la tabla `solicitud_compra`
+--
+INSERT INTO
+    `solicitud_compra` (
+        `id_solicitud`,
+        `id_empleado_solicita`,
+        `id_producto`,
+        `cntd_producto`,
+        `val_total_compra`,
+        `fecha_solicitud`,
+        `estado_factura`
+    )
+VALUES
+    (
+        NULL,
+        '1359751023',
+        '4',
+        '30',
+        '497250',
+        '2023-12-02 10:42:44.000000',
+        'E'
+    ),
+    (
+        NULL,
+        '1359751023',
+        '6',
+        '50',
+        '569400',
+        '2023-12-02 10:42:44.000000',
+        'E'
+    ),
+    (
+        NULL,
+        '1359751023',
+        '7',
+        '29',
+        '587000',
+        '2023-12-02 10:42:44.000000',
+        'E'
+    ),
+    (
+        NULL,
+        '1025756358',
+        '9',
+        '45',
+        '504000',
+        '2023-12-02 10:42:44.000000',
+        'E'
+    );
+
+--
+-- Volcado de datos para la tabla `solicitud_compra`
+--
+INSERT INTO
+    `compra` (
+        `id_compra`,
+        `id_solicitud`,
+        `id_empleado_solicita`,
+        `id_proveedor`,
+        `id_producto`,
+        `cntd_producto`,
+        `val_total_compra`,
+        `fecha_compra`,
+        `estado_factura`
+    )
+VALUES
+    (
+        NULL,
+        '1',
+        '1359751023',
+        '7',
+        '4',
+        '30',
+        '497250',
+        '2023-12-02 10:51:58.000000',
+        'A'
+    ),
+    (
+        NULL,
+        '2',
+        '1359751023',
+        '10',
+        '6',
+        '50',
+        '569400',
+        '2023-12-02 10:51:58.000000',
+        'D'
+    ),
+    (
+        NULL,
+        '3',
+        '1359751023',
+        '8',
+        '7',
+        '29',
+        '587000',
+        '2023-12-02 10:51:58.000000',
+        'A'
+    ),
+    (
+        NULL,
+        '4',
+        '1025756358',
+        '9',
+        '9',
+        '45',
+        '504000',
+        '2023-12-02 10:51:58.000000',
+        'A'
+    );

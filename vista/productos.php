@@ -329,13 +329,13 @@ ini_set('display_errors', 'on');
         </a>
         <ul id="compras-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="registrar-compra.html">
+            <a href="registrar-compra.php">
               <i class="bi bi-circle"></i>
               <span>Compras</span>
             </a>
           </li>
           <li>
-            <a href="solicitar-compra.html">
+            <a href="solicitar-compra.php">
               <i class="bi bi-circle"></i>
               <span>Solicitud de compra</span>
             </a>
@@ -352,7 +352,7 @@ ini_set('display_errors', 'on');
         </a>
         <ul id="almacen-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="productos.html">
+            <a href="productos.php">
               <i class="bi bi-circle"></i>
               <span>Productos</span>
             </a>
