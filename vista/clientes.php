@@ -492,8 +492,12 @@ ini_set('display_errors', 'on');
               </div>
 
               <div class="col-md-6">
-                <label for="validarDir" class="form-label">ID Ciudad</label>
-                <input type="text" class="form-control" id="validarDir" required />
+                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
+                  <option value="0">'1' Juridica o '2' Natural</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
               </div>
 
               <div class="col-md-6">
