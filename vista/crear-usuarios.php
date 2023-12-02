@@ -468,31 +468,31 @@ $conn = conectar_bd();
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="validarFechaRegistro" class="form-label">Fecha de registro</label>
                 <input type="date" class="form-control" id="validarFechaRegistro" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <?php
-              $id_stmtt = $conn->prepare("select id_ciudad, nombre_ciudad from ciudad;");
+              $id_stmtt = $conn->prepare("select id_tipo_usuario , tipo_usuario from ctg_tipo_usuario;");
               $id_stmtt->execute();
-              $ciudades = $id_stmtt->get_result();
+              $tipoUsuario = $id_stmtt->get_result();
               ?>
               <div class="col-md-4">
-                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
+                <label for="validarIdRol" class="form-label">ID Tipoo Usuario</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdRol" required>
                   <option value="0">Seleccione una opción</option>
-                  <?php while ($ciudad = $ciudades->fetch_object()) { ?>
-                    <option value=<?php echo $ciudad->id_ciudad ?>>
-                      <?php echo $ciudad->id_ciudad . " - " . $ciudad->nombre_ciudad ?>
+                  <?php while ($ctg_tipo_usuario = $tipoUsuario->fetch_object()) { ?>
+                    <option value=<?php echo $ctg_tipo_usuario->id_tipo_usuario  ?>>
+                      <?php echo $ctg_tipo_usuario->id_tipo_usuario  . " - " . $ctg_tipo_usuario->tipo_usuario ?>
                     </option>
                   <?php } ?>
                 </select>
               </div>
 
-              <div class="col-md-6">
-                <label for="validarEstado" class="form-label">ID de tipo de factura</label>
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
                 <select type="select" class="form-select" aria-label="default select example" id="validarEstado" placeholder="12345" required>
                   <option value="0">Elija una opción</option>
                   <option value="A">Activo</option>
@@ -707,13 +707,20 @@ $conn = conectar_bd();
       }
     </script>
 
+    <?php
+    require_once '../modelo/controlador/conectar_bd.php';
+    $conn = conectar_bd();
+    $stmt = $conn->prepare("select * from usuario;");
+    $stmt->execute();
+    $usuarios = $stmt->get_result();
+    ?>
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-between align-items-center">
-                Registro de Empleados
+                Registro de Usuarios
                 <div class="ms-auto">
                   <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
                     <i class="bi bi-file-earmark-pdf"> PDF</i>
@@ -730,116 +737,29 @@ $conn = conectar_bd();
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th scope="col">Cédula</th>
-                    <th scope="col">ID de usuario</th>
-                    <th scope="col">Nombres y apellidos</th>
-                    <th scope="col">Dirección</th>
+                    <th scope="col">ID_Usua</th>
+                    <th scope="col">Nombre completo</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Fecha de nacimiento</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Fecha de registro</th>
+                    <th scope="col">Tipo de usuario</th>
                     <th scope="col">Estado </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1025756358</td>
-                    <td>1</td>
-                    <td>Andrea Moreno Restrepo</td>
-                    <td>Calle 152 # 55 - 37</td>
-                    <td>amorenor@gmail.com</td>
-                    <td>3102561498</td>
-                    <td>11/06/1998</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1579842653</td>
-                    <td>2</td>
-                    <td>Felipe Molano Jiménez</td>
-                    <td>Carrera 19 # 75 - 23</td>
-                    <td>fmolanoj@gmail.com</td>
-                    <td>3102561498</td>
-                    <td>09/03/1987</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1002600489</td>
-                    <td>3</td>
-                    <td>Juan Sebatián Gómez Umaña</td>
-                    <td>Calle 35 # 28 - 06</td>
-                    <td>jsgomezu@gmail.com</td>
-                    <td>3044039621</td>
-                    <td>25/06/1999</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1359751023</td>
-                    <td>4</td>
-                    <td>Laura Posada Tobon</td>
-                    <td>Calle 75 # 26 - 63</td>
-                    <td>lposadat@gmail.com</td>
-                    <td>3059841685</td>
-                    <td>18/08/2001</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1000465894</td>
-                    <td>5</td>
-                    <td>Germán Garzón Pulgarín</td>
-                    <td>Carrera 7 # 147 - 23</td>
-                    <td>ggarzonp@gmail.com</td>
-                    <td>3004450951</td>
-                    <td>29/09/1994</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  </tr>
-                  <tr>
-                    <td>1002478546</td>
-                    <td>6</td>
-                    <td>Gustavo Hincapie Ruiz</td>
-                    <td>Carrera 10 # 2 - 42</td>
-                    <td>ghincapier@gmail.com</td>
-                    <td>3002164332</td>
-                    <td>05/05/1990</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1002458745</td>
-                    <td>7</td>
-                    <td>Santiago Montealegre Soto</td>
-                    <td>Carrera 19 # 106 - 26</td>
-                    <td>smontealegres@gmail.com</td>
-                    <td>3205693214</td>
-                    <td>15/01/1999</td>
-                    <td>
-                      <span class="badge bg-success">
-                        <i class="bi bi-check-circle me-1"></i> Activo
-                      </span>
-                    </td>
-                  </tr>
+                  <?php while ($usuario = $usuarios->fetch_assoc()) { ?>
+                    <tr>
+                      <td><?php echo $usuario["id_usuario"] ?></td>
+                      <td><?php echo $usuario["nom_ape_usuario"] ?></td>
+                      <td><?php echo $usuario["e_mail_usuario"] ?></td>
+                      <td><?php echo $usuario["username"] ?></td>
+                      <td><?php echo $usuario["password_usuario"] ?></td>
+                      <td><?php echo $usuario["fecha_registro"] ?>
+                      <td><?php echo $usuario["id_tipo_usuario"] ?></td>
+                      <td><?php echo $usuario["estado_usuario"] ?></td>
+                    </tr>
+                  <?php } ?>
                   <!-- Add more rows as needed -->
                 </tbody>
               </table>
