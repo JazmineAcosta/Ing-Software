@@ -370,7 +370,7 @@ $conn = conectar_bd();
                 </a>
                 <ul id="gesProveedores-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="proveedores.html">
+                        <a href="proveedores.php">
                             <i class="bi bi-circle"></i>
                             <span>Proveedores</span>
                         </a>
