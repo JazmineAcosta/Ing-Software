@@ -436,27 +436,27 @@ ini_set('display_errors', 'on');
             <!-- Factura regsitro Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <label for="validarIdCliente" class="form-label">ID Cliente</label>
-                <input type="number" class="form-control" id="validarIdCliente" placeholder="12345" required />
+                <input type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
                 <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <label for="validarNitCliente" class="form-label">NIT Cliente</label>
-                <input type="number" class="form-control" id="validarNitCliente" placeholder="1234567890" maxlength="11" required />
+                <input type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
                 <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
-                  <option value="0">'1' Juridica o '2' Natural</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
+                  <option value="0">Seleccione una opción</option>
+                  <option value="1">1 - Persona Jurídica</option>
+                  <option value="2">2 - Persona Natural</option>
                 </select>
               </div>
 
@@ -470,35 +470,65 @@ ini_set('display_errors', 'on');
                 <input type="text" class="form-control" id="validarApe" required />
               </div>
 
-              <div class="col-md-6">
-                <label for="validarDir" class="form-label">Dirección de recidencia</label>
-                <input type="text" class="form-control" id="validarDir" required />
+              <div class="col-md-4">
+                <label for="validarCodPostal" class="form-label">Código postal</label>
+                <input type="number" class="form-control" id="validarCodPostal" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
                 <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
-                  <option value="0">'1' Juridica o '2' Natural</option>
+                  <option value="0">Seleccione una opción</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                 </select>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-4">
+                <label for="validarDir" class="form-label">Dirección de recidencia</label>
+                <input type="text" class="form-control" id="validarDir" required />
+              </div>
+
+              <div class="col-md-4">
                 <label for="validarEmail" class="form-label">Email</label>
                 <input type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="validarTelefono" class="form-label">Teléfono</label>
                 <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-              <div class="col-md-6">
-                <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="validarEmail" required />
+              <div class="col-md-4">
+                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
+                <input type="number" class="form-control" id="validarCupoCred" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarSaldo" class="form-label">Saldo</label>
+                <input type="number" class="form-control" id="validarSaldo" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarCompraMes" class="form-label">Compras del mes</label>
+                <input type="number" class="form-control" id="validarCompraMes" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
+                <input type="number" class="form-control" id="validarPagosMes" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
@@ -506,6 +536,7 @@ ini_set('display_errors', 'on');
                 <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
                   <i class="bi bi-person-add"> Crear</i>
                 </button>
+              </div>
             </form>
           </div>
         </div>
@@ -555,71 +586,100 @@ ini_set('display_errors', 'on');
             <!-- Factura regsitro Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
-              <div class="col-md-6">
-                <label for="idFactura" class="form-label">Cédula empleado</label>
-                <input disabled="readonly" type="number" class="form-control" id="idFactura" placeholder="1023456789" required />
+              <div class="col-md-4">
+                <label for="validarIdCliente" class="form-label">ID Cliente</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
               </div>
 
-              <div class="col-md-6">
-                <label for="validarFechFact" class="form-label">Fecha de pago</label>
-                <input disabled="readonly" type="datetime-local" class="form-control" id="validarFechFact" required />
-                <div id="feedback-message" class="invalid-feedback"></div>
+              <div class="col-md-4">
+                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarNitCliente" class="form-label">NIT Cliente</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
               </div>
 
               <div class="col-md-12">
-                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarNomCompleto" required />
-              </div>
-
-              <div class="col-md-6">
-                <label for="validarDiasLiquidados" class="form-label">Días liquidados</label>
-                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarDiasLiquidados" required>
-                  <option value="0">Elija una opción</option>
-                  <option value="1">1 - Mensual</option>
-                  <option value="2">2 - Quincenal</option>
+                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
+                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
+                  <option value="0">Seleccione una opción</option>
+                  <option value="1">1 - Persona Jurídica</option>
+                  <option value="2">2 - Persona Natural</option>
                 </select>
               </div>
 
               <div class="col-md-6">
-                <label for="validarSalarioBase" class="form-label">Salario base</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarSalarioBase" required />
+                <label for="validarNom" class="form-label">Nombres</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarNom" required />
               </div>
 
               <div class="col-md-6">
-                <label for="validarSalarioBaseMensual" class="form-label">Salario base mensual</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarSalarioBaseMensual" required />
+                <label for="validarApe" class="form-label">Apellidos</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarApe" required />
               </div>
 
               <div class="col-md-6">
-                <label for="validarSubTranporte" class="form-label">Subsidio de transporte</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarSubTranporte" required />
+                <label for="validarCodPostal" class="form-label">Código postal</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarCodPostal" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-              <div class="col-md-4">
-                <label for="validaPermisos" class="form-label">Vacaciones</label>
-                <input disabled="readonly" type="text" class="form-control" id="validaPermisos" required />
+              <div class="col-md-6">
+                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
+                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
+                  <option value="0">Seleccione una opción</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarDir" class="form-label">Dirección de recidencia</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarDir" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarEmail" class="form-label">Email</label>
+                <input disabled="readonly" type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
-                <label for="validarDiasLaborados" class="form-label">Dias laborados</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarDiasLaborados" required />
+                <label for="validarTelefono" class="form-label">Teléfono</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
-                <label for="validarDiasFestivosLaborados" class="form-label">Dias Festivos
-                </label>
-                <input disabled="readonly" type="text" class="form-control" id="validarDiasFestivosLaborados" required />
+                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarCupoCred" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-              <div class="col-md-6">
-                <label for="validarHoraExtra" class="form-label">Horas extra</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarHoraExtra" required />
+              <div class="col-md-4">
+                <label for="validarSaldo" class="form-label">Saldo</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarSaldo" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-              <div class="col-md-6">
-                <label for="validarHoraExtraNocturna" class="form-label">Horas extra nocturna</label>
-                <input disabled="readonly" type="text" class="form-control" id="validarHoraExtraNocturna" required />
+              <div class="col-md-4">
+                <label for="validarCompraMes" class="form-label">Compras del mes</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarCompraMes" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarPagosMes" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
               </div>
             </form>
           </div>
@@ -635,64 +695,106 @@ ini_set('display_errors', 'on');
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="actualizarModalLabel">Actualización de Factura</h5>
+            <h5 class="modal-title" id="actualizarModalLabel">Actualización de Cliente</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <!-- Factura regsitro Form -->
             <form class="row g-3 needs-validation" id="profileForm">
-              <div class="mb-3 text-center">
-                <label for="profileImage" class="col-md-12 col-form-label">Profile
-                  Image</label>
-                <div class="col-md-12">
-                  <img id="profileImg" src="../librerias/assets/img/sin-perfil.png" alt="Profile" />
-                  <div class="pt-2">
-                    <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image" id="uploadBtn">
-                      <i class="bi bi-upload"></i> Cargar
-                    </a>
-                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image" id="removeBtn">
-                      <i class="bi bi-trash"></i> Remover
-                    </a>
-                  </div>
-                </div>
+
+              <div class="col-md-4">
+                <label for="validarIdCliente" class="form-label">ID Cliente</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
               </div>
 
-              <div class="col-md-6 mt-5">
-                <label for="validarCedula" class="form-label">Cédula</label>
-                <input type="number" class="form-control" id="validarCedula" placeholder="1234567890" required />
+              <div class="col-md-4">
+                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
               </div>
 
-
-              <div class="col-md-6 mt-5">
-                <label for="validarIdUsuario" class="form-label">ID de usuario</label>
-                <input disabled="readonly" type="number" class="form-control" id="validarIdUsuario" placeholder="12345" required />
+              <div class="col-md-4">
+                <label for="validarNitCliente" class="form-label">NIT Cliente</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
               </div>
 
-              <div class="col-md-6">
-                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
-                <input type="text" class="form-control" id="validarNomCompleto" required />
+              <div class="col-md-12">
+                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
+                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
+                  <option value="0">Seleccione una opción</option>
+                  <option value="1">1 - Persona Jurídica</option>
+                  <option value="2">2 - Persona Natural</option>
+                </select>
               </div>
 
               <div class="col-md-6">
-                <label for="validarDir" class="form-label">Dirección de
-                  recidencia</label>
-                <input type="text" class="form-control" id="validarDir" required />
+                <label for="validarNom" class="form-label">Nombres</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarNom" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarApe" class="form-label">Apellidos</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarApe" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarCodPostal" class="form-label">Código postal</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarCodPostal" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
+                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
+                  <option value="0">Seleccione una opción</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarDir" class="form-label">Dirección de recidencia</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarDir" required />
               </div>
 
               <div class="col-md-6">
                 <label for="validarEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="validarEmail" required />
+                <input disabled="readonly" type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="validarTelefono" class="form-label">Teléfono</label>
-                <input type="number" class="form-control" id="validarTelefono" required />
+                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
-              <div class="col-md-6">
-                <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="validarEmail" required />
+              <div class="col-md-4">
+                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarCupoCred" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSaldo" class="form-label">Saldo</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarSaldo" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarCompraMes" class="form-label">Compras del mes</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarCompraMes" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
+                <input disabled="readonly" type="number" class="form-control" id="validarPagosMes" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstado" maxlength="1" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
             </form>

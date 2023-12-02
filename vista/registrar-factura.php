@@ -503,7 +503,7 @@ ini_set('display_errors', 'on');
               </div>
 
               <div class="mb-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
+                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearFactura()">
                   <i class="bi bi-file-earmark-plus"> Crear</i>
                 </button>
               </div>
@@ -710,6 +710,57 @@ ini_set('display_errors', 'on');
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+      function crearFactura() {
+        // Obtener los datos del formulario (reemplaza con la lógica para obtener los valores del formulario)
+        var fechaFactura = document.getElementById('validarFechFact').value;
+        var idTipoFac = document.getElementById('validarIdTipoCliente').value;
+        var clienteFactura = document.getElementById('validarIdCliente').value;
+        var totalFactura = document.getElementById('validarTotal').value;
+        var descuentoFactura = document.getElementById('validarDto').value;
+        var ivaFactura = document.getElementById('validarIVA').value;
+        var subtotalFactura = document.getElementById('validarSubtotal').value;
+        var saldoFactura = document.getElementById('validarSaldo').value;
+        var estadoFactura = document.getElementById('validarEstado').value;
+
+
+        // Crear un objeto FormData y agregar los datos del formulario
+        var formData = new FormData();
+        formData.append('fechaFactura', fechaFactura);
+        formData.append('idTipoFac', idTipoFac);
+        formData.append('clienteFactura', clienteFactura);
+        formData.append('totalFactura', totalFactura);
+        formData.append('descuentoFactura', descuentoFactura);
+        formData.append('ivaFactura', ivaFactura);
+        formData.append('subtotalFactura', subtotalFactura);
+        formData.append('saldoFactura', saldoFactura);
+        formData.append('estadoFactura', estadoFactura);
+        //console.log(fechaFactura);
+        //console.log(formatearFechaParaBaseDatos(fechaFactura));
+
+        // Realizar la solicitud 
+        fetch('../modelo/crearfactura.php', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+            // Procesar la respuesta del servidor si es necesario
+            if (!data.hasOwnProperty('error')) {
+              console.log(data);
+              alert(data["success"]);
+              window.location.reload();
+            } else {
+              alert(data["error"]);
+            }
+            // Cerrar el modal o realizar otras acciones según tus necesidades
+            // Aquí asumo que estás utilizando Bootstrap para los modales
+            $('#crearFacturaModal').modal('hide');
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+
       function consultarFactura() {
         // Lógica para consultar la información y llenar el modal de consulta
         // Obtener el valor del campo idFactura
