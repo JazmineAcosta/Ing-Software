@@ -424,7 +424,93 @@
             </nav>
         </div><!-- End Page Title -->
 
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Registrar Factura</h5>
 
+                    <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+                        <!-- producto Edit Form -->
+                        <form class="row g-3 needs-validation" id="profileForm">
+
+                            <div class="col-md-6">
+                                <label for="idFactura" class="form-label">ID Factura</label>
+                                <input type="number" class="form-control" id="idFactura"
+                                    placeholder=" Valor autoincrementable" disabled="readonly" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarFechFact" class="form-label">Fecha de creación de la factura</label>
+                                <input type="datetime-local" class="form-control" id="validarFechFact" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
+                                <select type="select" class="form-select" aria-label="default select example"
+                                    id="validarIdTipoCliente" placeholder="12345" required>
+                                    <option value="0">Elija una opción</option>
+                                    <option value="1">1 - Factura ordinaria</option>
+                                    <option value="2">2 - Factura simplificada o ticket</option>
+                                    <option value="3">3 - Factura proforma</option>
+                                    <option value="4">4 - Factura rectificativa</option>
+                                    <option value="5">5 - Factura recapitulativa</option>
+                                    <option value="6">6 - Factura electrónica</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarIdCliente" class="form-label">Cliente de la factura</label>
+                                <input type="text" class="form-control" placeholder="Ingrese el ID del cliente"
+                                    id="validarIdCliente" required />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarTotal" class="form-label">Total</label>
+                                <input type="text" class="form-control" id="validarTotal" required />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarDto" class="form-label">Descuento</label>
+                                <input type="text" class="form-control" id="validarDto" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarIVA" class="form-label">IVA</label>
+                                <input type="text" class="form-control" id="validarIVA" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarSubtotal" class="form-label">Subtotal</label>
+                                <input type="text" class="form-control" id="validarSubtotal" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarSaldo" class="form-label">Saldo</label>
+                                <input type="text" class="form-control" id="validarSaldo" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validarEstado" class="form-label">Estado</label>
+                                <input type="text" class="form-control" id="validarEstado"
+                                    placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="mb-3 d-flex justify-content-center">
+                                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom"
+                                    data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearFactura()">
+                                    <i class="bi bi-file-earmark-plus"> Crear</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="section">
             <div class="card">

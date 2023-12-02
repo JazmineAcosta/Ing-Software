@@ -3242,3 +3242,15 @@ VALUES
         '1999-01-15',
         'A'
     );
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`id_proveedor`, `NIT_Proveedor`, `NIT_Proveedor`, `Nom_Proveedor`, `Ciudad_Proveedor`, `Dir_Proveedor`, `Tel_Proveedor`) VALUES
+(NULL, '765790341-8', 1, 'Agrícola Hoja Redonda S.A.S', 'Boyacá', 'Cra. 19H# 50 - 52 Sur.', '3232461614'),
+(NULL, '152914006-5', 77, 'Campesino Fresco ltda', 'Bogotá D.C.', 'Cra. 86 # 8 - 86', '3079473772'),
+(NULL, '337431873-5', 52, 'Fruitex Farms S.C.', 'Huila', 'Cll. 83B# 79 - 58', '3561797020'),
+(NULL, '355814526-7', 38,  'AgroVida S.A.', 'Tolima', 'Dg. 28 # 41 - 48', '3803349391'),
+(NULL, '586716998-4', 35, 'EcoCampo S.A.S', 'Nariño', 'Cra. 6Bis. # 49 - 67', '3476218466'),
+(NULL, '264408859-7', 99, 'CampoDirecto', 'La Vega', 'Dg. 1Bis. # 7 - 44', '3279221471');

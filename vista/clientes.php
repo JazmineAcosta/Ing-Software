@@ -448,9 +448,9 @@ $conn = conectar_bd();
                 <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
               </div>
 
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <label for="validarNitCliente" class="form-label">NIT Cliente</label>
-                <input type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
+                <input type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" required />
               </div>
 
               <div class="col-md-3">
@@ -462,12 +462,12 @@ $conn = conectar_bd();
                 </select>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="validarNom" class="form-label">Nombres</label>
                 <input type="text" class="form-control" id="validarNom" required />
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-5">
                 <label for="validarApe" class="form-label">Apellidos</label>
                 <input type="text" class="form-control" id="validarApe" required />
               </div>
@@ -487,7 +487,7 @@ $conn = conectar_bd();
                 <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
                   <option value="0">Seleccione una opción</option>
                   <?php while ($ciudad = $ciudades->fetch_object()) { ?>
-                  <option value=<?php echo $ciudad->id_ciudad ?> > <?php echo $ciudad->id_ciudad . " - " . $ciudad->nombre_ciudad ?></option>
+                    <option value=<?php echo $ciudad->id_ciudad ?>> <?php echo $ciudad->id_ciudad . " - " . $ciudad->nombre_ciudad ?></option>
                   <?php } ?>
                 </select>
               </div>

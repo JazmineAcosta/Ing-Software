@@ -5,10 +5,10 @@ if (!function_exists('conectar_bd')) {
   {
     // Resto del código de la función conectar_bd()
     global $conexion;
-    $elServer = 'localhost:3306';
+    $elServer = 'localhost:3307';
     $elUsr = 'root';
     $elPw = '';
-    $laBd = 'Sistema_Facturacion';
+    $laBd = 'sistema_facturacion';
 
     //Conectar
     $conexion = mysqli_connect(
