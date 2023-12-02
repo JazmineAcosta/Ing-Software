@@ -379,23 +379,6 @@ ini_set('display_errors', 'on');
       <!-- End Proveedores Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#gesVentas-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-cash-coin"></i>
-          <span>Ventas</span>
-          <i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="gesVentas-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="registro-ventas.html">
-              <i class="bi bi-circle"></i>
-              <span>Contol de ventas</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!-- End Ventas Nav -->
-
-      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#gesUsuarios-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-person"></i>
           <span>Usuarios</span>

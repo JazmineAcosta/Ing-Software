@@ -380,23 +380,6 @@ $conn = conectar_bd();
       <!-- End Proveedores Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#gesVentas-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-cash-coin"></i>
-          <span>Ventas</span>
-          <i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="gesVentas-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="registro-ventas.html">
-              <i class="bi bi-circle"></i>
-              <span>Contol de ventas</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!-- End Ventas Nav -->
-
-      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#gesUsuarios-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-person"></i>
           <span>Usuarios</span>
@@ -710,7 +693,20 @@ $conn = conectar_bd();
     <?php
     require_once '../modelo/controlador/conectar_bd.php';
     $conn = conectar_bd();
-    $stmt = $conn->prepare("select * from usuario;");
+    $stmt = $conn->prepare(
+      "SELECT
+          u.id_usuario,
+          u.nom_ape_usuario,
+          u.e_mail_usuario,
+          u.username,
+          u.password_usuario,
+          u.fecha_registro,
+          t.tipo_usuario AS tipo_usuario,
+          u.estado_usuario   
+      FROM
+          usuario u
+      JOIN ctg_tipo_usuario t ON u.id_tipo_usuario = t.id_tipo_usuario;"
+    );
     $stmt->execute();
     $usuarios = $stmt->get_result();
     ?>
@@ -756,7 +752,7 @@ $conn = conectar_bd();
                       <td><?php echo $usuario["username"] ?></td>
                       <td><?php echo $usuario["password_usuario"] ?></td>
                       <td><?php echo $usuario["fecha_registro"] ?>
-                      <td><?php echo $usuario["id_tipo_usuario"] ?></td>
+                      <td><?php echo $usuario["tipo_usuario"] ?></td>
                       <td><?php echo $usuario["estado_usuario"] ?></td>
                     </tr>
                   <?php } ?>

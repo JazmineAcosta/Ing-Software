@@ -1,3 +1,9 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+require_once '../modelo/controlador/conectar_bd.php';
+$conn = conectar_bd();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -373,22 +379,7 @@
       </li>
       <!-- End Proveedores Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#gesVentas-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-cash-coin"></i>
-          <span>Ventas</span>
-          <i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="gesVentas-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="registro-ventas.html">
-              <i class="bi bi-circle"></i>
-              <span>Contol de ventas</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!-- End Ventas Nav -->
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#gesUsuarios-nav" data-bs-toggle="collapse" href="#">
@@ -754,7 +745,6 @@
         document.getElementById('validarSubtotalModal').value = "";
         document.getElementById('validarSaldoModal').value = "";
         document.getElementById('validarEstadoModal').value = "";
-
       }
 
       function actualizarInformacion() {
@@ -851,7 +841,6 @@
       }
     </script>
 
-
     <?php
     require_once '../modelo/controlador/conectar_bd.php';
     $conn = conectar_bd();
@@ -878,7 +867,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-between align-items-center">
-                Registro de Facturas
+                Registro de solicitudes de compra
                 <div class="ms-auto">
                   <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
                     <i class="bi bi-file-earmark-pdf"> PDF</i>
