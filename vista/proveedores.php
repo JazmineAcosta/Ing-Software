@@ -251,7 +251,7 @@ $conn = conectar_bd();
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="../index.php">
+                            <a class="dropdown-item d-flex align-items-center" href="../index.html">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Cerrar sesión</span>
                             </a>
@@ -419,12 +419,12 @@ $conn = conectar_bd();
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Facturación</h1>
+            <h1>Proveedores</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-                    <li class="breadcrumb-item active">Facturación</li>
-                    <li class="breadcrumb-item active">Clientes</li>
+                    <li class="breadcrumb-item active">Proveedores</li>
+                    <li class="breadcrumb-item active">Administración de Proveedores</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -432,15 +432,15 @@ $conn = conectar_bd();
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Registrar cliente</h5>
+                    <h5 class="card-title">Registrar proveedor</h5>
 
                     <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
-                        <!-- Factura regsitro Form -->
+                        <!-- Factura regsitro proveedor -->
                         <form class="row g-3 needs-validation" id="profileForm">
 
                             <div class="col-md-3">
-                                <label for="validarIdCliente" class="form-label">ID Cliente</label>
-                                <input type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
+                                <label for="validarIdProveedor" class="form-label">ID Proveedor</label>
+                                <input type="number" class="form-control" id="validarIdProveedor" placeholder="CC del Cliente" required />
                             </div>
 
                             <div class="col-md-3">
@@ -554,16 +554,16 @@ $conn = conectar_bd();
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Consulta y actualización de cliente</h5>
+                    <h5 class="card-title">Consulta y actualización de proveedor</h5>
 
                     <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
                         <!-- Profile Edit Form -->
                         <form class="row g-3 needs-validation" id="profileForm">
 
                             <div class="input-group mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">ID Cliente</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">ID Proveedor</label>
                                 <div class="input-group-append">
-                                    <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" id="idProveedor" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
                                 </div>
                                 <div class="input-group-append">
                                     <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal" data-bs-target="#consultarModal">
@@ -587,7 +587,7 @@ $conn = conectar_bd();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="consultarModalLabel">Consulta de Factura</h5>
+                        <h5 class="modal-title" id="consultarModalLabel">Consulta de Proveeedor</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

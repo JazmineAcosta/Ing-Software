@@ -251,7 +251,7 @@ $conn = conectar_bd();
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="../index.php">
+              <a class="dropdown-item d-flex align-items-center" href="../index.html">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Cerrar sesión</span>
               </a>
@@ -477,6 +477,7 @@ $conn = conectar_bd();
                 <input type="number" class="form-control" id="validarCodPostal" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
+
               <?php
               $id_stmtt = $conn->prepare("select id_ciudad, nombre_ciudad from ciudad;");
               $id_stmtt->execute();

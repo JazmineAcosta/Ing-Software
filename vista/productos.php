@@ -1,3 +1,8 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +20,7 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../librerias/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -415,11 +418,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Home</h1>
+      <h1>Almacén</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-          <li class="breadcrumb-item active"></li>
+          <li class="breadcrumb-item active">Almacén</li>
+          <li class="breadcrumb-item active">Productos</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -427,49 +431,366 @@
     <section class="section">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Somos calidad en el mercado</h5>
+          <h5 class="card-title">Registrar producto</h5>
 
-          <!-- Slides with controls -->
-          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="../librerias/assets/img/product-1.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
+          <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+            <!-- producto Edit Form -->
+            <form class="row g-3 needs-validation" id="profileForm">
+
+              <div class="col-md-4">
+                <label for="idProducto" class="form-label">ID Producto</label>
+                <input type="number" class="form-control" id="idProducto" placeholder=" Valor autoincrementable" disabled="readonly" required />
               </div>
-              <div class="carousel-item">
-                <img src="../librerias/assets/img/product-2.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
+
+              <div class="col-md-4">
+                <label for="validarIdCategoria" class="form-label">ID Categoria</label>
+                <input type="number" class="form-control" id="validarIdCategoria" placeholder="12345" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
               </div>
-              <div class="carousel-item">
-                <img src="../librerias/assets/img/product-3.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
+
+              <div class="col-md-4">
+                <label for="validarCodProduct" class="form-label">Código Producto</label>
+                <input type="number" class="form-control" id="validarCodProduct" placeholder="12345" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
               </div>
-              <div class="carousel-item">
-                <img src="../librerias/assets/img/product-4.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
+
+              <div class="col-12">
+                <div class="form-floating">
+                  <textarea maxlength="256" class="form-control" placeholder="Address" id="validarDscProducto" style="height: 100px;"></textarea>
+                  <label for="validarDscProducto">Descripción del Producto</label>
+                </div>
               </div>
-              <div class="carousel-item">
-                <img src="../librerias/assets/img/product-5.jpg" class="d-block mx-auto w-25 img-triangular"
-                  alt="..." />
+
+              <div class="col-md-3">
+                <label for="validarExisProducto" class="form-label">Existencia</label>
+                <input type="number" class="form-control" id="validarExisProducto" maxlength="3" required />
               </div>
+
+              <div class="col-md-3">
+                <label for="validarValActual" class="form-label">Valor de venta actual</label>
+                <input type="number" class="form-control" id="validarValActual" maxlength="10" required />
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarValAntes" class="form-label">Valor de venta anterior</label>
+                <input type="number" class="form-control" id="validarValAntes" maxlength="10" required />
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarDtoMin" class="form-label">Descuento min</label>
+                <input type="text" class="form-control" id="validarDtoMin" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarDtoMax" class="form-label">Descuento Max</label>
+                <input type="text" class="form-control" id="validarDtoMax" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarCostoVenta" class="form-label">Costo de Venta</label>
+                <input type="text" class="form-control" id="validarCostoVenta" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarMargenUtilidad" class="form-label">Margen de Utilidad</label>
+                <input type="text" class="form-control" id="validarMargenUtilidad" maxlength="5" placeholder="00.00" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="validarIVA" class="form-label">IVA</label>
+                <input type="text" class="form-control" id="validarIVA" maxlength="5" placeholder="00.00" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarStockMin" class="form-label">Stock Min</label>
+                <input type="number" class="form-control" id="validarStockMin" maxlength="3" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarStockMax" class="form-label">Stock Max</label>
+                <input type="number" class="form-control" id="validarStockMax" maxlength="3" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarEstado" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="mb-3 d-flex justify-content-center">
+                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearFactura()">
+                  <i class="bi bi-file-earmark-plus"> Crear</i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Consulta y actualización de producto</h5>
+
+          <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+            <!-- Profile Edit Form -->
+            <form class="row g-3 needs-validation" id="profileForm">
+
+              <div class="input-group mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">ID Producto</label>
+                <div class="input-group-append">
+                  <input type="text" class="form-control" id="idFacturaCons" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal" data-bs-target="#consultarModal" onclick="consultarFactura()">
+                    <i class="bi bi-search"></i> Consultar
+                  </button>
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#actualizarModal" onclick="actualizarInformacion()">
+                    <i class="bi bi-file-arrow-up"></i> Actualizar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultar Modal -->
+    <div class="modal fade" id="consultarModal" tabindex="-1" role="dialog" aria-labelledby="consultarModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="consultarModalLabel">Consulta de Factura</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="consultarForm">
+              <div class="col-md-6">
+                <label for="idFacturaModal" class="form-label">ID Factura</label>
+                <input type="number" class="form-control" id="idFacturaModal" placeholder=" Valor autoincrementable" disabled="readonly" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarFechFactModal" class="form-label">Fecha de la factura</label>
+                <input type="datetime-local" class="form-control" id="validarFechFactModal" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoClienteModal" disabled="disabled" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="1">1 - Factura ordinaria</option>
+                  <option value="2">2 - Factura simplificada o ticket</option>
+                  <option value="3">3 - Factura proforma</option>
+                  <option value="4">4 - Factura rectificativa</option>
+                  <option value="5">5 - Factura recapitulativa</option>
+                  <option value="6">6 - Factura electrónica</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdClienteModal" class="form-label">Cliente de la factura</label>
+                <input type="text" class="form-control" disabled="readonly" id="validarIdClienteModal" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarTotalModal" class="form-label">Total</label>
+                <input type="text" class="form-control" id="validarTotalModal" disabled="readonly" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarDtoModal" class="form-label">Descuento</label>
+                <input type="text" class="form-control" id="validarDtoModal" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarIVAModal" class="form-label">IVA</label>
+                <input type="text" class="form-control" id="validarIVAModal" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSubtotalModal" class="form-label">Subtotal</label>
+                <input type="text" class="form-control" id="validarSubtotalModal" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSaldoModal" class="form-label">Saldo</label>
+                <input type="text" class="form-control" id="validarSaldoModal" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="validarEstadoModal" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstadoModal" placeholder="" maxlength="1" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actualizar Modal -->
+    <div class="modal fade" id="actualizarModal" tabindex="-1" role="dialog" aria-labelledby="actualizarModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="actualizarModalLabel">Actualización de Factura</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="actualizarForm">
+              <div class="col-md-6">
+                <label for="idFacturaAct" class="form-label">ID Factura</label>
+                <input type="number" class="form-control" id="idFacturaAct" placeholder=" Valor autoincrementable" disabled="readonly" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarFechFactAct" class="form-label">Fecha de la factura</label>
+                <input type="datetime-local" class="form-control" id="validarFechFactAct" disabled="readonly" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdTipoClienteAct" class="form-label">ID de tipo de factura</label>
+                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdTipoClienteAct" disabled="readonly" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="1">1 - Factura ordinaria</option>
+                  <option value="2">2 - Factura simplificada o ticket</option>
+                  <option value="3">3 - Factura proforma</option>
+                  <option value="4">4 - Factura rectificativa</option>
+                  <option value="5">5 - Factura recapitulativa</option>
+                  <option value="6">6 - Factura electrónica</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarIdClienteAct" class="form-label">Cliente de la factura</label>
+                <input disabled="readonly" type="text" class="form-control" disabled="readonly" id="validarIdClienteAct" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarTotalAct" class="form-label">Total</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarTotalAct" required />
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarDtoAct" class="form-label">Descuento</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarDtoAct" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarIVAAct" class="form-label">IVA</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarIVAAct" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSubtotalAct" class="form-label">Subtotal</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarSubtotalAct" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validarSaldoAct" class="form-label">Saldo</label>
+                <input disabled="readonly" type="text" class="form-control" id="validarSaldoAct" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-4">
+                <label for="validarEstadoAct" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstadoAct" maxlength="1" required />
+                <div id="feedback-message" class="invalid-feedback"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="guardarActualizacion()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <?php
+    require_once '../modelo/controlador/conectar_bd.php';
+    $conn = conectar_bd();
+    $stmt = $conn->prepare("select * from producto;");
+    $stmt->execute();
+    $productos = $stmt->get_result();
+    ?>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-between align-items-center">
+                Registro de Productos
+                <div class="ms-auto">
+                  <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
+                    <i class="bi bi-file-earmark-pdf"> PDF</i>
+                  </button>
+                  <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a Excel">
+                    <i class="bi bi-file-earmark-excel"> Excel</i>
+                  </button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Imprimir">
+                    <i class="bi bi-printer"> Imprimir</i>
+                  </button>
+                </div>
+              </h5>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">ID_Producto</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Valor Actual</th>
+                    <th scope="col">Valor Anterior</th>
+                    <th scope="col">Costo de venta</th>>
+                    <th scope="col">IVA</th>
+                    <th scope="col">Stock Min</th>
+                    <th scope="col">Stock Max</th>
+                    <th scope="col">Estado </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php while ($factura = $productos->fetch_assoc()) { ?>
+                    <tr>
+                      <td><?php echo $factura["id_producto"] ?></td>
+                      <td><?php echo $factura["des_producto"] ?></td>
+                      <td><?php echo $factura["precio_venta_act"] ?></td>
+                      <td><?php echo $factura["precio_venta_ant"] ?></td>
+                      <td><?php echo $factura["costo_venta"] ?></td>
+                      <td><?php echo $factura["valor_iva"] ?>
+                      <td><?php echo $factura["stock_minimo"] ?></td>
+                      <td><?php echo $factura["stock_maximo"] ?></td>
+                      <td><?php echo $factura["estado_producto"] ?></td>
+                    </tr>
+                  <?php } ?>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
             </div>
           </div>
-
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-
         </div>
-        <!-- End Slides with controls -->
-      </div>
       </div>
     </section>
 
@@ -485,7 +806,8 @@
               <div class="card">
                 <img src="../librerias/assets/img/product-1.jpg" class="card-img-top" alt="Imagen 1">
                 <div class="card-body">
-                  <h5 class="card-title mt-0">SM Compra Colombiana - Limón Tahití Malla TAEQ 1000 gr</h5>
+                  <h5 class="card-title mt-0">SM Compra Colombiana - Limón Tahití Malla TAEQ 1000 gr
+                  </h5>
                   <h6 class="card-text">
                     <p style="font-size: x-large;">$ 2.216</p>
                   </h6>
@@ -661,7 +983,8 @@
               <div class="card">
                 <img src="../librerias/assets/img/product-9.jpg" class="card-img-top" alt="Imagen 3">
                 <div class="card-body">
-                  <h5 class="card-title mt-0">Alqueria - ALIM LCTEO CUCHAR M&M FOURP ALQUERIA 400 gr</h5>
+                  <h5 class="card-title mt-0">Alqueria - ALIM LCTEO CUCHAR M&M FOURP ALQUERIA 400 gr
+                  </h5>
                   <h6 class="card-text">
                     <p style="font-size: x-large;">$ 8.800</p>
                   </h6>
@@ -700,8 +1023,7 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../librerias/assets/vendor/apexcharts/apexcharts.min.js"></script>

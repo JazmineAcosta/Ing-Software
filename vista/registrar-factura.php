@@ -3,7 +3,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -251,7 +250,7 @@ ini_set('display_errors', 'on');
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="../index.php">
+              <a class="dropdown-item d-flex align-items-center" href="../index.html">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Cerrar sesión</span>
               </a>
@@ -370,7 +369,7 @@ ini_set('display_errors', 'on');
         </a>
         <ul id="gesProveedores-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="proveedores.php">
+            <a href="proveedores.html">
               <i class="bi bi-circle"></i>
               <span>Proveedores</span>
             </a>
@@ -648,7 +647,7 @@ ini_set('display_errors', 'on');
 
               <div class="col-md-6">
                 <label for="validarIdTipoClienteAct" class="form-label">ID de tipo de factura</label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoClienteAct" disabled="readonly" required>
+                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdTipoClienteAct" disabled="readonly" required>
                   <option value="0">Elija una opción</option>
                   <option value="1">1 - Factura ordinaria</option>
                   <option value="2">2 - Factura simplificada o ticket</option>
@@ -661,35 +660,35 @@ ini_set('display_errors', 'on');
 
               <div class="col-md-6">
                 <label for="validarIdClienteAct" class="form-label">Cliente de la factura</label>
-                <input type="text" class="form-control" disabled="readonly" id="validarIdClienteAct" required />
+                <input disabled="readonly" type="text" class="form-control" disabled="readonly" id="validarIdClienteAct" required />
               </div>
 
               <div class="col-md-4">
                 <label for="validarTotalAct" class="form-label">Total</label>
-                <input type="text" class="form-control" id="validarTotalAct" required />
+                <input disabled="readonly" type="text" class="form-control" id="validarTotalAct" required />
               </div>
 
               <div class="col-md-4">
                 <label for="validarDtoAct" class="form-label">Descuento</label>
-                <input type="text" class="form-control" id="validarDtoAct" required />
+                <input disabled="readonly" type="text" class="form-control" id="validarDtoAct" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
                 <label for="validarIVAAct" class="form-label">IVA</label>
-                <input type="text" class="form-control" id="validarIVAAct" required />
+                <input disabled="readonly" type="text" class="form-control" id="validarIVAAct" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
                 <label for="validarSubtotalAct" class="form-label">Subtotal</label>
-                <input type="text" class="form-control" id="validarSubtotalAct" required />
+                <input disabled="readonly" type="text" class="form-control" id="validarSubtotalAct" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
                 <label for="validarSaldoAct" class="form-label">Saldo</label>
-                <input type="text" class="form-control" id="validarSaldoAct" required />
+                <input disabled="readonly" type="text" class="form-control" id="validarSaldoAct" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
               <div class="col-md-4">
