@@ -403,7 +403,7 @@ ini_set('display_errors', 'on');
         </a>
         <ul id="gesUsuarios-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="crear-usuarios.html">
+            <a href="crear-usuarios.php">
               <i class="bi bi-circle"></i>
               <span>Usuarios</span>
             </a>

@@ -403,7 +403,7 @@ ini_set('display_errors', 'on');
         </a>
         <ul id="gesUsuarios-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="crear-usuarios.html">
+            <a href="crear-usuarios.php">
               <i class="bi bi-circle"></i>
               <span>Usuarios</span>
             </a>
@@ -495,6 +495,7 @@ ini_set('display_errors', 'on');
                 <input type="text" class="form-control" id="validarSaldo" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
+
               <div class="col-md-4">
                 <label for="validarEstado" class="form-label">Estado</label>
                 <input type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
