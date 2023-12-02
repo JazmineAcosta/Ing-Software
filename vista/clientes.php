@@ -131,7 +131,7 @@ $conn = conectar_bd();
             <li class="notification-item">
               <i class="bi bi-info-circle text-primary"></i>
               <div>
-                <h4>Nueva solicitud de comprra</h4>
+                <h4>Nueva solicitud de compra</h4>
                 <p>Se ha generado una nueva solicitud de compra</p>
                 <p>30 min.</p>
               </div>
@@ -337,7 +337,7 @@ $conn = conectar_bd();
           </li>
           <li>
             <a href="solicitar-compra.html">
-              <i class="bi bi-card-checklist"></i>
+              <i class="bi bi-circle"></i>
               <span>Solicitud de compra</span>
             </a>
           </li>
@@ -354,7 +354,7 @@ $conn = conectar_bd();
         <ul id="almacen-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="productos.html">
-              <i class="bi bi-card-checklist"></i>
+              <i class="bi bi-circle"></i>
               <span>Productos</span>
             </a>
           </li>
@@ -387,7 +387,7 @@ $conn = conectar_bd();
         </a>
         <ul id="gesVentas-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="registo-ventas.html">
+            <a href="registro-ventas.html">
               <i class="bi bi-circle"></i>
               <span>Contol de ventas</span>
             </a>

@@ -251,7 +251,7 @@ $conn = conectar_bd();
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="../index.html">
+                            <a class="dropdown-item d-flex align-items-center" href="../index.php">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Cerrar sesión</span>
                             </a>
@@ -419,12 +419,12 @@ $conn = conectar_bd();
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Proveedores</h1>
+            <h1>Proveedor</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-                    <li class="breadcrumb-item active">Proveedores</li>
-                    <li class="breadcrumb-item active">Administración de Proveedores</li>
+                    <li class="breadcrumb-item active">Proveedor</li>
+                    <li class="breadcrumb-item active">Admin Proveedor</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -435,73 +435,48 @@ $conn = conectar_bd();
                     <h5 class="card-title">Registrar proveedor</h5>
 
                     <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
-                        <!-- Factura regsitro proveedor -->
+                        <!-- Factura regsitro Form -->
                         <form class="row g-3 needs-validation" id="profileForm">
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="validarIdProveedor" class="form-label">ID Proveedor</label>
-                                <input type="number" class="form-control" id="validarIdProveedor" placeholder="CC del Cliente" required />
+                                <input type="number" class="form-control" id="validarIdProveedor" placeholder="Valor autoincrementable" disabled="readonly" required />
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
                                 <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="validarNitCliente" class="form-label">NIT Cliente</label>
-                                <input type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" required />
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
-                                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
-                                    <option value="0">Seleccione una opción</option>
-                                    <option value="1">1 - Persona Jurídica</option>
-                                    <option value="2">2 - Persona Natural</option>
-                                </select>
+                            <div class="col-md-4">
+                                <label for="validarNitProveedor" class="form-label">NIT Proveedor</label>
+                                <input type="text" class="form-control" id="validarNitProveedor" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" required />
                             </div>
 
                             <div class="col-md-4">
-                                <label for="validarNom" class="form-label">Nombres</label>
+                                <label for="validarNom" class="form-label">Nombre Proveedor</label>
                                 <input type="text" class="form-control" id="validarNom" required />
                             </div>
 
-                            <div class="col-md-5">
-                                <label for="validarApe" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="validarApe" required />
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarCodPostal" class="form-label">Código postal</label>
-                                <input type="number" class="form-control" id="validarCodPostal" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
                             <?php
-                            $id_stmtt = $conn->prepare("select id_ciudad, nombre_ciudad from ciudad;");
+                            $id_stmtt = $conn->prepare("select nombre_ciudad from ciudad;");
                             $id_stmtt->execute();
                             $ciudades = $id_stmtt->get_result();
                             ?>
                             <div class="col-md-4">
-                                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
+                                <label for="validarIdCiudad" class="form-label"> Ciudad </label>
                                 <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
                                     <option value="0">Seleccione una opción</option>
                                     <?php while ($ciudad = $ciudades->fetch_object()) { ?>
-                                        <option value=<?php echo $ciudad->id_ciudad ?>>
-                                            <?php echo $ciudad->id_ciudad . " - " . $ciudad->nombre_ciudad ?></option>
+                                        <option value=<?php echo $ciudad->nombre_ciudad ?>>
+                                            <?php echo $ciudad->nombre_ciudad ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="validarDir" class="form-label">Dirección de recidencia</label>
+                                <label for="validarDir" class="form-label">Dirección proveedor</label>
                                 <input type="text" class="form-control" id="validarDir" required />
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarEmail" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -510,38 +485,8 @@ $conn = conectar_bd();
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
-                                <input type="number" class="form-control" id="validarCupoCred" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="validarSaldo" class="form-label">Saldo</label>
-                                <input type="number" class="form-control" id="validarSaldo" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="validarCompraMes" class="form-label">Compras del mes</label>
-                                <input type="number" class="form-control" id="validarCompraMes" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
-                                <input type="number" class="form-control" id="validarPagosMes" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="validarEstado" class="form-label">Estado</label>
-                                <input type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
                             <div class="mb-3 d-flex justify-content-center">
-                                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
+                                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearProveedor()">
                                     <i class="bi bi-person-add"> Crear</i>
                                 </button>
                             </div>
@@ -554,16 +499,16 @@ $conn = conectar_bd();
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Consulta y actualización de proveedor</h5>
+                    <h5 class="card-title">Consulta y actualización del proveedor</h5>
 
                     <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
                         <!-- Profile Edit Form -->
                         <form class="row g-3 needs-validation" id="profileForm">
 
                             <div class="input-group mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">ID Proveedor</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">ID Cliente</label>
                                 <div class="input-group-append">
-                                    <input type="text" class="form-control" id="idProveedor" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
                                 </div>
                                 <div class="input-group-append">
                                     <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal" data-bs-target="#consultarModal">
@@ -587,108 +532,60 @@ $conn = conectar_bd();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="consultarModalLabel">Consulta de Proveeedor</h5>
+                        <h5 class="modal-title" id="consultarModalLabel">Consulta de Proveedor</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <!-- Factura regsitro Form -->
                         <form class="row g-3 needs-validation" id="profileForm">
 
-                            <div class="col-md-4">
-                                <label for="validarIdCliente" class="form-label">ID Cliente</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
+                            <div class="col-md-7">
+                                <label for="validarIdProveedor" class="form-label">ID Proveedor</label>
+                                <input type="number" class="form-control" id="validarIdProveedor" placeholder="Valor autoincrementable" disabled="readonly" required />
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
+                                <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" disabled="readonly" required />
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="validarNitCliente" class="form-label">NIT Cliente</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
+                            <div class="col-md-6">
+                                <label for="validarNitProveedor" class="form-label">NIT Proveedor</label>
+                                <input type="text" class="form-control" id="validarNitProveedor" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" disabled="readonly" required />
                             </div>
 
+                            <div class="col-md-6">
+                                <label for="validarNom" class="form-label">Nombre Proveedor</label>
+                                <input type="text" class="form-control" id="validarNom" disabled="readonly" required />
+                            </div>
+
+                            <?php
+                            $id_stmtt = $conn->prepare("select nombre_ciudad from ciudad;");
+                            $id_stmtt->execute();
+                            $ciudades = $id_stmtt->get_result();
+                            ?>
                             <div class="col-md-12">
-                                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
-                                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
+                                <label for="validarIdCiudad" class="form-label"> Ciudad </label>
+                                <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" disabled="readonly" required>
                                     <option value="0">Seleccione una opción</option>
-                                    <option value="1">1 - Persona Jurídica</option>
-                                    <option value="2">2 - Persona Natural</option>
+                                    <?php while ($ciudad = $ciudades->fetch_object()) { ?>
+                                        <option value=<?php echo $ciudad->nombre_ciudad ?>>
+                                            <?php echo $ciudad->nombre_ciudad ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validarNom" class="form-label">Nombres</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarNom" required />
+                                <label for="validarDir" class="form-label">Dirección proveedor</label>
+                                <input type="text" class="form-control" id="validarDir" disabled="readonly" required />
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validarApe" class="form-label">Apellidos</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarApe" required />
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="validarCodPostal" class="form-label">Código postal</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarCodPostal" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
-                                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
-                                    <option value="0">Seleccione una opción</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="validarDir" class="form-label">Dirección de recidencia</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarDir" required />
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="validarEmail" class="form-label">Email</label>
-                                <input disabled="readonly" type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
                                 <label for="validarTelefono" class="form-label">Teléfono</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
+                                <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" disabled="readonly" required />
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarCupoCred" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarSaldo" class="form-label">Saldo</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarSaldo" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarCompraMes" class="form-label">Compras del mes</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarCompraMes" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarPagosMes" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarEstado" class="form-label">Estado</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -703,109 +600,62 @@ $conn = conectar_bd();
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="actualizarModalLabel">Actualización de Cliente</h5>
+                        <h5 class="modal-title" id="actualizarModalLabel">Actualización de Proveedor</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- Factura regsitro Form -->
+                        <!-- Factura registro Form -->
                         <form class="row g-3 needs-validation" id="profileForm">
 
-                            <div class="col-md-4">
-                                <label for="validarIdCliente" class="form-label">ID Cliente</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
+                            <div class="col-md-7">
+                                <label for="validarIdProveedor" class="form-label">ID Proveedor</label>
+                                <input type="number" class="form-control" id="validarIdProveedor" placeholder="Valor autoincrementable" disabled="readonly" required />
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
+                                <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" disabled="readonly" required />
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="validarNitCliente" class="form-label">NIT Cliente</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
+                            <div class="col-md-6">
+                                <label for="validarNitProveedor" class="form-label">NIT Proveedor</label>
+                                <input type="text" class="form-control" id="validarNitProveedor" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" disabled="readonly" required />
                             </div>
 
+                            <div class="col-md-6">
+                                <label for="validarNom" class="form-label">Nombre Proveedor</label>
+                                <input type="text" class="form-control" id="validarNom" required />
+                            </div>
+
+                            <?php
+                            $id_stmtt = $conn->prepare("select nombre_ciudad from ciudad;");
+                            $id_stmtt->execute();
+                            $ciudades = $id_stmtt->get_result();
+                            ?>
                             <div class="col-md-12">
-                                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
-                                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
+                                <label for="validarIdCiudad" class="form-label"> Ciudad </label>
+                                <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" disabled="readonly" required>
                                     <option value="0">Seleccione una opción</option>
-                                    <option value="1">1 - Persona Jurídica</option>
-                                    <option value="2">2 - Persona Natural</option>
+                                    <?php while ($ciudad = $ciudades->fetch_object()) { ?>
+                                        <option value=<?php echo $ciudad->nombre_ciudad ?>>
+                                            <?php echo $ciudad->nombre_ciudad ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validarNom" class="form-label">Nombres</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarNom" required />
+                                <label for="validarDir" class="form-label">Dirección proveedor</label>
+                                <input type="text" class="form-control" id="validarDir" disabled="readonly" required />
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validarApe" class="form-label">Apellidos</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarApe" required />
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="validarCodPostal" class="form-label">Código postal</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarCodPostal" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
-                                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
-                                    <option value="0">Seleccione una opción</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="validarDir" class="form-label">Dirección de recidencia</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarDir" required />
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="validarEmail" class="form-label">Email</label>
-                                <input disabled="readonly" type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
                                 <label for="validarTelefono" class="form-label">Teléfono</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
+                                <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" disabled="readonly" required />
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarCupoCred" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarSaldo" class="form-label">Saldo</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarSaldo" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarCompraMes" class="form-label">Compras del mes</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarCompraMes" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarPagosMes" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="validarEstado" class="form-label">Estado</label>
-                                <input type="text" class="form-control" id="validarEstado" maxlength="1" required />
-                                <div id="feedback-message" class="invalid-feedback"></div>
-                            </div>
                         </form>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -814,34 +664,220 @@ $conn = conectar_bd();
                 </div>
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script>
-            function consultarInformacion() {
+            function crearProveedor() {
+                // Obtener los datos del formulario (reemplaza con la lógica para obtener los valores del formulario)
+                var fechaFactura = document.getElementById('validarFechFact').value;
+                var idTipoFac = document.getElementById('validarIdTipoCliente').value;
+                var clienteFactura = document.getElementById('validarIdCliente').value;
+                var totalFactura = document.getElementById('validarTotal').value;
+                var descuentoFactura = document.getElementById('validarDto').value;
+                var ivaFactura = document.getElementById('validarIVA').value;
+                var subtotalFactura = document.getElementById('validarSubtotal').value;
+                var saldoFactura = document.getElementById('validarSaldo').value;
+                var estadoFactura = document.getElementById('validarEstado').value;
+
+
+                // Crear un objeto FormData y agregar los datos del formulario
+                var formData = new FormData();
+                formData.append('fechaFactura', fechaFactura);
+                formData.append('idTipoFac', idTipoFac);
+                formData.append('clienteFactura', clienteFactura);
+                formData.append('totalFactura', totalFactura);
+                formData.append('descuentoFactura', descuentoFactura);
+                formData.append('ivaFactura', ivaFactura);
+                formData.append('subtotalFactura', subtotalFactura);
+                formData.append('saldoFactura', saldoFactura);
+                formData.append('estadoFactura', estadoFactura);
+                //console.log(fechaFactura);
+                //console.log(formatearFechaParaBaseDatos(fechaFactura));
+
+                // Realizar la solicitud 
+                fetch('../modelo/crearfactura.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Procesar la respuesta del servidor si es necesario
+                        if (!data.hasOwnProperty('error')) {
+                            console.log(data);
+                            alert(data["success"]);
+                            window.location.reload();
+                        } else {
+                            alert(data["error"]);
+                        }
+                        // Cerrar el modal o realizar otras acciones según tus necesidades
+                        // Aquí asumo que estás utilizando Bootstrap para los modales
+                        $('#crearFacturaModal').modal('hide');
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+            function consultarFactura() {
                 // Lógica para consultar la información y llenar el modal de consulta
-                // ...
+                // Obtener el valor del campo idFactura
+                var idFactura = document.getElementById('idFacturaCons').value;
+
+                if (idFactura != "" || idFactura >= 1) {
+                    //Crear FormData 
+                    var formData = new FormData();
+                    formData.append('idFacturaCons', idFactura);
+                    // Realizar la solicitud fetch
+                    fetch('../modelo/consultafacturas.php', {
+                            method: 'POST',
+                            body: formData,
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Procesar la respuesta del servidor si es necesario
+                            // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+                            // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+                            if (!data.hasOwnProperty('error')) {
+                                document.getElementById('idFacturaModal').value = data["idFactura"];
+                                document.getElementById('validarFechFactModal').value = data["fechaFactura"];
+                                document.getElementById('validarIdTipoClienteModal').value = data["idTipoFac"];
+                                document.getElementById('validarIdClienteModal').value = data["clienteFactura"];
+                                document.getElementById('validarTotalModal').value = data["totalFactura"];
+                                document.getElementById('validarDtoModal').value = data["descuentoFactura"];
+                                document.getElementById('validarIVAModal').value = data["ivaFactura"];
+                                document.getElementById('validarSubtotalModal').value = data["subtotalFactura"];
+                                document.getElementById('validarSaldoModal').value = data["saldoFactura"];
+                                document.getElementById('validarEstadoModal').value = data["estadoFactura"];
+                            }
+
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+
+                }
                 // Abre el modal de consulta
-                $('#consultarModal').modal('show');
+                //$('#consultarModal').modal('show');
+
+            }
+
+            function cerrarModalConsulta() {
+
+                document.getElementById('idFacturaModal').value = "";
+                document.getElementById('validarFechFactModal').value = "";
+                document.getElementById('validarIdTipoClienteModal').value = "";
+                document.getElementById('validarIdClienteModal').value = "";
+                document.getElementById('validarTotalModal').value = "";
+                document.getElementById('validarDtoModal').value = "";
+                document.getElementById('validarIVAModal').value = "";
+                document.getElementById('validarSubtotalModal').value = "";
+                document.getElementById('validarSaldoModal').value = "";
+                document.getElementById('validarEstadoModal').value = "";
+
             }
 
             function actualizarInformacion() {
-                // Lógica para cargar la información y llenar el modal de actualización
-                // ...
+                // Lógica para cargar la información y llenar el modal de actualización        
+                // Obtener el valor del campo idFactura
+                var idFactura = document.getElementById('idFacturaCons').value;
+
+                if (idFactura != "" || idFactura >= 1) {
+                    //Crear FormData 
+                    var formData = new FormData();
+                    formData.append('idFacturaCons', idFactura);
+                    // Realizar la solicitud fetch
+                    fetch('../modelo/consultafacturas.php', {
+                            method: 'POST',
+                            body: formData,
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Procesar la respuesta del servidor si es necesario
+                            // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+                            // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+                            if (!data.hasOwnProperty('error')) {
+                                document.getElementById('idFacturaAct').value = data["idFactura"];
+                                document.getElementById('validarFechFactAct').value = data["fechaFactura"];
+                                document.getElementById('validarIdTipoClienteAct').value = data["idTipoFac"];
+                                document.getElementById('validarIdClienteAct').value = data["clienteFactura"];
+                                document.getElementById('validarTotalAct').value = data["totalFactura"];
+                                document.getElementById('validarDtoAct').value = data["descuentoFactura"];
+                                document.getElementById('validarIVAAct').value = data["ivaFactura"];
+                                document.getElementById('validarSubtotalAct').value = data["subtotalFactura"];
+                                document.getElementById('validarSaldoAct').value = data["saldoFactura"];
+                                document.getElementById('validarEstadoAct').value = data["estadoFactura"];
+                            }
+
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+
+                }
                 // Abre el modal de actualización
-                $('#actualizarModal').modal('show');
+                //$('#actualizarModal').modal('show');
             }
 
             function guardarActualizacion() {
-                // Lógica para guardar la actualización
-                // ...
-                // Cierra el modal de actualización
-                $('#actualizarModal').modal('hide');
+                // Obtener el formulario
+                // Obtener los valores de los campos del formulario
+                var idFactura = document.getElementById('idFacturaAct').value;
+                var nuevaFecha = document.getElementById('validarFechFactAct').value;
+                var nuevoIdTipoFac = document.getElementById('validarIdTipoClienteAct').value;
+                var nuevoClienteFactura = document.getElementById('validarIdClienteAct').value;
+                var nuevoTotalFactura = document.getElementById('validarTotalAct').value;
+                var nuevoDescuentoFactura = document.getElementById('validarDtoAct').value;
+                var nuevoIvaFactura = document.getElementById('validarIVAAct').value;
+                var nuevoSubtotalFactura = document.getElementById('validarSubtotalAct').value;
+                var nuevoSaldoFactura = document.getElementById('validarSaldoAct').value;
+                var nuevoEstadoFactura = document.getElementById('validarEstadoAct').value;
+
+
+                // Crear un objeto FormData con los datos del formulario
+                // Crear FormData 
+                var formData = new FormData();
+                formData.append('idFacturaAct', idFactura);
+                formData.append('FechaAct', nuevaFecha);
+                formData.append('IdTipoFacAct', nuevoIdTipoFac);
+                formData.append('ClienteFacturaAct', nuevoClienteFactura);
+                formData.append('TotalFacturaAct', nuevoTotalFactura);
+                formData.append('DescuentoFacturaAct', nuevoDescuentoFactura);
+                formData.append('IvaFacturaAct', nuevoIvaFactura);
+                formData.append('SubtotalFacturaAct', nuevoSubtotalFactura);
+                formData.append('SaldoFacturaAct', nuevoSaldoFactura);
+                formData.append('EstadoFacturaAct', nuevoEstadoFactura);
+
+                // Realizar la solicitud fetch
+                fetch('../modelo/Updatefactura.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.hasOwnProperty('error')) {
+                            console.log(data);
+                            alert(data["success"]);
+                            window.location.reload();
+                        } else {
+                            alert(data["error"]);
+                        }
+
+                        // Cerrar el modal después de la actualización            
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             }
         </script>
+
+
+
+
         <?php
-        $stmt = $conn->prepare("select * from cliente;");
+        require_once '../modelo/controlador/conectar_bd.php';
+        $conn = conectar_bd();
+        $stmt = $conn->prepare("select * from proveedor;");
         $stmt->execute();
-        $clientes = $stmt->get_result();
+        $proveedores = $stmt->get_result();
         ?>
         <section class="section">
             <div class="row">
@@ -849,7 +885,7 @@ $conn = conectar_bd();
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title d-flex justify-content-between align-items-center">
-                                Registro de nóminas
+                                Registro de proveedores
                                 <div class="ms-auto">
                                     <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
                                         <i class="bi bi-file-earmark-pdf"> PDF</i>
@@ -866,28 +902,25 @@ $conn = conectar_bd();
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">ID Cliente</th>
+                                        <th scope="col">ID Proveedor</th>
                                         <th scope="col">ID Empresa</th>
-                                        <th scope="col">Razon Social</th>
-                                        <th scope="col">Tipo Cliente</th>
-                                        <th scope="col">Nombres y Apellidos</th>
-                                        <th scope="col">Correo</th>
-                                        <th scope="col">Cupo Credito</th>
-                                        <th scope="col">Saldo</th>
+                                        <th scope="col">NIT Proveedor</th>
+                                        <th scope="col">Nombre Proveedor</th>
+                                        <th scope="col">Ciudad Proveedor</th>
+                                        <th scope="col">Dirección Proveedor</th>
+                                        <th scope="col">Telefono Proveedor</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php while ($cliente = $clientes->fetch_assoc()) { ?>
+                                    <?php while ($proveedor = $proveedores->fetch_assoc()) { ?>
                                         <tr>
-                                            <td><?php echo $cliente['id_cliente'] ?></td>
-                                            <td><?php echo $cliente['id_empresa'] ?></td>
-                                            <td><?php echo $cliente['rsocial_cliente'] ?></td>
-                                            <td><?php echo $cliente['id_tipo_cliente'] ?></td>
-                                            <td><?php echo $cliente['nombre_cliente'] . " " . $cliente['apellido_cliente'] ?>
-                                            </td>
-                                            <td><?php echo $cliente['correo_cliente'] ?></td>
-                                            <td><?php echo $cliente['cupocredito_cliente'] ?></td>
-                                            <td><?php echo $cliente['saldo_cliente'] ?></td>
+                                            <td><?php echo $proveedor['id_proveedor'] ?></td>
+                                            <td><?php echo $proveedor['id_empresa'] ?></td>
+                                            <td><?php echo $proveedor['NIT_Proveedor'] ?></td>
+                                            <td><?php echo $proveedor['Nom_Proveedor'] ?></td>
+                                            <td><?php echo $proveedor['Ciudad_Proveedor'] ?></td>
+                                            <td><?php echo $proveedor['Dir_Proveedor'] ?></td>
+                                            <td><?php echo $proveedor['Tel_Proveedor'] ?></td>
                                         </tr>
                                     <?php } ?>
                                     <!-- Add more rows as needed -->
