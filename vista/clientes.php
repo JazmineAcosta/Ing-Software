@@ -436,35 +436,63 @@ ini_set('display_errors', 'on');
             <!-- Factura regsitro Form -->
             <form class="row g-3 needs-validation" id="profileForm">
 
-              <div class="col-md-6 mt-5">
+              <div class="col-md-6">
                 <label for="validarIdCliente" class="form-label">ID Cliente</label>
                 <input type="number" class="form-control" id="validarIdCliente" placeholder="12345" required />
               </div>
 
-              <div class="col-md-6 mt-5">
+              <div class="col-md-6">
                 <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
                 <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
               </div>
 
-              <div class="col-md-6 mt-5">
+              <div class="col-md-6">
                 <label for="validarNitCliente" class="form-label">NIT Cliente</label>
-                <input type="number" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
-              </div>
-
-
-              <div class="col-md-6 mt-5">
-                <label for="validarIdUsuario" class="form-label">ID de usuario</label>
-                <input type="number" class="form-control" id="validarIdUsuario" placeholder="12345" required />
+                <input type="number" class="form-control" id="validarNitCliente" placeholder="1234567890" maxlength="11" required />
               </div>
 
               <div class="col-md-6">
-                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
-                <input type="text" class="form-control" id="validarNomCompleto" required />
+                <label for="validarRazonSocial" class="form-label">Razón Social</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarRazonSocial" required>
+                  <option value="0">Elija una opción</option>
+                  <option value="1">Persona natural</option>
+                  <option value="2">Empresa Asociativa de Trabajo</option>
+                  <option value="3">Empresa Unipersonal</option>
+                  <option value="4">Sociedad Anónima</option>
+                  <option value="5">Sociedad Colectiva</option>
+                  <option value="6">Sociedad Comandita por Acciones</option>
+                  <option value="7">Sociedad Comandita Simple</option>
+                  <option value="8">Sociedad Limitada</option>
+                  <option value="9">Sociedad por Acciones Simplificada</option>
+                </select>
               </div>
 
               <div class="col-md-6">
-                <label for="validarDir" class="form-label">Dirección de
-                  recidencia</label>
+                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
+                  <option value="0">'1' Juridica o '2' Natural</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarNom" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="validarNom" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarApe" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="validarApe" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarDir" class="form-label">Dirección de recidencia</label>
+                <input type="text" class="form-control" id="validarDir" required />
+              </div>
+
+              <div class="col-md-6">
+                <label for="validarDir" class="form-label">ID Ciudad</label>
                 <input type="text" class="form-control" id="validarDir" required />
               </div>
 
@@ -761,6 +789,7 @@ ini_set('display_errors', 'on');
                       <td><?php echo $cliente['id_tipo_cliente'] ?></td>
                       <td><?php echo $cliente['nombre_cliente'] . " " . $cliente['apellido_cliente'] ?></td>
                       <td><?php echo $cliente['correo_cliente'] ?></td>
+                      <td><?php echo $cliente['cupocredito_cliente'] ?></td>
                       <td><?php echo $cliente['saldo_cliente'] ?></td>
                     </tr>
                   <?php } ?>

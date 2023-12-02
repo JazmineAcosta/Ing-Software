@@ -533,7 +533,7 @@ ini_set('display_errors', 'on');
                   </button>
                 </div>
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#actualizarModal">
+                  <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#actualizarModal" onclick="actualizarInformacion()">
                     <i class="bi bi-file-arrow-up"></i> Actualizar
                   </button>
                 </div>
@@ -634,21 +634,21 @@ ini_set('display_errors', 'on');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form class="row g-3 needs-validation" id="consultarForm">
+            <form class="row g-3 needs-validation" id="actualizarForm">
               <div class="col-md-6">
-                <label for="idFactura" class="form-label">ID Factura</label>
-                <input type="number" class="form-control" id="idFactura" placeholder=" Valor autoincrementable" disabled="readonly" required />
+                <label for="idFacturaAct" class="form-label">ID Factura</label>
+                <input type="number" class="form-control" id="idFacturaAct" placeholder=" Valor autoincrementable" disabled="readonly" required />
               </div>
 
               <div class="col-md-6">
-                <label for="validarFechFact" class="form-label">Fecha de la factura</label>
-                <input type="datetime-local" class="form-control" id="validarFechFact" disabled="readonly" required />
+                <label for="validarFechFactAct" class="form-label">Fecha de la factura</label>
+                <input type="datetime-local" class="form-control" id="validarFechFactAct" disabled="readonly" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-6">
-                <label for="validarIdTipoCliente" class="form-label">ID de tipo de factura</label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" disabled="readonly" required>
+                <label for="validarIdTipoClienteAct" class="form-label">ID de tipo de factura</label>
+                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoClienteAct" disabled="readonly" required>
                   <option value="0">Elija una opción</option>
                   <option value="1">1 - Factura ordinaria</option>
                   <option value="2">2 - Factura simplificada o ticket</option>
@@ -660,48 +660,48 @@ ini_set('display_errors', 'on');
               </div>
 
               <div class="col-md-6">
-                <label for="validarIdCliente" class="form-label">Cliente de la factura</label>
-                <input type="text" class="form-control" disabled="readonly" id="validarIdCliente" required />
+                <label for="validarIdClienteAct" class="form-label">Cliente de la factura</label>
+                <input type="text" class="form-control" disabled="readonly" id="validarIdClienteAct" required />
               </div>
 
               <div class="col-md-4">
-                <label for="validarTotal" class="form-label">Total</label>
-                <input type="text" class="form-control" id="validarTotal" required />
+                <label for="validarTotalAct" class="form-label">Total</label>
+                <input type="text" class="form-control" id="validarTotalAct" required />
               </div>
 
               <div class="col-md-4">
-                <label for="validarDto" class="form-label">Descuento</label>
-                <input type="text" class="form-control" id="validarDto" required />
+                <label for="validarDtoAct" class="form-label">Descuento</label>
+                <input type="text" class="form-control" id="validarDtoAct" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
-                <label for="validarIVA" class="form-label">IVA</label>
-                <input type="text" class="form-control" id="validarIVA" required />
+                <label for="validarIVAAct" class="form-label">IVA</label>
+                <input type="text" class="form-control" id="validarIVAAct" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
-                <label for="validarSubtotal" class="form-label">Subtotal</label>
-                <input type="text" class="form-control" id="validarSubtotal" required />
+                <label for="validarSubtotalAct" class="form-label">Subtotal</label>
+                <input type="text" class="form-control" id="validarSubtotalAct" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
 
               <div class="col-md-4">
-                <label for="validarSaldo" class="form-label">Saldo</label>
-                <input type="text" class="form-control" id="validarSaldo" required />
+                <label for="validarSaldoAct" class="form-label">Saldo</label>
+                <input type="text" class="form-control" id="validarSaldoAct" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
               <div class="col-md-4">
-                <label for="validarEstado" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="validarEstado" maxlength="1" required />
+                <label for="validarEstadoAct" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validarEstadoAct" maxlength="1" required />
                 <div id="feedback-message" class="invalid-feedback"></div>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="guardarActualizacion()">Guardar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="guardarActualizacion()">Guardar</button>
           </div>
         </div>
       </div>
@@ -714,53 +714,151 @@ ini_set('display_errors', 'on');
         // Lógica para consultar la información y llenar el modal de consulta
         // Obtener el valor del campo idFactura
         var idFactura = document.getElementById('idFacturaCons').value;
-        //Crear FormData
-        var formData = new FormData();
-        formData.append('idFacturaCons', idFactura);
-        // Realizar la solicitud fetch
-        fetch('../modelo/consultafacturas.php', {
-            method: 'POST',
-            body: formData,
-          })
-          .then(response => response.json())
-          .then(data => {
-            // Procesar la respuesta del servidor si es necesario
-            // Suponiendo que `data` contiene el objeto JSON recibido del servidor
-            // Suponiendo que `data` contiene el objeto JSON recibido del servidor
 
-            document.getElementById('idFacturaModal').value = data["idFactura"];
-            document.getElementById('validarFechFactModal').value = data["fechaFactura"];
-            document.getElementById('validarIdTipoClienteModal').value = data["idTipoFac"];
-            document.getElementById('validarIdClienteModal').value = data["clienteFactura"];
-            document.getElementById('validarTotalModal').value = data["totalFactura"];
-            document.getElementById('validarDtoModal').value = data["descuentoFactura"];
-            document.getElementById('validarIVAModal').value = data["ivaFactura"];
-            document.getElementById('validarSubtotalModal').value = data["subtotalFactura"];
-            document.getElementById('validarSaldoModal').value = data["saldoFactura"];
-            document.getElementById('validarEstadoModal').value = data["estadoFactura"];
+        if (idFactura != "" || idFactura >= 1) {
+          //Crear FormData 
+          var formData = new FormData();
+          formData.append('idFacturaCons', idFactura);
+          // Realizar la solicitud fetch
+          fetch('../modelo/consultafacturas.php', {
+              method: 'POST',
+              body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+              // Procesar la respuesta del servidor si es necesario
+              // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+              // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+              if (!data.hasOwnProperty('error')) {
+                document.getElementById('idFacturaModal').value = data["idFactura"];
+                document.getElementById('validarFechFactModal').value = data["fechaFactura"];
+                document.getElementById('validarIdTipoClienteModal').value = data["idTipoFac"];
+                document.getElementById('validarIdClienteModal').value = data["clienteFactura"];
+                document.getElementById('validarTotalModal').value = data["totalFactura"];
+                document.getElementById('validarDtoModal').value = data["descuentoFactura"];
+                document.getElementById('validarIVAModal').value = data["ivaFactura"];
+                document.getElementById('validarSubtotalModal').value = data["subtotalFactura"];
+                document.getElementById('validarSaldoModal').value = data["saldoFactura"];
+                document.getElementById('validarEstadoModal').value = data["estadoFactura"];
+              }
 
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
 
+        }
         // Abre el modal de consulta
         //$('#consultarModal').modal('show');
 
       }
 
+      function cerrarModalConsulta() {
+
+        document.getElementById('idFacturaModal').value = "";
+        document.getElementById('validarFechFactModal').value = "";
+        document.getElementById('validarIdTipoClienteModal').value = "";
+        document.getElementById('validarIdClienteModal').value = "";
+        document.getElementById('validarTotalModal').value = "";
+        document.getElementById('validarDtoModal').value = "";
+        document.getElementById('validarIVAModal').value = "";
+        document.getElementById('validarSubtotalModal').value = "";
+        document.getElementById('validarSaldoModal').value = "";
+        document.getElementById('validarEstadoModal').value = "";
+
+      }
+
       function actualizarInformacion() {
-        // Lógica para cargar la información y llenar el modal de actualización
-        // ...
+        // Lógica para cargar la información y llenar el modal de actualización        
+        // Obtener el valor del campo idFactura
+        var idFactura = document.getElementById('idFacturaCons').value;
+
+        if (idFactura != "" || idFactura >= 1) {
+          //Crear FormData 
+          var formData = new FormData();
+          formData.append('idFacturaCons', idFactura);
+          // Realizar la solicitud fetch
+          fetch('../modelo/consultafacturas.php', {
+              method: 'POST',
+              body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+              // Procesar la respuesta del servidor si es necesario
+              // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+              // Suponiendo que `data` contiene el objeto JSON recibido del servidor
+              if (!data.hasOwnProperty('error')) {
+                document.getElementById('idFacturaAct').value = data["idFactura"];
+                document.getElementById('validarFechFactAct').value = data["fechaFactura"];
+                document.getElementById('validarIdTipoClienteAct').value = data["idTipoFac"];
+                document.getElementById('validarIdClienteAct').value = data["clienteFactura"];
+                document.getElementById('validarTotalAct').value = data["totalFactura"];
+                document.getElementById('validarDtoAct').value = data["descuentoFactura"];
+                document.getElementById('validarIVAAct').value = data["ivaFactura"];
+                document.getElementById('validarSubtotalAct').value = data["subtotalFactura"];
+                document.getElementById('validarSaldoAct').value = data["saldoFactura"];
+                document.getElementById('validarEstadoAct').value = data["estadoFactura"];
+              }
+
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+
+        }
         // Abre el modal de actualización
-        $('#actualizarModal').modal('show');
+        //$('#actualizarModal').modal('show');
       }
 
       function guardarActualizacion() {
-        // Lógica para guardar la actualización
-        // ...
-        // Cierra el modal de actualización
-        $('#actualizarModal').modal('hide');
+        // Obtener el formulario
+        // Obtener los valores de los campos del formulario
+        var idFactura = document.getElementById('idFacturaAct').value;
+        var nuevaFecha = document.getElementById('validarFechFactAct').value;
+        var nuevoIdTipoFac = document.getElementById('validarIdTipoClienteAct').value;
+        var nuevoClienteFactura = document.getElementById('validarIdClienteAct').value;
+        var nuevoTotalFactura = document.getElementById('validarTotalAct').value;
+        var nuevoDescuentoFactura = document.getElementById('validarDtoAct').value;
+        var nuevoIvaFactura = document.getElementById('validarIVAAct').value;
+        var nuevoSubtotalFactura = document.getElementById('validarSubtotalAct').value;
+        var nuevoSaldoFactura = document.getElementById('validarSaldoAct').value;
+        var nuevoEstadoFactura = document.getElementById('validarEstadoAct').value;
+
+
+        // Crear un objeto FormData con los datos del formulario
+        // Crear FormData 
+        var formData = new FormData();
+        formData.append('idFacturaAct', idFactura);
+        formData.append('FechaAct', nuevaFecha);
+        formData.append('IdTipoFacAct', nuevoIdTipoFac);
+        formData.append('ClienteFacturaAct', nuevoClienteFactura);
+        formData.append('TotalFacturaAct', nuevoTotalFactura);
+        formData.append('DescuentoFacturaAct', nuevoDescuentoFactura);
+        formData.append('IvaFacturaAct', nuevoIvaFactura);
+        formData.append('SubtotalFacturaAct', nuevoSubtotalFactura);
+        formData.append('SaldoFacturaAct', nuevoSaldoFactura);
+        formData.append('EstadoFacturaAct', nuevoEstadoFactura);
+
+        // Realizar la solicitud fetch
+        fetch('../modelo/Updatefactura.php', {
+            method: 'POST',
+            body: formData,
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (!data.hasOwnProperty('error')) {
+              console.log(data);
+              alert(data["success"]);
+              window.location.reload();
+            } else {
+              alert(data["error"]);
+            }
+
+            // Cerrar el modal después de la actualización            
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
       }
     </script>
 
