@@ -452,22 +452,6 @@ ini_set('display_errors', 'on');
               </div>
 
               <div class="col-md-6">
-                <label for="validarRazonSocial" class="form-label">Razón Social</label>
-                <select type="select" class="form-select" aria-label="default select example" id="validarRazonSocial" required>
-                  <option value="0">Elija una opción</option>
-                  <option value="1">Persona natural</option>
-                  <option value="2">Empresa Asociativa de Trabajo</option>
-                  <option value="3">Empresa Unipersonal</option>
-                  <option value="4">Sociedad Anónima</option>
-                  <option value="5">Sociedad Colectiva</option>
-                  <option value="6">Sociedad Comandita por Acciones</option>
-                  <option value="7">Sociedad Comandita Simple</option>
-                  <option value="8">Sociedad Limitada</option>
-                  <option value="9">Sociedad por Acciones Simplificada</option>
-                </select>
-              </div>
-
-              <div class="col-md-6">
                 <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
                 <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
                   <option value="0">'1' Juridica o '2' Natural</option>
