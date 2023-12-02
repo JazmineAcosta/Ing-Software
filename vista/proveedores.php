@@ -1,3 +1,9 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+require_once '../modelo/controlador/conectar_bd.php';
+$conn = conectar_bd();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +21,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="../librerias/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -415,107 +419,133 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Empleados</h1>
+            <h1>Facturación</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="home-r1.html">Home</a></li>
-                    <li class="breadcrumb-item active">Nómina</li>
-                    <li class="breadcrumb-item active">Empleados</li>
+                    <li class="breadcrumb-item active">Facturación</li>
+                    <li class="breadcrumb-item active">Clientes</li>
                 </ol>
             </nav>
-        </div>
-        <!-- End Page Title -->
+        </div><!-- End Page Title -->
 
-        <section class="section profile">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body pt-3">
-                            <div class="tab-content pt-2">
-                                <div class="tab-pane fade profile-overview" id="profile-overview">
-                                    <h5 class="card-title">Detalles de perfil</h5>
-                                </div>
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Registrar cliente</h5>
 
-                                <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
-                                    <!-- Profile Edit Form -->
-                                    <form class="row g-3 needs-validation" id="profileForm">
-                                        <div class="mb-3 text-center">
-                                            <label for="profileImage" class="col-md-12 col-form-label">Profile
-                                                Image</label>
-                                            <div class="col-md-12">
-                                                <img id="profileImg" src="../librerias/assets/img/sin-perfil.png"
-                                                    alt="Profile" />
-                                                <div class="pt-2">
-                                                    <a href="#" class="btn btn-primary btn-sm"
-                                                        title="Upload new profile image" id="uploadBtn">
-                                                        <i class="bi bi-upload"></i> Cargar
-                                                    </a>
-                                                    <a href="#" class="btn btn-danger btn-sm"
-                                                        title="Remove my profile image" id="removeBtn">
-                                                        <i class="bi bi-trash"></i> Remover
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                    <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+                        <!-- Factura regsitro Form -->
+                        <form class="row g-3 needs-validation" id="profileForm">
 
-                                        <div class="col-md-6 mt-5">
-                                            <label for="validarCedula" class="form-label">Cédula</label>
-                                            <input type="number" class="form-control" id="validarCedula"
-                                                placeholder="1234567890" required />
-                                        </div>
-
-
-                                        <div class="col-md-6 mt-5">
-                                            <label for="validarIdUsuario" class="form-label">ID de usuario</label>
-                                            <input type="number" class="form-control" id="validarIdUsuario"
-                                                placeholder="12345" required />
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="validarNomCompleto" class="form-label">Nombre y
-                                                Apellidos</label>
-                                            <input type="text" class="form-control" id="validarNomCompleto" required />
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="validarDir" class="form-label">Dirección de
-                                                recidencia</label>
-                                            <input type="text" class="form-control" id="validarDir" required />
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="validarEmail" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="validarEmail"
-                                                placeholder="example@gmail.com" required />
-                                            <div id="feedback-message" class="invalid-feedback"></div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="validarTelefono" class="form-label">Teléfono</label>
-                                            <input type="number" class="form-control" id="validarTelefono"
-                                                placeholder="312 345 6789" required />
-                                            <div id="feedback-message" class="invalid-feedback"></div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
-                                            <input type="date" class="form-control" id="validarEmail" required />
-                                            <div id="feedback-message" class="invalid-feedback"></div>
-                                        </div>
-
-                                        <div class="mb-3 d-flex justify-content-center">
-                                            <button type="button" class="btn btn-success mx-1"
-                                                data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear"
-                                                id="saveChangesBtn" onclick="crearUsuario()">
-                                                <i class="bi bi-person-add"> Crear</i>
-                                            </button>
-
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="col-md-3">
+                                <label for="validarIdCliente" class="form-label">ID Cliente</label>
+                                <input type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
                             </div>
-                            <!-- End Bordered Tabs -->
-                        </div>
+
+                            <div class="col-md-3">
+                                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
+                                <input type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarNitCliente" class="form-label">NIT Cliente</label>
+                                <input type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" pattern="[0-9]{9}-[0-9]{1}" maxlength="11" required />
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
+                                <select type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
+                                    <option value="0">Seleccione una opción</option>
+                                    <option value="1">1 - Persona Jurídica</option>
+                                    <option value="2">2 - Persona Natural</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarNom" class="form-label">Nombres</label>
+                                <input type="text" class="form-control" id="validarNom" required />
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="validarApe" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="validarApe" required />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarCodPostal" class="form-label">Código postal</label>
+                                <input type="number" class="form-control" id="validarCodPostal" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+                            <?php
+                            $id_stmtt = $conn->prepare("select id_ciudad, nombre_ciudad from ciudad;");
+                            $id_stmtt->execute();
+                            $ciudades = $id_stmtt->get_result();
+                            ?>
+                            <div class="col-md-4">
+                                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
+                                <select type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
+                                    <option value="0">Seleccione una opción</option>
+                                    <?php while ($ciudad = $ciudades->fetch_object()) { ?>
+                                        <option value=<?php echo $ciudad->id_ciudad ?>>
+                                            <?php echo $ciudad->id_ciudad . " - " . $ciudad->nombre_ciudad ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarDir" class="form-label">Dirección de recidencia</label>
+                                <input type="text" class="form-control" id="validarDir" required />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarTelefono" class="form-label">Teléfono</label>
+                                <input type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
+                                <input type="number" class="form-control" id="validarCupoCred" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="validarSaldo" class="form-label">Saldo</label>
+                                <input type="number" class="form-control" id="validarSaldo" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="validarCompraMes" class="form-label">Compras del mes</label>
+                                <input type="number" class="form-control" id="validarCompraMes" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
+                                <input type="number" class="form-control" id="validarPagosMes" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="validarEstado" class="form-label">Estado</label>
+                                <input type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="mb-3 d-flex justify-content-center">
+                                <button type="button" class="btn btn-success mx-1" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Crear" id="saveChangesBtn" onclick="crearUsuario()">
+                                    <i class="bi bi-person-add"> Crear</i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -524,27 +554,24 @@
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Consulta y actualización de empleados</h5>
+                    <h5 class="card-title">Consulta y actualización de cliente</h5>
 
                     <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
                         <!-- Profile Edit Form -->
                         <form class="row g-3 needs-validation" id="profileForm">
 
                             <div class="input-group mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">Cédula empleado</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">ID Cliente</label>
                                 <div class="input-group-append">
-                                    <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato"
-                                        aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" id="idFactura" placeholder="Ingrese el dato" aria-describedby="basic-addon2">
                                 </div>
                                 <div class="input-group-append">
-                                    <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#consultarModal">
+                                    <button class="btn btn-info mx-2" type="button" data-bs-toggle="modal" data-bs-target="#consultarModal">
                                         <i class="bi bi-person-check"></i> Consultar
                                     </button>
                                 </div>
                                 <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#actualizarModal">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#actualizarModal">
                                         <i class="bi bi-person-gear"></i> Actualizar
                                     </button>
                                 </div>
@@ -556,67 +583,110 @@
         </section>
 
         <!-- Consultar Modal -->
-        <div class="modal fade" id="consultarModal" tabindex="-1" role="dialog" aria-labelledby="consultarModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="consultarModal" tabindex="-1" role="dialog" aria-labelledby="consultarModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="consultarModalLabel">Consulta de Empleado</h5>
+                        <h5 class="modal-title" id="consultarModalLabel">Consulta de Factura</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <!-- Factura regsitro Form -->
                         <form class="row g-3 needs-validation" id="profileForm">
-                            <div class="mb-3 text-center">
-                                <label for="profileImage" class="col-md-12 col-form-label">Profile
-                                    Image</label>
-                                <div class="col-md-12">
-                                    <img id="profileImg" src="../librerias/assets/img/sin-perfil.png" alt="Profile" />
-                                </div>
+
+                            <div class="col-md-4">
+                                <label for="validarIdCliente" class="form-label">ID Cliente</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
                             </div>
 
-                            <div class="col-md-6 mt-5">
-                                <label for="validarCedula" class="form-label">Cédula</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarCedula"
-                                    required />
+                            <div class="col-md-4">
+                                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
                             </div>
 
+                            <div class="col-md-4">
+                                <label for="validarNitCliente" class="form-label">NIT Cliente</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
+                            </div>
 
-                            <div class="col-md-6 mt-5">
-                                <label for="validarIdUsuario" class="form-label">ID de usuario</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarIdUsuario"
-                                    required />
+                            <div class="col-md-12">
+                                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
+                                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
+                                    <option value="0">Seleccione una opción</option>
+                                    <option value="1">1 - Persona Jurídica</option>
+                                    <option value="2">2 - Persona Natural</option>
+                                </select>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
-                                <input disabled="readonly" type="text" class="form-control" id="validarNomCompleto"
-                                    required />
+                                <label for="validarNom" class="form-label">Nombres</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarNom" required />
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validarDir" class="form-label">Dirección de
-                                    recidencia</label>
+                                <label for="validarApe" class="form-label">Apellidos</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarApe" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarCodPostal" class="form-label">Código postal</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarCodPostal" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
+                                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
+                                    <option value="0">Seleccione una opción</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarDir" class="form-label">Dirección de recidencia</label>
                                 <input disabled="readonly" type="text" class="form-control" id="validarDir" required />
                             </div>
 
                             <div class="col-md-6">
                                 <label for="validarEmail" class="form-label">Email</label>
-                                <input disabled="readonly" type="email" class="form-control" id="validarEmail"
-                                    required />
+                                <input disabled="readonly" type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="validarTelefono" class="form-label">Teléfono</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarTelefono"
-                                    required />
+                                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
-                                <input disabled="readonly" type="date" class="form-control" id="validarEmail"
-                                    required />
+                            <div class="col-md-4">
+                                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarCupoCred" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarSaldo" class="form-label">Saldo</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarSaldo" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarCompraMes" class="form-label">Compras del mes</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarCompraMes" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarPagosMes" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarEstado" class="form-label">Estado</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarEstado" placeholder="Ingrese 'A' -> Activo, 'I' -> Inactivo " maxlength="1" required />
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
                         </form>
@@ -629,73 +699,110 @@
         </div>
 
         <!-- Actualizar Modal -->
-        <div class="modal fade" id="actualizarModal" tabindex="-1" role="dialog" aria-labelledby="actualizarModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="actualizarModal" tabindex="-1" role="dialog" aria-labelledby="actualizarModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="actualizarModalLabel">Actualización de Empleado</h5>
+                        <h5 class="modal-title" id="actualizarModalLabel">Actualización de Cliente</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <!-- Factura regsitro Form -->
                         <form class="row g-3 needs-validation" id="profileForm">
-                            <div class="mb-3 text-center">
-                                <label for="profileImage" class="col-md-12 col-form-label">Profile
-                                    Image</label>
-                                <div class="col-md-12">
-                                    <img id="profileImg" src="../librerias/assets/img/sin-perfil.png" alt="Profile" />
-                                    <div class="pt-2">
-                                        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"
-                                            id="uploadBtn">
-                                            <i class="bi bi-upload"></i> Cargar
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"
-                                            id="removeBtn">
-                                            <i class="bi bi-trash"></i> Remover
-                                        </a>
-                                    </div>
-                                </div>
+
+                            <div class="col-md-4">
+                                <label for="validarIdCliente" class="form-label">ID Cliente</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarIdCliente" placeholder="CC del Cliente" required />
                             </div>
 
-                            <div class="col-md-6 mt-5">
-                                <label for="validarCedula" class="form-label">Cédula</label>
-                                <input type="number" class="form-control" id="validarCedula" placeholder="1234567890"
-                                    required />
+                            <div class="col-md-4">
+                                <label for="validarIdEmpresa" class="form-label">ID Empresa</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarIdEmpresa" placeholder="12345" required />
                             </div>
 
+                            <div class="col-md-4">
+                                <label for="validarNitCliente" class="form-label">NIT Cliente</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarNitCliente" placeholder="123456789-0" maxlength="11" required />
+                            </div>
 
-                            <div class="col-md-6 mt-5">
-                                <label for="validarIdUsuario" class="form-label">ID de usuario</label>
-                                <input disabled="readonly" type="number" class="form-control" id="validarIdUsuario"
-                                    placeholder="12345" required />
+                            <div class="col-md-12">
+                                <label for="validarIdTipoCliente" class="form-label">ID Tipo Cliente</label>
+                                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdTipoCliente" required>
+                                    <option value="0">Seleccione una opción</option>
+                                    <option value="1">1 - Persona Jurídica</option>
+                                    <option value="2">2 - Persona Natural</option>
+                                </select>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validarNomCompleto" class="form-label">Nombre y Apellidos</label>
-                                <input type="text" class="form-control" id="validarNomCompleto" required />
+                                <label for="validarNom" class="form-label">Nombres</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarNom" required />
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validarDir" class="form-label">Dirección de
-                                    recidencia</label>
-                                <input type="text" class="form-control" id="validarDir" required />
+                                <label for="validarApe" class="form-label">Apellidos</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarApe" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarCodPostal" class="form-label">Código postal</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarCodPostal" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarIdCiudad" class="form-label">ID Ciudad</label>
+                                <select disabled="readonly" type="select" class="form-select" aria-label="default select example" id="validarIdCiudad" required>
+                                    <option value="0">Seleccione una opción</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="validarDir" class="form-label">Dirección de recidencia</label>
+                                <input disabled="readonly" type="text" class="form-control" id="validarDir" required />
                             </div>
 
                             <div class="col-md-6">
                                 <label for="validarEmail" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="validarEmail" required />
+                                <input disabled="readonly" type="email" class="form-control" id="validarEmail" placeholder="example@gmail.com" required />
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="validarTelefono" class="form-label">Teléfono</label>
-                                <input type="number" class="form-control" id="validarTelefono" required />
+                                <input disabled="readonly" type="number" class="form-control" id="validarTelefono" placeholder="312 345 6789" required />
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="validarEmail" class="form-label">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" id="validarEmail" required />
+                            <div class="col-md-4">
+                                <label for="validarCupoCred" class="form-label">Cupo crédito</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarCupoCred" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarSaldo" class="form-label">Saldo</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarSaldo" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarCompraMes" class="form-label">Compras del mes</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarCompraMes" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarPagosMes" class="form-label">Pagos del mes</label>
+                                <input disabled="readonly" type="number" class="form-control" id="validarPagosMes" required />
+                                <div id="feedback-message" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validarEstado" class="form-label">Estado</label>
+                                <input type="text" class="form-control" id="validarEstado" maxlength="1" required />
                                 <div id="feedback-message" class="invalid-feedback"></div>
                             </div>
                         </form>
@@ -731,25 +838,26 @@
                 $('#actualizarModal').modal('hide');
             }
         </script>
-
+        <?php
+        $stmt = $conn->prepare("select * from cliente;");
+        $stmt->execute();
+        $clientes = $stmt->get_result();
+        ?>
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title d-flex justify-content-between align-items-center">
-                                Registro de Empleados
+                                Registro de nóminas
                                 <div class="ms-auto">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="Exportar a PDF">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
                                         <i class="bi bi-file-earmark-pdf"> PDF</i>
                                     </button>
-                                    <button type="button" class="btn btn-success" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="Exportar a Excel">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a Excel">
                                         <i class="bi bi-file-earmark-excel"> Excel</i>
                                     </button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="Imprimir">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Imprimir">
                                         <i class="bi bi-printer"> Imprimir</i>
                                     </button>
                                 </div>
@@ -758,116 +866,30 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Cédula</th>
-                                        <th scope="col">ID de usuario</th>
-                                        <th scope="col">Nombres y apellidos</th>
-                                        <th scope="col">Dirección</th>
-                                        <th scope="col">E-mail</th>
-                                        <th scope="col">Teléfono</th>
-                                        <th scope="col">Fecha de nacimiento</th>
-                                        <th scope="col">Estado </th>
+                                        <th scope="col">ID Cliente</th>
+                                        <th scope="col">ID Empresa</th>
+                                        <th scope="col">Razon Social</th>
+                                        <th scope="col">Tipo Cliente</th>
+                                        <th scope="col">Nombres y Apellidos</th>
+                                        <th scope="col">Correo</th>
+                                        <th scope="col">Cupo Credito</th>
+                                        <th scope="col">Saldo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1025756358</td>
-                                        <td>1</td>
-                                        <td>Andrea Moreno Restrepo</td>
-                                        <td>Calle 152 # 55 - 37</td>
-                                        <td>amorenor@gmail.com</td>
-                                        <td>3102561498</td>
-                                        <td>11/06/1998</td>
-                                        <td>
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i> Activo
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1579842653</td>
-                                        <td>2</td>
-                                        <td>Felipe Molano Jiménez</td>
-                                        <td>Carrera 19 # 75 - 23</td>
-                                        <td>fmolanoj@gmail.com</td>
-                                        <td>3102561498</td>
-                                        <td>09/03/1987</td>
-                                        <td>
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i> Activo
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1002600489</td>
-                                        <td>3</td>
-                                        <td>Juan Sebatián Gómez Umaña</td>
-                                        <td>Calle 35 # 28 - 06</td>
-                                        <td>jsgomezu@gmail.com</td>
-                                        <td>3044039621</td>
-                                        <td>25/06/1999</td>
-                                        <td>
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i> Activo
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1359751023</td>
-                                        <td>4</td>
-                                        <td>Laura Posada Tobon</td>
-                                        <td>Calle 75 # 26 - 63</td>
-                                        <td>lposadat@gmail.com</td>
-                                        <td>3059841685</td>
-                                        <td>18/08/2001</td>
-                                        <td>
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i> Activo
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1000465894</td>
-                                        <td>5</td>
-                                        <td>Germán Garzón Pulgarín</td>
-                                        <td>Carrera 7 # 147 - 23</td>
-                                        <td>ggarzonp@gmail.com</td>
-                                        <td>3004450951</td>
-                                        <td>29/09/1994</td>
-                                        <td>
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i> Activo
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    </tr>
-                                    <tr>
-                                        <td>1002478546</td>
-                                        <td>6</td>
-                                        <td>Gustavo Hincapie Ruiz</td>
-                                        <td>Carrera 10 # 2 - 42</td>
-                                        <td>ghincapier@gmail.com</td>
-                                        <td>3002164332</td>
-                                        <td>05/05/1990</td>
-                                        <td>
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i> Activo
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1002458745</td>
-                                        <td>7</td>
-                                        <td>Santiago Montealegre Soto</td>
-                                        <td>Carrera 19 # 106 - 26</td>
-                                        <td>smontealegres@gmail.com</td>
-                                        <td>3205693214</td>
-                                        <td>15/01/1999</td>
-                                        <td>
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i> Activo
-                                            </span>
-                                        </td>
-                                    </tr>
+                                    <?php while ($cliente = $clientes->fetch_assoc()) { ?>
+                                        <tr>
+                                            <td><?php echo $cliente['id_cliente'] ?></td>
+                                            <td><?php echo $cliente['id_empresa'] ?></td>
+                                            <td><?php echo $cliente['rsocial_cliente'] ?></td>
+                                            <td><?php echo $cliente['id_tipo_cliente'] ?></td>
+                                            <td><?php echo $cliente['nombre_cliente'] . " " . $cliente['apellido_cliente'] ?>
+                                            </td>
+                                            <td><?php echo $cliente['correo_cliente'] ?></td>
+                                            <td><?php echo $cliente['cupocredito_cliente'] ?></td>
+                                            <td><?php echo $cliente['saldo_cliente'] ?></td>
+                                        </tr>
+                                    <?php } ?>
                                     <!-- Add more rows as needed -->
                                 </tbody>
                             </table>
@@ -894,72 +916,7 @@
         </div>
     </footer><!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-        <i class="bi bi-arrow-up-short"></i>
-    </a>
-
-    <!-- Cargar imagen -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var profileImg = document.getElementById("profileImg");
-            var uploadBtn = document.getElementById("uploadBtn");
-            var removeBtn = document.getElementById("removeBtn");
-            var saveChangesBtn = document.getElementById("saveChangesBtn");
-            var profileForm = document.getElementById("profileForm");
-
-            // Set the default profile image URL
-            var defaultImageUrl =
-                "../librerias/assets/img/sin-perfil.png";
-
-            // Function to handle the "Remove" button click
-            removeBtn.addEventListener("click", function (event) {
-                event.preventDefault();
-
-                // Set the profile image source to the default image URL
-                profileImg.src = defaultImageUrl;
-            });
-
-            // Function to handle the "Upload" button click
-            uploadBtn.addEventListener("click", function (event) {
-                event.preventDefault();
-
-                // Simulate file input click to trigger file selection
-                var fileInput = document.createElement("input");
-                fileInput.type = "file";
-                fileInput.accept = "image/*";
-                fileInput.style.display = "none";
-
-                // Append the file input to the body and trigger a click event
-                document.body.appendChild(fileInput);
-                fileInput.click();
-
-                // Remove the file input from the DOM after selection
-                fileInput.addEventListener("change", function () {
-                    if (fileInput.files && fileInput.files[0]) {
-                        var reader = new FileReader();
-
-                        reader.onload = function (e) {
-                            // Set the profile image source to the selected image
-                            profileImg.src = e.target.result;
-                        };
-
-                        reader.readAsDataURL(fileInput.files[0]);
-                    }
-
-                    document.body.removeChild(fileInput);
-                });
-            });
-
-            // Function to handle the "Save Changes" button click
-            saveChangesBtn.addEventListener("click", function (event) {
-                event.preventDefault();
-                // Add your logic here to save the changes (e.g., using AJAX to send data to the server)
-                alert("Changes saved successfully!");
-            });
-        });
-    </script>
-    <!-- Fin cargar imagen -->
-
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="../librerias/assets/vendor/apexcharts/apexcharts.min.js"></script>
