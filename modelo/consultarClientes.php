@@ -18,7 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Guardar los campos en un array asociativo
         $clienteData = array(
-            'idFactura' => $row['id_cliente '],
+            'idCliente' => $row['id_cliente '],
+            'idCliente' => $row['id_cliente '],
+            'idCliente' => $row['id_cliente '],
+            'idCliente' => $row['id_cliente '],
+            'idCliente' => $row['id_cliente '],
+            'idCliente' => $row['id_cliente '],
+            'idCliente' => $row['id_cliente '],
+            'idCliente' => $row['id_cliente '],
             'fechaFactura' => $row['fecha_factura'],
             'idTipoFac' => $row['id_tipofac'],
             'clienteFactura' => $row['cliente_factura'],

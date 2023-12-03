@@ -5,7 +5,7 @@ if (!function_exists('conectar_bd')) {
   {
     // Resto del código de la función conectar_bd()
     global $conexion;
-    $elServer = 'localhost:3307';
+    $elServer = 'localhost';
     $elUsr = 'root';
     $elPw = '';
     $laBd = 'sistema_facturacion';
