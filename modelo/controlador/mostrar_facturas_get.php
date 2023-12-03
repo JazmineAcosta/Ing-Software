@@ -10,42 +10,55 @@
 <body>
 
     <?php
-    // Incluir el archivo de conexión a la base de datos
+    // Include the Composer autoloader
+    require 'vendor/autoload.php';
+
+    // Include the file for database connection
     include('conectar_bd.php');
 
-    $app->get('/facturas_json', function () use ($app) {
-        // Conectar a la base de datos y ejecutar la consulta para obtener facturas
+    // Create a Slim instance
+    $app = new \Slim\App();
+
+    // Define the route
+    $app->get('/facturas_json', function ($request, $response) {
+        // Your existing code for handling the route
+        // Connect to the database
         $conexion = conectar_bd();
 
-        $sql = (
-            "SELECT 
-            f.ID_FACTURA, 
-            f.FECHA_FACTURA, 
-            CONCAT(c.NOMBRE_CLIENTE, ' ', c.APELLIDO_CLIENTE) AS NOMBRE_CLIENTE, 
-            f.SUBTOTAL_FACTURA, 
-            f.IVA_FACTURA, 
-            f.TOTAL_FACTURA 
-        FROM 
-            factura f 
-        JOIN 
-            cliente c ON f.CLIENTE_FACTURA = c.ID_CLIENTE");
+        // Query to fetch invoices
+        $sql = "SELECT 
+                f.ID_FACTURA, 
+                f.FECHA_FACTURA, 
+                CONCAT(c.NOMBRE_CLIENTE, ' ', c.APELLIDO_CLIENTE) AS NOMBRE_CLIENTE, 
+                f.SUBTOTAL_FACTURA, 
+                f.IVA_FACTURA, 
+                f.TOTAL_FACTURA 
+            FROM 
+                factura f 
+            JOIN 
+                cliente c ON f.CLIENTE_FACTURA = c.ID_CLIENTE";
+
+        // Execute the query
         $result = $conexion->query($sql);
 
-        // Obtener resultados de la consulta
+        // Fetch the results
         $facturas = $result->fetch_all(PDO::FETCH_ASSOC);
 
-        // Cerrar cursor y conexión a la base de datos
-        $result = null;
+        // Close the database connection
         $conexion = null;
 
         // Verificar si hay resultados
-        if (count($facturas) > 0) {
+        if (!empty($facturas)) {
             // Convertir resultados a formato JSON y enviar la respuesta
-            echo json_encode($facturas, JSON_PRETTY_PRINT);
+            return $response->withJson($facturas, 200, JSON_PRETTY_PRINT);
         } else {
-            echo json_encode(array("message" => "No se encontraron resultados"));
+            return $response->withJson(array("message" => "No se encontraron resultados"), 404);
         }
     });
+
+    // Run the Slim application
+    $app->run();
+
     ?>
 
 </body>
