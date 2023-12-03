@@ -853,13 +853,13 @@ $conn = conectar_bd();
 
       function consultarFactura() {
         // Lógica para consultar la información y llenar el modal de consulta
-        // Obtener el valor del campo idFactura
-        var idFactura = document.getElementById('idClienteCons').value;
+        // Obtener el valor del campo idCliente
+        var idCliente = document.getElementById('idClienteCons').value;
 
-        if (idFactura != "" || idFactura >= 1) {
+        if (idCliente != "" || idCliente >= 1) {
           //Crear FormData 
           var formData = new FormData();
-          formData.append('idClienteCons', idFactura);
+          formData.append('idClienteCons', idCliente);
           // Realizar la solicitud fetch
           fetch('../modelo/consultafacturas.php', {
               method: 'POST',
@@ -871,7 +871,7 @@ $conn = conectar_bd();
               // Suponiendo que `data` contiene el objeto JSON recibido del servidor
               // Suponiendo que `data` contiene el objeto JSON recibido del servidor
               if (!data.hasOwnProperty('error')) {
-                document.getElementById('idFacturaModal').value = data["idFactura"];
+                document.getElementById('idClienteModal').value = data["idCliente"];
                 document.getElementById('validarFechFactModal').value = data["fechaFactura"];
                 document.getElementById('validarIdTipoClienteModal').value = data["idTipoFac"];
                 document.getElementById('validarIdClienteModal').value = data["clienteFactura"];
@@ -896,7 +896,7 @@ $conn = conectar_bd();
 
       function cerrarModalConsulta() {
 
-        document.getElementById('idFacturaModal').value = "";
+        document.getElementById('idClienteModal').value = "";
         document.getElementById('validarFechFactModal').value = "";
         document.getElementById('validarIdTipoClienteModal').value = "";
         document.getElementById('validarIdClienteModal').value = "";
@@ -911,13 +911,13 @@ $conn = conectar_bd();
 
       function actualizarInformacion() {
         // Lógica para cargar la información y llenar el modal de actualización        
-        // Obtener el valor del campo idFactura
-        var idFactura = document.getElementById('idClienteCons').value;
+        // Obtener el valor del campo idCliente
+        var idCliente = document.getElementById('idClienteCons').value;
 
-        if (idFactura != "" || idFactura >= 1) {
+        if (idCliente != "" || idCliente >= 1) {
           //Crear FormData 
           var formData = new FormData();
-          formData.append('idClienteCons', idFactura);
+          formData.append('idClienteCons', idCliente);
           // Realizar la solicitud fetch
           fetch('../modelo/consultafacturas.php', {
               method: 'POST',
@@ -929,7 +929,7 @@ $conn = conectar_bd();
               // Suponiendo que `data` contiene el objeto JSON recibido del servidor
               // Suponiendo que `data` contiene el objeto JSON recibido del servidor
               if (!data.hasOwnProperty('error')) {
-                document.getElementById('idFacturaAct').value = data["idFactura"];
+                document.getElementById('idClienteAct').value = data["idCliente"];
                 document.getElementById('validarFechFactAct').value = data["fechaFactura"];
                 document.getElementById('validarIdTipoClienteAct').value = data["idTipoFac"];
                 document.getElementById('validarIdClienteAct').value = data["clienteFactura"];
@@ -954,7 +954,7 @@ $conn = conectar_bd();
       function guardarActualizacion() {
         // Obtener el formulario
         // Obtener los valores de los campos del formulario
-        var idFactura = document.getElementById('idFacturaAct').value;
+        var idCliente = document.getElementById('idClienteAct').value;
         var nuevaFecha = document.getElementById('validarFechFactAct').value;
         var nuevoIdTipoFac = document.getElementById('validarIdTipoClienteAct').value;
         var nuevoClienteFactura = document.getElementById('validarIdClienteAct').value;
@@ -969,7 +969,7 @@ $conn = conectar_bd();
         // Crear un objeto FormData con los datos del formulario
         // Crear FormData 
         var formData = new FormData();
-        formData.append('idFacturaAct', idFactura);
+        formData.append('idClienteAct', idCliente);
         formData.append('FechaAct', nuevaFecha);
         formData.append('IdTipoFacAct', nuevoIdTipoFac);
         formData.append('ClienteFacturaAct', nuevoClienteFactura);

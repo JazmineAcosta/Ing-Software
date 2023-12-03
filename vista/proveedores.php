@@ -251,7 +251,7 @@ $conn = conectar_bd();
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="../index.php">
+              <a class="dropdown-item d-flex align-items-center" href="../index.html">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Cerrar sesión</span>
               </a>
