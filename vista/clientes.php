@@ -1014,7 +1014,7 @@ $conn = conectar_bd();
           <div class="card">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-between align-items-center">
-                Registro de nóminas
+                Registro de clientes
                 <div class="ms-auto">
                   <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Exportar a PDF">
                     <i class="bi bi-file-earmark-pdf"> PDF</i>
