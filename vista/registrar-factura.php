@@ -900,10 +900,11 @@ ini_set('display_errors', 'on');
     <?php
     require_once '../modelo/controlador/conectar_bd.php';
     $conn = conectar_bd();
-    $stmt = $conn->prepare("select * from factura;");
+    $stmt = $conn->prepare("SELECT f.id_factura, f.fecha_factura, tf.nom_tipofac AS tipo_factura, f.cliente_factura, f.total_factura, f.descuento_factura, f.iva_factura, f.subtotal_factura, f.saldo_factura, f.estado_factura FROM factura f JOIN tipo_factura tf ON f.id_tipofac = tf.id_tipofac;");
     $stmt->execute();
     $facturas = $stmt->get_result();
     ?>
+
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -944,16 +945,17 @@ ini_set('display_errors', 'on');
                     <tr>
                       <td><?php echo $factura["id_factura"] ?></td>
                       <td><?php echo $factura["fecha_factura"] ?></td>
-                      <td><?php echo $factura["id_tipofac"] ?></td>
+                      <td><?php echo $factura["tipo_factura"] ?></td>
                       <td><?php echo $factura["cliente_factura"] ?></td>
                       <td><?php echo $factura["total_factura"] ?></td>
-                      <td><?php echo $factura["descuento_factura"] ?>
+                      <td><?php echo $factura["descuento_factura"] ?></td>
                       <td><?php echo $factura["iva_factura"] ?></td>
                       <td><?php echo $factura["subtotal_factura"] ?></td>
                       <td><?php echo $factura["saldo_factura"] ?></td>
                       <td><?php echo $factura["estado_factura"] ?></td>
                     </tr>
                   <?php } ?>
+
                   <!-- Add more rows as needed -->
                 </tbody>
               </table>

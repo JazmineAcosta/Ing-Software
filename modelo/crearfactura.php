@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ivaFactura = $_POST['ivaFactura'];
     $subtotalFactura = $_POST['subtotalFactura'];
     $saldoFactura = $_POST['saldoFactura'];
-    $estadoFactura = $_POST['estadoFactura'];    
+    $estadoFactura = $_POST['estadoFactura'];
 
     // Realizar la consulta de inserción
-    try{
+    try {
         $sql = "INSERT INTO factura (fecha_factura, id_tipofac, cliente_factura, total_factura, descuento_factura, iva_factura, subtotal_factura, saldo_factura, estado_factura)
         VALUES ('$fechaFactura', $idTipoFac, $clienteFactura, $totalFactura, $descuentoFactura, $ivaFactura, $subtotalFactura, $saldoFactura, '$estadoFactura')";
 
@@ -27,10 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo json_encode(array('error' => 'Error al crear la factura '));
         }
-    }catch(Exception $e) {
+    } catch (Exception $e) {
         echo json_encode(array('error' => 'La factura no se creó correctamente'));
     }
-
 }
-
-?>
