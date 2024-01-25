@@ -283,7 +283,7 @@ ini_set('display_errors', 'on');
         </a>
         <ul id="nomina-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="admin-empleados.html">
+            <a href="admin-empleados.php">
               <i class="bi bi-circle"></i>
               <span>Empleados</span>
             </a>
@@ -952,7 +952,18 @@ ini_set('display_errors', 'on');
                       <td><?php echo $factura["iva_factura"] ?></td>
                       <td><?php echo $factura["subtotal_factura"] ?></td>
                       <td><?php echo $factura["saldo_factura"] ?></td>
-                      <td><?php echo $factura["estado_factura"] ?></td>
+
+                      <td>
+                        <?php if ($factura["estado_factura"] == 'A') { ?>
+                          <span class="badge bg-success">
+                            <i class="bi bi-check-circle me-1"></i> Activo
+                          </span>
+                        <?php } elseif ($factura["estado_factura"] == 'I') { ?>
+                          <span class="badge bg-danger">
+                            <i class="bi bi-x-circle me-1"></i> Inactivo
+                          </span>
+                        <?php } ?>
+                      </td>
                     </tr>
                   <?php } ?>
 

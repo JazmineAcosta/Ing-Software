@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background: #f6f9ff;
   color: #444444;
 }
@@ -35,7 +35,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -153,7 +153,7 @@ h6 {
 
 @media (min-width: 768px) {
   .dropdown-menu-arrow::before {
-    content: '';
+    content: "";
     width: 13px;
     height: 13px;
     background: #fff;
@@ -237,7 +237,7 @@ h6 {
   font-size: 18px;
   font-weight: 500;
   color: #012970;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .card-title span {
@@ -257,7 +257,7 @@ h6 {
 /* Alerts */
 .alert-heading {
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
 }
 
@@ -306,7 +306,7 @@ h6 {
 /* Breadcrumbs */
 .breadcrumb {
   font-size: 14px;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   color: #899bbd;
   font-weight: 600;
 }
@@ -373,7 +373,7 @@ h6 {
   font-size: 26px;
   font-weight: 700;
   color: #012970;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 .header {
@@ -847,7 +847,7 @@ h6 {
 }
 
 .dashboard .activity .activity-item .activite-label::before {
-  content: '';
+  content: "";
   position: absolute;
   right: -11px;
   width: 4px;
@@ -1115,7 +1115,7 @@ h6 {
 }
 
 .contact .php-email-form .loading:before {
-  content: '';
+  content: "";
   display: inline-block;
   border-radius: 50%;
   width: 24px;
@@ -1147,7 +1147,7 @@ h6 {
   padding: 12px 15px;
 }
 
-.contact .php-email-form button[type='submit'] {
+.contact .php-email-form button[type="submit"] {
   background: #4154f1;
   border: 0;
   padding: 10px 30px;
@@ -1156,7 +1156,7 @@ h6 {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type='submit']:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: #5969f3;
 }
 
@@ -1360,3 +1360,18 @@ h6 {
 }
 
 */
+
+/* Add dark mode styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+  /* Agrega estilos adicionales para el modo oscuro según sea necesario */
+}
+
+/* Ejemplo de cambio de color para el modo oscuro en tu proyecto */
+.card {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+/* Agrega más estilos según sea necesario */

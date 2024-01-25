@@ -1381,6 +1381,7 @@ CREATE TABLE `detalle_recaudo` (
 CREATE TABLE `empleado` (
   `id_empleado` bigint(20) NOT NULL,
   `id_usuario` bigint(20) NOT NULL,
+  `foto_empleado` varchar(256) NOT NULL,
   `nom_ape_empleado` varchar(100) NOT NULL,
   `direc_empleado` varchar(100) DEFAULT NULL,
   `email_empleado` varchar(100) DEFAULT NULL,

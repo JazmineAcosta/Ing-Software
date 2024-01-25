@@ -284,7 +284,7 @@ $conn = conectar_bd();
         </a>
         <ul id="nomina-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="admin-empleados.html">
+            <a href="admin-empleados.php">
               <i class="bi bi-circle"></i>
               <span>Empleados</span>
             </a>
